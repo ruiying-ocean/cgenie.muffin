@@ -635,11 +635,11 @@ CONTAINS
                             if(loc_SO4_swiflux > 0.0)then
 !                                print*,' '
                                 print*,'---------- loc_SO4_swiflux positiv ----------', loc_SO4_swiflux
-                                print*,'dum_i, dum_j, dum_D', dum_i, dum_j, dum_D
-                                print*,'loc_sed_burial_NEW =', loc_sed_burial
-                                print*,'1/(1-por)*loc_new_sed(is_det) = ', 1/(1-por)*loc_new_sed(is_det)
+!                                print*,'dum_i, dum_j, dum_D', dum_i, dum_j, dum_D
+!                                print*,'loc_sed_burial_NEW =', loc_sed_burial
+!                                print*,'1/(1-por)*loc_new_sed(is_det) = ', 1/(1-por)*loc_new_sed(is_det)
                                 loc_SO4_swiflux = 0.0
-                            !                    !                STOP
+!            			STOP
                             end if
 
                         else
@@ -1594,8 +1594,9 @@ CONTAINS
 
         FUN_zO2 = flxzox + FUN_huelseetal2016_calcFO2(z)
 
-    !    print*,'FUN_zO2, flxzox, calcFO2(z)', FUN_zO2, flxzox, calcFO2(z)
-    !    print*,' '
+!        print*,' '
+!        print*,'FUN_zO2, flxzox, calcFO2(z)', FUN_zO2, flxzox, FUN_huelseetal2016_calcFO2(z)
+
     END FUNCTION FUN_zO2
 
     !------------------------------------------------------------------------------------
@@ -1849,7 +1850,7 @@ CONTAINS
 
 
         ! local variables
-        real flxzso4, conczso4, loc_conczinf, zL, tol
+        real flxzso4, conczso4, loc_conczinf, zL, tol, fun0
         integer bctype
 
 
@@ -1858,8 +1859,12 @@ CONTAINS
         !        print*, ' BWI SO4 concentration = ', dum_swiconc_SO4
 
         ! Iteratively solve for zso4
-
-        ! try zero flux at zinf and see if we have any SO4 left, also
+	
+	! test enough [SO4] to perform SR and reoxidation of reduced species
+       	zL=1e-10
+        fun0 = FUN_zSO4(max(zno3,zL))
+!        print*,'fun0', char(9), fun0
+	! try zero flux at zinf and see if we have any SO4 left, also
         ! calculate [SO4] at zinf for advective loss
         bctype = 2
         call sub_huelseetal2016_zSO4_calcbc(zinf, bctype, flxzso4, loc_conczinf, loc_new_swiflux_SO4)
@@ -1870,9 +1875,14 @@ CONTAINS
             bctype = 2
         ELSE
 
-            !        print*,'conczso4 at zinf', char(9), conczso4
+!            print*,'loc_conczinf', char(9), loc_conczinf
 
-            IF(loc_conczinf .ge. 0)THEN
+        IF (fun0 .ge. 0.0)THEN   ! not enough SO4 for sulfate reduction & AOM
+            zso4 = zno3   
+            bctype = 1
+            loc_conczinf = 0.0
+!            print*,'not enough SO4: zso4 = ', zso4
+            ELSEIF(loc_conczinf .ge. 0)THEN
                 zso4 = zinf
                 bctype = 2
             ELSE
@@ -1884,8 +1894,10 @@ CONTAINS
 !                print*,'CALCULATE zso4 = ', zso4
             END IF
         !    print*,'bctype, zso4 ', bctype, zso4
-        END IF !(zno3 == zinf)
+        END IF ! (zno3 == zinf)
+
         call sub_huelseetal2016_zSO4_calcbc(zso4, bctype, flxzso4, conczso4, loc_new_swiflux_SO4)
+
         loc_new_swiflux_SO4 = loc_new_swiflux_SO4 - por*w*(dum_swiconc_SO4 - loc_conczinf)
 
         IF(ABS(loc_new_swiflux_SO4) .LE. const_real_nullsmall)then
@@ -2117,7 +2129,9 @@ CONTAINS
 
         call sub_huelseetal2016_zSO4_calcbc(z, 1, flxzso4, conczso4, flxswi)
 
-        FUN_zSO4 = -flxzso4 - FUN_calcFSO4(z)
+        FUN_zSO4 = flxzso4 + FUN_calcFSO4(z)
+! DH: was but I aligned it with O2
+!        FUN_zSO4 = -flxzso4 - FUN_calcFSO4(z)
 
     !    print*,'FUN_zSO4, flxzso4, FUN_calcFSO4(z)', FUN_zSO4, flxzso4, FUN_calcFSO4(z)
     !    print*,' '
