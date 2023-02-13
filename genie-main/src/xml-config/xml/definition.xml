@@ -8579,7 +8579,7 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
 			<value datatype="real">0.0</value>
 	                  <description>Silicon excretion rate - exponent</description>
                     </param>
-<!-- Carbon quota and Photosynthesis parameters -->
+		    <!-- Carbon quota and Photosynthesis parameters -->
                     <param name="vmaxDIC_a">
 			<value datatype="real">3.08</value>
 	                  <description>maximum photosynthetic rate - a</description>
@@ -8636,12 +8636,31 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
 			<value datatype="boolean">.false.</value>
 	                  <description>PAR attenutation by sea-ice cover?</description>
                     </param>
-       <!-- Grazing parameters -->
-                    <param name="trophic_tradeoff">
-			<value datatype="real">1.0</value>
-	                  <description>Auto/Hetero trade-off parameter</description>
-                    </param>
-<!-- Grazing parameters -->
+		    <!-- Grazing parameters -->
+		    <param name="trophic_tradeoff">
+		      <value datatype="real">1.0</value>
+		      <description>Auto/Hetero trade-off parameter</description>
+		    </param>
+		    <param name="ah_size_ratio">
+		      <value datatype="real">1.0</value>
+		      <description>Auto/Hetero size ratio</description>
+		    </param>
+		    <param name="ss_tradeoff_a">
+		      <value datatype="real">1.0</value>
+		      <description>Auto/Hetero trade-off parameter</description>
+		    </param>
+		    <param name="sn_tradeoff_a">
+		      <value datatype="real">1.0</value>
+		      <description>Auto/Hetero trade-off parameter</description>
+		    </param>
+		    <param name="ss_tradeoff_h">
+		      <value datatype="real">1.0</value>
+		      <description>Auto/Hetero trade-off parameter</description>
+		    </param>
+		    <param name="sn_tradeoff_h">
+		      <value datatype="real">1.0</value>
+		      <description>Auto/Hetero trade-off parameter</description>
+		    </param>
                     <param name="ass_eff">
 			<value datatype="real">0.7</value>
 	                  <description>Maximum assimilation efficiency</description>
@@ -8854,10 +8873,6 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
                     <param name="par_ecogem_force_T_file">
 			<value datatype="string">temperature.dat</value>
 		     			<description>Input file for forcing temperature in ecogem</description>
-                    </param>
-                    <param name="par_ecogem_timeseries_file">
-			<value datatype="string">timeseries_sites.eco</value>
-		     			<description>timeseries locations file name</description>
                     </param>
                 </namelist>
             </file>

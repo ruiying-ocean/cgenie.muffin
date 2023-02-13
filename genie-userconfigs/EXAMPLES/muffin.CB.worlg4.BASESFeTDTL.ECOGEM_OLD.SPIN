@@ -73,36 +73,39 @@ bg_par_bio_FetoC_C=0.0
 #
 # *** ECOGEM ********************************************************
 #
-# specify ecosystem structure definition file
+# ecosystem configuration
 eg_par_ecogem_plankton_file='8P8Z.eco'
-# include cellular quota: N
+#################### Nitrogen ############################
 eg_useNO3                   =.false.
 eg_nquota                   =.false.
-# include cellular quota: PO4
+################## Phosphorus ############################
 eg_usePO4                   =.true.
 eg_pquota                   =.true.
-# include cellular quota: Fe
+######################## Iron ############################
 eg_useFe                    =.true.
 eg_fquota                   =.true.
-# include cellular quota: Chlorophyll
+################# Chlorophyll ############################
 eg_chlquota                 =.true.
-# d13C fractionaton based on d13C of DIC?
+################# d13C ###################################
 eg_useDIC_13C               =.true.
-# P and Fe quota parameters (tuned values)
+# Tuned parameters
 eg_qminP_a     =   3.33e-3
 eg_qminFe_a    =   1.00e-6
 eg_qmaxFe_a    =   4.00e-6
-# Prey switching exponent (Holling 2 or 3 [= ns+1])
+# ???
 eg_ns=2
-# Carbon respiration rate - intercept
-eg_respir_a=0.0
-# DOM (ca. POM) partitioning parameters
+# ???
+eg_respir_a=0
+# DOM parameters
 eg_beta_mort_a =   0.8 # Maximum fraction to DOM as ESD --> zero
 eg_beta_mort_b =   0.4 # Minimum fraction to DOM as ESD --> infinity 
 eg_beta_mort_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
 eg_beta_graz_a =   0.8 # Maximum fraction to DOM as ESD --> zero
 eg_beta_graz_b =   0.4 # Minimum fraction to DOM as ESD --> infinity
 eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
+# ???
+eg_nsubtime=25
+eg_n_keco=1
 # exponent for modifier of CaCO3:POC export ratio
 eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
@@ -112,6 +115,9 @@ eg_par_bio_red_POC_CaCO3     = 0.0285 # underlying export CaCO3 as a proportion 
 #
 # Basic + biology diagnostics save option
 bg_par_data_save_level=3
+# disable ECOGEM restarts (as not currently coded up / used)
+eg_ctrl_ncrst      = .false.
+eg_ctrl_continuing = .false.
 #
 # *** FORCINGS ******************************************************
 #

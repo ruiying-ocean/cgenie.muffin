@@ -1,0 +1,55 @@
+ 
+ 01                 02    03
+ \/                 \/    \/
+
+-START-OF-DATA-
+ Phytoplankton     0.05   1
+ Phytoplankton     0.10   1
+ Phytoplankton     0.30   1
+ Phytoplankton     1.00   1
+ Phytoplankton     3.60   1
+ Phytoplankton    10.00   1
+ Phytoplankton    25.00   1
+ Phytoplankton    57.00   1
+ Phytoplankton   122.00   1
+ Phytoplankton   245.00   1
+ Phytoplankton   468.00   1
+ Phytoplankton   853.00   1
+ Phytoplankton  1500.00   1
+ Zooplankton       0.10   1
+ Zooplankton       0.30   1
+ Zooplankton       1.00   1
+ Zooplankton       3.60   1
+ Zooplankton      10.00   1
+ Zooplankton      25.00   1
+ Zooplankton      57.00   1
+ Zooplankton     122.00   1
+ Zooplankton     245.00   1
+ Zooplankton     468.00   1
+ Zooplankton     853.00   1
+ Zooplankton    1500.00   1
+ Zooplankton    2500.00   1
+-END-OF-DATA-
+
+ /\                 /\    /\
+ 01                 02    03
+
+DATA FORMAT AND ORDER
+---------------------
+
+COLUMN #01: plankton functional type name
+COLUMN #02: plankton diameter (micrometers)
+COLUMN #03: number of randomised replicates
+
+INFO: TRACER ASSIGNMENT RULES
+-----------------------------
+Plankton functional type one of: Prochlorococcus
+                                 Synechococcus
+                                 Picoeukaryote
+                                 Diatom
+                                 Coccolithophore
+                                 Diazotroph
+                                 Zooplankton
+                                 Mixotroph
+                                 
+## build from function powlaw(np.linspace(1,17,17), 5e-8, 8.7)

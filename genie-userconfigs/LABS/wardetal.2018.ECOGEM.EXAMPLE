@@ -10,7 +10,7 @@ ea_36=y
 # biological scheme ID string
 bg_par_bio_prodopt="NONE"
 #
-# --- ORGANIC MATTER EXPORT RATIOS ----------------------------------
+# --- Organic MATTER EXPORT RATIOS ----------------------------------
 #
 # production fraction of dissolved organic matter
 bg_par_bio_red_DOMfrac=0.66

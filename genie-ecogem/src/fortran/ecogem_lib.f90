@@ -125,7 +125,7 @@ MODULE ecogem_lib
   ! Other loss parameters
   real ::    respir_a,   respir_b   ! a/b: carbon respiration rate
   real ::   biosink_a,  biosink_b   ! a/b: biomass sinking rate
-  real ::      mort_a,     mort_b   ! a/b: basal mortality
+  real ::      mort_a,     mort_b,   mort_sym   ! a/b: basal mortality
   real :: beta_graz_a,beta_graz_b,beta_graz_c   ! a/b/c: fraction messy feeding to dissolved
   real :: beta_mort_a,beta_mort_b,beta_mort_c   ! a/b/c: fraction mortality to dissolved
   real :: par_bio_remin_POC_frac2,par_bio_remin_CaCO3_frac2
@@ -134,8 +134,8 @@ MODULE ecogem_lib
   namelist/ini_ecogem_nml/beta_graz_a,beta_graz_b,beta_graz_c,beta_mort_a,beta_mort_b,beta_mort_c
   namelist/ini_ecogem_nml/par_bio_remin_POC_frac2,par_bio_remin_CaCO3_frac2
   ! Mixotrophy parameters
-  real :: trophic_tradeoff
-  namelist/ini_ecogem_nml/trophic_tradeoff
+  real :: trophic_tradeoff, ss_tradeoff_a, ss_tradeoff_h, sn_tradeoff_a, sn_tradeoff_h, ah_size_ratio
+  namelist/ini_ecogem_nml/trophic_tradeoff, ss_tradeoff_a, ss_tradeoff_h, sn_tradeoff_a, sn_tradeoff_h, ah_size_ratio
   ! Temperature dependence
   real ::  temp_A,temp_T0   !
   namelist/ini_ecogem_nml/temp_A,temp_T0
@@ -157,8 +157,6 @@ MODULE ecogem_lib
   NAMELIST /ini_ecogem_nml/nsubtime!
   CHARACTER(len=127)::par_ecogem_plankton_file
   NAMELIST /ini_ecogem_nml/par_ecogem_plankton_file
-  CHARACTER(len=127)::par_ecogem_timeseries_file
-  NAMELIST /ini_ecogem_nml/par_ecogem_timeseries_file
   ! JDW force T fields
   logical::ctrl_force_T
   namelist /ini_ecogem_nml/ctrl_force_T
@@ -280,13 +278,14 @@ MODULE ecogem_lib
   character(len=5) ,ALLOCATABLE,DIMENSION(:)    ::rsrcstrng                                ! Inorganic resource labels
   INTEGER          ,ALLOCATABLE,DIMENSION(:)    ::random_n                                 ! n population replicates
   INTEGER          ,ALLOCATABLE,DIMENSION(:)    ::nut2quota                                ! match nutrients to quotas
-  REAL             ,ALLOCATABLE,DIMENSION(:)    ::volume,diameter ,logvol,logesd           ! Size parameters
+  REAL             ,ALLOCATABLE,DIMENSION(:)    ::volume,diameter,auto_volume, logvol,logesd ! Size parameters
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::autotrophy,heterotrophy                  ! Trophic strategy
-  LOGICAL          ,ALLOCATABLE,DIMENSION(:)    ::herbivory,carnivory                      ! Feeding behavior - Added by Grigoratou, Nov18
+  REAL          ,ALLOCATABLE,DIMENSION(:)    ::herbivory,carnivory                      ! Feeding behavior - Added by Grigoratou, Nov18
   real             ,ALLOCATABLE,DIMENSION(:)    ::pp_opt_a_array,pp_sig_a_array,ns_array   ! grazing parameters as arrays
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::prey_refuge                              ! PFT dependent traits - Added by Grigoratou, Dec18
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::mort_protect                             ! PFT dependent traits - Added by Grigoratou, Dec18
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::growthcost_factor                        ! PFT dependent traits - Added by Grigoratou, Dec18
+  REAL             ,ALLOCATABLE,DIMENSION(:)    ::kg_factor, symbiont_size, extra_respir   ! RY Oct 2021
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::palatability                             ! Lower value for defence strategy
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::NO3up,Nfix,calcify,silicify              ! PFT dependent traits
   REAL             ,ALLOCATABLE,DIMENSION(:,:)  ::qmin,qmax,vmax,affinity,kexc             ! Nutrient quota parameters

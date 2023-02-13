@@ -1,4 +1,4 @@
-
+ 
  01                 02    03
  \/                 \/    \/
 
@@ -11,7 +11,6 @@
  Phytoplankton   190.00   1
  Phytoplankton   600.00   1
  Phytoplankton  1900.00   1
- Zooplankton       0.60   1
  Zooplankton       1.90   1
  Zooplankton       6.00   1
  Zooplankton      19.00   1
@@ -19,6 +18,7 @@
  Zooplankton     190.00   1
  Zooplankton     600.00   1
  Zooplankton    1900.00   1
+ Zooplankton    6000.00   1 
 -END-OF-DATA-
 
  /\                 /\    /\
@@ -41,4 +41,6 @@ Plankton functional type one of: Prochlorococcus
                                  Diazotroph
                                  Zooplankton
                                  Mixotroph
+                                 
+
 

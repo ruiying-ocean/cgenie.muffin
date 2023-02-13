@@ -55,8 +55,8 @@ bg_par_bio_remin_POC_frac2=0.008
 #
 # *** DATA SAVING ***************************************************
 #
-# Preformed diagnostics option == BASIC + biology + tracer + proxy
-bg_par_data_save_level=7
+# Preformed diagnostics option == BASIC + biology + tracer + proxy + redox diagnostics.
+bg_par_data_save_level=11
 # force time-slice save at run end only
 bg_par_infile_slice_name='save_timeslice_NONE.dat'
 #

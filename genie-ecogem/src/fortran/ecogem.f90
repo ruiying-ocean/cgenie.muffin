@@ -360,7 +360,7 @@ subroutine ecogem(          &
                  ! additional rate and efficiency calculations
 
                  ! calculate mortality rates
-                 mortality(:)   = mort(:)   * (1.0 - exp(-1.0e10 * loc_biomass(iCarb,:))) ! reduce mortality at very low biomass
+                 mortality(:)   = mort(:) * (1.0 - exp(-1.0e10 * loc_biomass(iCarb,:))) ! reduce mortality at very low biomass
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                  ! Stoopid calcification related moratlity
                  !mortality(:)   = mortality(:) + mortality(:) * calcify(:) / omega(i,j,k) ! Coccolithophores and Forams only
@@ -368,7 +368,7 @@ subroutine ecogem(          &
                  ! mortality(:) = mortality(:)  * gamma_T ! temp adjusted?
 
                  ! calculate respiration
-                 respiration(:) = respir(:) !* (1.0 - exp(-1.0e10 * loc_biomass(iCarb,:))) ! reduce respiration at very low biomass
+                 respiration(:) = respir(:) * gamma_T !* (1.0 - exp(-1.0e10 * loc_biomass(iCarb,:))) ! reduce respiration at very low biomass
 
                  ! calculate assimilation efficiency based on quota status
                  Totzoolimit(:) = 0.0  !total food limitation - Maria May 2019 !!! Need to check if consistent!!!
@@ -474,7 +474,7 @@ subroutine ecogem(          &
                  !              vertically integrated chlorophyll (Chl) is in units of mg Chl m-2(???)
                  !              the depth of the euphotic zone (Zeu) is in m
                  !       No units conversion required as ECOGEM Chl units are: mg Chl m-3
-                 ! NOTE: code goes here before <beta_mort> etc. arrays are used 
+                 ! NOTE: code goes here before <beta_mort> etc. arrays are used
                  if (ctrl_Tdep_POCtoDOC) then
                     ! chl inventory from pervious time-step
                     loc_chl(:) = loc_biomass(iChlo,:)
@@ -554,7 +554,7 @@ subroutine ecogem(          &
                  ! ------------------------------------------- !
                  ! ADJUST CARBON (REDFIELD) EXPORT PARTITIONING
                  ! ------------------------------------------- !
-                 ! the idea here is to leave the distribution of nutrients etc. between DOM and POM alone, 
+                 ! the idea here is to leave the distribution of nutrients etc. between DOM and POM alone,
                  ! and re-partition carbon (e.g. more to the DOM phase), hence reducing C/P of exported POM
                  ! NOTE: for dorgmatdt array index 2 -- 1 == DOM, 2 == POM
                  ! NOTE: tracers:: iCarb, iNitr, iPhos, iIron, and in isotope array dorgmatisodt:: iCarb13C
@@ -941,4 +941,3 @@ SUBROUTINE ecogem_save_rst(dum_genie_clock)
 END SUBROUTINE ecogem_save_rst
 
 ! ******************************************************************************************************************************** !
-

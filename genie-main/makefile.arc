@@ -99,7 +99,7 @@ LIB_PREFIX  =lib
 LIB_SEARCH_FLAG = -L
 LIB_FLAG    =-l
 INC_FLAG    =-I
-PATH_QUOTE  =
+PATH_QUOTE  = 
 MOD_INC_FLAG = -I
 # OVERRIDES for WIN32
 ifeq ($(MACHINE),WIN32)
@@ -315,16 +315,17 @@ ifeq ($(F77),gfortran)
   FLAGI8=-fdefault-integer-8
   F77FLAGS += -x f77-cpp-input -ffixed-line-length-80
   F90FLAGS += -x f95-cpp-input -ffree-line-length-none
+  FFLAGS += -fallow-argument-mismatch
   FFLAGS += -Wall -fimplicit-none
   FFLAGS += -fopenmp
-###  LDFLAGS += -static
-  LDFLAGS += -fopenmp
+  ## LDFLAGS += -static
+  ## LDFLAGS += -fopenmp
   ifeq ($(BUILD),SHIP)
     FFLAGS += -O2
     FFLAGS += -O3 
-    FFLAGS += -funroll-loops 
-    FFLAGS += -msse
-    FFLAGS += -fno-automatic
+    ## FFLAGS += -funroll-loops 
+    ## FFLAGS += -msse
+    ## FFLAGS += -fno-automatic
   endif
   ifeq ($(BUILD),DEBUG)
     FFLAGS += -g -ffpe-trap=zero,overflow,invalid -O0 -Wall -fbounds-check
@@ -537,10 +538,10 @@ endif
 # === NetCDF paths ===
 ###################################################
 ### FOR COMBINED C+FORTRAN NETCDF LIBRARIES #######
-#NETCDF=$(LIB_SEARCH_FLAG)$(PATH_QUOTE)$(NETCDF_DIR)/lib$(PATH_QUOTE) $(LIB_FLAG)$(NETCDF_NAME)
+NETCDF=$(LIB_SEARCH_FLAG)$(PATH_QUOTE)$(NETCDF_DIR)/lib$(PATH_QUOTE) $(LIB_FLAG)$(NETCDF_NAME)
 ### FOR SEPERATE C AND FORTRAN NETCDF LIBRARIES ###
-NETCDF_NAMEF=$(NETCDF_NAME)f
-NETCDF= $(LIB_SEARCH_FLAG)$(PATH_QUOTE)$(NETCDF_DIR)/lib$(PATH_QUOTE) $(LIB_FLAG)$(NETCDF_NAME) $(LIB_FLAG)$(NETCDF_NAMEF)
+#NETCDF_NAMEF=$(NETCDF_NAME)f
+#NETCDF= $(LIB_SEARCH_FLAG)$(PATH_QUOTE)$(NETCDF_DIR)/lib$(PATH_QUOTE) $(LIB_FLAG)$(NETCDF_NAME) $(LIB_FLAG)$(NETCDF_NAMEF)
 ###################################################
 NETCDF_INC=$(INC_FLAG)$(PATH_QUOTE)$(NETCDF_DIR)/include$(PATH_QUOTE)
 ifeq ($(F77),f95)

@@ -54,11 +54,11 @@ BUILD=SHIP
 #BUILD=PROFILE
 #BUILD=BOUNDS
 # === Machine type (LINUX/SLOARIS/SGI) ===
-MACHINE=LINUX
+#MACHINE=LINUX
 #MACHINE=SGI
 #MACHINE=SOLARIS
 #MACHINE=WIN32
-#MACHINE=OSX
+MACHINE=OSX
 
 # === Extension for module files ===
 MODEXT=mod
@@ -74,21 +74,22 @@ MODEXT=mod
 # (http://www.unidata.ucar.edu/packages/netcdf/index.html)
 
 ### DEFAULT ###
-NETCDF_DIR=/usr/local
-### sterling ###
+#NETCDF_DIR=/usr/local
+### domino ###
 #NETCDF_DIR=/share/apps
 ### eevee ###
-#NETCDF_DIR=/share/apps/netcdf
+#NETCDF_DIR=/share/apps/netcdf-c-4.4.1.1-fortran-4.4.4
 ### iwan ###
 #NETCDF_DIR=/share/apps/netcdf/4.0/gnu_fc_4.4.4
 ### sprout ###
 #NETCDF_DIR=/share/apps/netcdf/4.0/gnu_fc_4.4.6
 ### almond ###
-#NETCDF_DIR=/share/apps/netcdf-4.0/gcc-4.4.7
+##NETCDF_DIR=/share/apps/netcdf-4.0/gcc-4.4.7
 ### VM ###
 #NETCDF_DIR=/home/mushroom/netcdf/ifort
 ### Ben Mac Pro ###
 #NETCDF_DIR=/opt/local
 
+NETCDF_DIR=/Users/yingrui/Library/netcdf
 NETCDF_NAME=netcdf
 

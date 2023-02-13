@@ -193,6 +193,8 @@ SUBROUTINE initialise_ecogem(    &
   ! Size
   ALLOCATE(volume(npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
+  ALLOCATE(auto_volume(npmax),STAT=alloc_error)
+  call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(logvol(npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(logesd(npmax),STAT=alloc_error)
@@ -202,6 +204,8 @@ SUBROUTINE initialise_ecogem(    &
   call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(heterotrophy(npmax),STAT=alloc_error)
   ALLOCATE(herbivory(npmax),STAT=alloc_error)
+  call check_iostat(alloc_error,__LINE__,__FILE__)
+  ALLOCATE(symbiont_size(npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(carnivory(npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
@@ -228,6 +232,10 @@ SUBROUTINE initialise_ecogem(    &
   ALLOCATE(mort_protect(npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(growthcost_factor(npmax),STAT=alloc_error)
+  call check_iostat(alloc_error,__LINE__,__FILE__)
+  ALLOCATE(kg_factor(npmax),STAT=alloc_error)
+  call check_iostat(alloc_error,__LINE__,__FILE__)
+  ALLOCATE(extra_respir(npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
   ! Nutrient and nutrient quota parameters
   ALLOCATE(qmin(iomax,npmax),STAT=alloc_error)
@@ -364,10 +372,9 @@ SUBROUTINE initialise_ecogem(    &
   call sub_init_netcdf(trim(string_ncout2d),loc_iou,2)
   ncout2d_iou = loc_iou
   ncout2d_ntrec = 0
-  ! NOTE: 3D data is not currently saved, so disable nc file creation
-  !call sub_init_netcdf(trim(string_ncout3d),loc_iou,3)
-  !ncout3d_iou = loc_iou
-  !ncout3d_ntrec = 0
+  call sub_init_netcdf(trim(string_ncout3d),loc_iou,3)
+  ncout3d_iou = loc_iou
+  ncout3d_ntrec = 0
   ! ---------------------------------------------------------- ! LOAD RE-START
   IF (ctrl_continuing) then
      IF (ctrl_debug_init > 0) print*,'LOAD RE-START'

@@ -49,7 +49,6 @@ CONTAINS
        ! check for outside quota min or max
        quota(io,:) = merge(qmax(io,:),quota(io,:),quota(io,:).gt.qmax(io,:)) ! Qmax if Q>Qmax
        quota(io,:) = merge(qmin(io,:),quota(io,:),quota(io,:).lt.qmin(io,:)) ! Qmin if Q<Qmin
-
     enddo
 
   END SUBROUTINE quota_status
@@ -155,8 +154,7 @@ CONTAINS
     do ii=2,iimax ! not carbon...
        ! resource and temperature limited uptake
        if (nuts(ii).gt.0.0) then
-          up_inorg(ii,:) = gamma_T * vmax(ii,:) * affinity(ii,:) * nuts(ii) &
-               & / (vmax(ii,:) + affinity(ii,:) * nuts(ii))
+          up_inorg(ii,:) = gamma_T * vmax(ii,:) * affinity(ii,:) * nuts(ii) / (vmax(ii,:) + affinity(ii,:) * nuts(ii))
           ! Equivalent to classic Michaelis-Menten form ...
           !     up_inorg(ii,:) = gamma_T * vmax(ii,:) * nuts(ii) / (nuts(ii) +kn(ii,:))
           if (fundamental) up_inorg(ii,:) = gamma_T * vmax(ii,:)
@@ -168,7 +166,7 @@ CONTAINS
     ! quota satiation
     do ii=2,iimax
        io=nut2quota(ii)
-       up_inorg(ii ,:) = up_inorg(ii ,:) * qreg(io,:)
+       up_inorg(ii ,:) = up_inorg(ii,:) * qreg(io,:)
     enddo
 
     ! ammonium inhibition to NO3 and NO2
@@ -305,6 +303,7 @@ CONTAINS
           Chl2C(:) = chl(:) / Cbiomass(:)
           Chl2C(:) = MERGE(Chl2C(:),0.0,Cbiomass(:).gt.0.0) ! Check for divide by zero
           ! theoretical light replete photosynthesis given current temperature and nutrient limitation: (s^-1)
+
           PCmax(:) = vmax(iDIC,:) * VLlimit(:) * gamma_T
           ! light-limited photosynthesis: (s^-1)
           PCPhot(:) = PCmax(:) * (1.0 - exp(-alpha(:)*Chl2C(:)*E0/PCmax))
@@ -417,7 +416,7 @@ CONTAINS
           food2 = 0.0 ! available food ^ ns
           do jprey=1,npmax ! sum all the prey carbon of predator, weighted by availability (preference)
              if (gkernel(jpred,jprey).gt.0.0) then
-                food1 = food1 +  gkernel(jpred,jprey)*palatability(jprey)*biomass(iCarb,jprey)      ! available food
+                food1 = food1 + gkernel(jpred,jprey)*palatability(jprey)*biomass(iCarb,jprey)      ! available food
                 food2 = food2 + (gkernel(jpred,jprey)*palatability(jprey) * biomass(iCarb,jprey))**ns_array(jpred) ! available food ^ ns
              endif
           enddo
@@ -523,11 +522,11 @@ CONTAINS
        errmsg=errmsg(1:nstr)//'PO4, '
        nstr=nstr+5
     endif
-    if (useFe  .and. .not. ocn_select(io_TDFe) ) then
-      errflag=.true.
-      errmsg=errmsg(1:nstr)//'TDFe), '
-      nstr=nstr+6
-    endif
+    !  if (useFe  .and. .not. ocn_select(io_???) ) then
+    !    errflag=.true.
+    !    errmsg=errmsg(1:nstr)//'PO4, '
+    !    nstr=nstr+5
+    !  endif
     if (useSiO2 .and. .not. ocn_select(io_SiO2)) then
        errflag=.true.
        errmsg=errmsg(1:nstr)//'SiO2  '

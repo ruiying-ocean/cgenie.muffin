@@ -28,6 +28,7 @@ CONTAINS
        print*,'ERROR: could not open ECOGEM initialisation namelist file'
        stop
     end if
+
     ! read in namelist and close data_ECOGEM file
     read(UNIT=in,NML=ini_ecogem_nml,IOSTAT=ios)
     if (ios /= 0) then
@@ -139,18 +140,20 @@ CONTAINS
        write(*,71),'  - ecogem tsteps per biogem tstep     (nsubtime) :   ',nsubtime
        write(*,68),'  - maximum temperature                (temp_max) :   ',temp_max
        if(ctrl_grazing_explicit)then
-         write(*,69),'  - optimal predator:prey length ratio   (pp_opt) : a= plankton specific values set in:',par_ecogem_grazing_file, ', b=', pp_opt_b
-         write(*,69),'  - width of grazing kernel              (pp_sig) : a= plankton specific values set in:',par_ecogem_grazing_file, ', b=',  pp_sig_b
-         write(*,67),'  - prey switching exponent (integer)        (ns) :    plankton specific values set in:',par_ecogem_grazing_file
-         write(*,67),'  - herbivory                                     :    plankton specific values set in:',par_ecogem_grazing_file
-         write(*,67),'  - carnivory                                     :    plankton specific values set in:',par_ecogem_grazing_file
-         write(*,69),'  - palatability                                  :    plankton specific values set in:',par_ecogem_grazing_file
-         write(*,69),'  - growth cost factor                            :    plankton specific values set in:',par_ecogem_grazing_file
+          write(*,69),'  - optimal predator:prey length ratio   (pp_opt) : a= plankton specific values set in:',par_ecogem_grazing_file, ', b=', pp_opt_b
+          write(*,69),'  - width of grazing kernel              (pp_sig) : a= plankton specific values set in:',par_ecogem_grazing_file, ', b=',  pp_sig_b
+          write(*,67),'  - prey switching exponent (integer)        (ns) :    plankton specific values set in:',par_ecogem_grazing_file
+          write(*,67),'  - herbivory                                     :    plankton specific values set in:',par_ecogem_grazing_file
+          write(*,67),'  - carnivory                                     :    plankton specific values set in:',par_ecogem_grazing_file
+          write(*,69),'  - palatability                                  :    plankton specific values set in:',par_ecogem_grazing_file
+          write(*,69),'  - growth cost factor                            :    plankton specific values set in:',par_ecogem_grazing_file
+          write(*,69),'  - total respiration rate                        :    plankton specific values set in:',par_ecogem_grazing_file
+          write(*,69),'  - grazing half-saturation constant              :    plankton specific values set in:',par_ecogem_grazing_file
        else
-         write(*,69),'  - optimal predator:prey length ratio   (pp_opt) : a=',   pp_opt_a,', b=',   pp_opt_b
-         write(*,69),'  - width of grazing kernel              (pp_sig) : a=',   pp_sig_a,', b=',   pp_sig_b
-         write(*,67),'  - prey switching exponent (integer)        (ns) :   ',   ns
-      endif
+          write(*,69),'  - optimal predator:prey length ratio   (pp_opt) : a=',   pp_opt_a,', b=',   pp_opt_b
+          write(*,69),'  - width of grazing kernel              (pp_sig) : a=',   pp_sig_a,', b=',   pp_sig_b
+          write(*,67),'  - prey switching exponent (integer)        (ns) :   ',   ns
+       endif
 
        ! ------------------- ISOTOPIC FRACTIONATION ------------------------------------------------------------------------------ !
        print*,'Corg 13C fractionation scheme ID string             : ',trim(opt_d13C_DIC_Corg)
@@ -170,7 +173,6 @@ CONTAINS
        print*,'--- DATA SAVING: MISC ------------------------------'
        print*,'Restart in netCDF format?                           : ',ctrl_ncrst
        print*,'netCDF restart file name                            : ',trim(par_ncrst_name)
-       print*,'timeseries locations file name                      : ',trim(par_ecogem_timeseries_file)
     end if ! end ctrl_debug_eco_init
 66  format(a56,l2)
 67  format(a56,i2)
@@ -333,6 +335,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
+          symbiont_size(jp)   = 1.0
        elseif (pft(jp).eq.'synechococcus') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -340,6 +343,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
+          symbiont_size(jp)   = 1.0
        elseif (pft(jp).eq.'picoeukaryote') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -347,6 +351,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
+          symbiont_size(jp)   = 1.0
        elseif (pft(jp).eq.'diatom') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -354,6 +359,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
+          symbiont_size(jp)   = 1.0
        elseif (pft(jp).eq.'coccolithophore') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -361,6 +367,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
+          symbiont_size(jp)   = 1.0
        elseif (pft(jp).eq.'diazotroph') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -368,6 +375,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
+          symbiont_size(jp)   = 1.0
        elseif (pft(jp).eq.'phytoplankton') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -375,6 +383,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
+          symbiont_size(jp)   = 1.0
        elseif (pft(jp).eq.'zooplankton') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -382,6 +391,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 0.0
           heterotrophy(jp)    = 1.0
+          symbiont_size(jp)   = 1.0
        elseif (pft(jp).eq.'mixotroph') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -389,19 +399,48 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = trophic_tradeoff
           heterotrophy(jp)    = trophic_tradeoff
-       elseif (pft(jp).eq.'foram') then
+          symbiont_size(jp)   = 1.0
+       elseif (pft(jp).eq.'bn_foram') then
+          !symbiont-barren non-spinose foram
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
-          calcify(jp)         = 0.0
+          calcify(jp)         = 1.0
           silicify(jp)        = 0.0
           autotrophy(jp)      = 0.0
           heterotrophy(jp)    = 1.0
+          symbiont_size(jp)   = 1.0
+       elseif (pft(jp).eq.'bs_foram') then
+          !symbint-barren spinose foram
+          NO3up(jp)           = 0.0
+          Nfix(jp)            = 0.0
+          calcify(jp)         = 1.0
+          silicify(jp)        = 0.0
+          autotrophy(jp)      = 0.0
+          heterotrophy(jp)    = 1.0
+          symbiont_size(jp)   = 1.0
+       elseif (pft(jp).eq.'sn_foram') then
+          NO3up(jp)           = 0.0
+          Nfix(jp)            = 0.0
+          calcify(jp)         = 1.0
+          silicify(jp)        = 0.0
+          autotrophy(jp)      = sn_tradeoff_a
+          heterotrophy(jp)    = sn_tradeoff_h
+          symbiont_size(jp)   = ah_size_ratio
+       elseif (pft(jp).eq.'ss_foram') then
+          !symbiotic spinose foram
+          NO3up(jp)           = 0.0
+          Nfix(jp)            = 0.0
+          calcify(jp)         = 1.0
+          silicify(jp)        = 0.0
+          autotrophy(jp)      = ss_tradeoff_a
+          heterotrophy(jp)    = ss_tradeoff_h
+          symbiont_size(jp)   = ah_size_ratio
        else
           print*," "
           print*,"! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           print*,"! Unknown plankton functional type '"//trim(pft(jp))//"'"
           print*,"! Specified in input file "//TRIM(par_indir_name)//TRIM(par_ecogem_plankton_file)
-          print*,"Choose from Prochlorococcus, Synechococcus, Picoeukaryote, Diatom, Coccolithophore, Diazotroph, Phytoplankton, Zooplankton or Mixotroph"
+          print*,"Choose from Prochlorococcus, Synechococcus, Picoeukaryote, Diatom, Coccolithophore, Diazotroph, Phytoplankton, Zooplankton, Mixotroph or Foram"
           print*,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
           stop
        endif
@@ -430,34 +469,40 @@ CONTAINS
        pp_sig_a_array(:)=pp_sig_a
        ns_array(:)=ns
        mort_protect(:)=1.0
-       herbivory(:)=.false.
-       carnivory(:)=.false.
+       herbivory(:)=0.0
+       carnivory(:)=0.0
        palatability(:)=1.0
        growthcost_factor(:)=1.0
+       kg_factor(:)=1.0
     endif
     ! set growth costs (could do the same for autotrophy in coccolithophores) - Fanny Mar21
     heterotrophy(:) = heterotrophy(:)*growthcost_factor(:)
 
+    !------------------------------------------------------------------------
+    !smaller size for symbiotic foram's autotroph part, RY May 2021
+    auto_volume(:) = symbiont_size(:) ** 3 * volume(:)
+
     !-----------------------------------------------------------------------------------------
     ! maximum photosynthetic rate
     !    vmax(iDIC,:)    = vmaxDIC_a * volume(:) ** vmaxDIC_b * autotrophy(:)
-    vmax(iDIC,:)    = (vmaxDIC_a  + log10(volume(:))) / (vmaxDIC_b + vmaxDIC_c * log10(volume(:)) + log10(volume(:))**2) * autotrophy(:)
+    vmax(iDIC,:)    = (vmaxDIC_a  + log10(auto_volume(:))) / (vmaxDIC_b + vmaxDIC_c * log10(auto_volume(:)) + log10(auto_volume(:))**2) &
+         & * autotrophy(:)
     !-----------------------------------------------------------------------------------------
     if (nquota) then ! nitrogen parameters
-       qmin(iNitr,:)      =    qminN_a * volume(:) **    qminN_b
-       qmax(iNitr,:)      =    qmaxN_a * volume(:) **    qmaxN_b
+       qmin(iNitr,:)      =    qminN_a * auto_volume(:) **    qminN_b
+       qmax(iNitr,:)      =    qmaxN_a * auto_volume(:) **    qmaxN_b
        if (maxval((qmin(iNitr,:)/qmax(iNitr,:))).gt.1.0) print*,"WARNING: Nitrogen Qmin > Qmax. Population inviable!"
        if (useNO3) then ! nitrate parameters
-          vmax(iNO3,:)     =  vmaxNO3_a * volume(:) **  vmaxNO3_b * autotrophy(:) * NO3up(:)
-          affinity(iNO3,:) = affinNO3_a * volume(:) ** affinNO3_b * autotrophy(:) * NO3up(:)
+          vmax(iNO3,:)     =  vmaxNO3_a * auto_volume(:) **  vmaxNO3_b * autotrophy(:) * NO3up(:)
+          affinity(iNO3,:) = affinNO3_a * auto_volume(:) ** affinNO3_b * autotrophy(:) * NO3up(:)
        endif
        if (useNO2) then ! nitrite parameters
-          vmax(iNO2,:)     =  vmaxNO2_a * volume(:) **  vmaxNO2_b * autotrophy(:)
-          affinity(iNO2,:) = affinNO2_a * volume(:) ** affinNO2_b * autotrophy(:)
+          vmax(iNO2,:)     =  vmaxNO2_a * auto_volume(:) **  vmaxNO2_b * autotrophy(:)
+          affinity(iNO2,:) = affinNO2_a * auto_volume(:) ** affinNO2_b * autotrophy(:)
        endif
        if (useNH4) then ! ammonium parameters
-          vmax(iNH4,:)     =  vmaxNH4_a * volume(:) **  vmaxNH4_b * autotrophy(:)
-          affinity(iNH4,:) = affinNH4_a * volume(:) ** affinNH4_b * autotrophy(:)
+          vmax(iNH4,:)     =  vmaxNH4_a * auto_volume(:) **  vmaxNH4_b * autotrophy(:)
+          affinity(iNH4,:) = affinNH4_a * auto_volume(:) ** affinNH4_b * autotrophy(:)
        endif
        kexc(iNitr,:)      =    kexcN_a * volume(:) **    kexcN_b
 
@@ -467,20 +512,20 @@ CONTAINS
     endif
     !-----------------------------------------------------------------------------------------
     if (pquota) then ! phosphorus parameters
-       qmin(iPhos,:)    =   qminP_a  * volume(:) **    qminP_b
-       qmax(iPhos,:)    =   qmaxP_a  * volume(:) **    qmaxP_b
+       qmin(iPhos,:)    =   qminP_a  * auto_volume(:) **    qminP_b
+       qmax(iPhos,:)    =   qmaxP_a  * auto_volume(:) **    qmaxP_b
        if (maxval((qmin(iPhos,:)/qmax(iPhos,:))).gt.1.0) print*,"WARNING: Phosphate Qmin > Qmax. Population inviable!"
-       vmax(iPO4,:)     = vmaxPO4_a  * volume(:) **  vmaxPO4_b * autotrophy(:)
-       affinity(iPO4,:) = affinPO4_a * volume(:) ** affinPO4_b * autotrophy(:)
+       vmax(iPO4,:)     = vmaxPO4_a  * auto_volume(:) **  vmaxPO4_b * autotrophy(:)
+       affinity(iPO4,:) = affinPO4_a * auto_volume(:) ** affinPO4_b * autotrophy(:)
        kexc(iPhos,:)    =   kexcP_a  * volume(:) **    kexcP_b
     endif
     !-----------------------------------------------------------------------------------------
     if (fquota) then ! iron parameters
-       qmin(iIron,:)   =  qminFe_a * volume(:) **  qminFe_b
-       qmax(iIron,:)   =  qmaxFe_a * volume(:) **  qmaxFe_b
+       qmin(iIron,:)   =  qminFe_a * auto_volume(:) **  qminFe_b
+       qmax(iIron,:)   =  qmaxFe_a * auto_volume(:) **  qmaxFe_b
        if (maxval((qmin(iIron,:)/qmax(iIron,:))).gt.1.0) print*,"WARNING: Iron Qmin > Qmax. Population inviable!"
-       vmax(iFe,:)     =  vmaxFe_a * volume(:) **  vmaxFe_b * autotrophy(:)
-       affinity(iFe,:) = affinFe_a * volume(:) ** affinFe_b * autotrophy(:)
+       vmax(iFe,:)     =  vmaxFe_a * auto_volume(:) **  vmaxFe_b * autotrophy(:)
+       affinity(iFe,:) = affinFe_a * auto_volume(:) ** affinFe_b * autotrophy(:)
        kexc(iIron,:)   =  kexcFe_a * volume(:) **  kexcFe_b
     endif
     !-----------------------------------------------------------------------------------------
@@ -494,15 +539,16 @@ CONTAINS
     endif
     !-----------------------------------------------------------------------------------------
     ! other parameters
-    qcarbon(:)  =     qcarbon_a * volume(:) ** qcarbon_b
-    alphachl(:) =    alphachl_a * volume(:) ** alphachl_b
-    graz(:)     =        graz_a * volume(:) ** graz_b     * heterotrophy(:)
-    kg(:)       =          kg_a * volume(:) ** kg_b
+    qcarbon(:)  =     qcarbon_a * auto_volume(:) ** qcarbon_b !seems not used
+    alphachl(:) =    alphachl_a * auto_volume(:) ** alphachl_b
+    graz(:)     =        graz_a * volume(:) ** graz_b * heterotrophy(:)
+    kg(:)       =          kg_a * volume(:) ** kg_b * kg_factor(:)
     pp_opt(:)   =pp_opt_a_array * volume(:) ** pp_opt_b
     pp_sig(:)   =pp_sig_a_array * volume(:) ** pp_sig_b
-    respir(:)   =      respir_a * volume(:) ** respir_b
+    respir(:)   =      respir_a * volume(:) ** respir_b + extra_respir(:)
     biosink(:)  =     biosink_a * volume(:) ** biosink_b
     mort(:)     =       (mort_a * volume(:) ** mort_b) * mort_protect(:) ! mort_protect added by Grigoratou, Dec2018 as a benefit for foram's calcification
+
     do jp=1,npmax ! grazing kernel (npred,nprey)
        ! pad predator dependent pp_opt and pp_sig so that they vary along matrix columns
        ! (they should be constant within each row)
@@ -514,13 +560,15 @@ CONTAINS
     prdpry(:,:)   =matmul(pred_diam,1.0/prey_diam)
     gkernel(:,:)  =exp(-log(prdpry(:,:)/ppopt_mat(:,:))**2 / (2*ppsig_mat(:,:)**2)) ! [jpred,jprey] populate whole array at once, then find exceptions to set to 0.0 based on type
     do jpred=1,npmax
-    select case(pft(jpred))
-      case('foram')
-        do jprey=1,npmax
-          if(autotrophy(jprey).gt.0.0 .AND. carnivory(jpred))gkernel(jpred,jprey)=0.0 ! if predator is carnivorous and prey is phytoplankton, - no grazing
-          if(heterotrophy(jprey).gt.0.0 .AND. herbivory(jpred))gkernel(jpred,jprey)=0.0 ! if predator is carnivorous and prey is phytoplankton, - no grazing
-        end do
-    end select
+       select case(pft(jpred))
+       case('bn_foram','ss_foram','bs_foram','sn_foram')
+          do jprey=1,npmax
+             if(autotrophy(jprey).gt.0.0) gkernel(jpred,jprey)=gkernel(jpred,jprey) * herbivory(jpred)
+             if(heterotrophy(jprey).gt.0.0) gkernel(jpred,jprey)=gkernel(jpred,jprey) * carnivory(jpred)
+             !no cannibalism among forams, RY Mar 2022
+             if (index(pft(jprey), "foram") /= 0) gkernel(jpred, jprey)=0.0
+          end do
+       end select
     end do
     if (gkernel_cap) gkernel(:,:)  =merge(gkernel(:,:),0.0,gkernel(:,:).gt.1e-2) ! set kernel<1e-2 to 0.0 (wardetal.2018)
     gkernelT(:,:) =transpose(gkernel(:,:))
@@ -590,17 +638,17 @@ CONTAINS
     close(301)
     close(302)
 
-  ! grazing matrix
-  do jpred=1,npmax
-     if (heterotrophy(jpred).le.0.0) then
-        gkernel(jpred,:) = 0.0
-     endif
-     do jprey=1,npmax-1
-        WRITE(303,101,ADVANCE = "NO" ),gkernel(jpred,jprey)
-     enddo
-     WRITE(303,101,ADVANCE = "YES" ),gkernel(jpred,npmax)
-  enddo
-  close(303)
+    ! grazing matrix
+    do jpred=1,npmax
+       if (heterotrophy(jpred).le.0.0) then
+          gkernel(jpred,:) = 0.0
+       endif
+       do jprey=1,npmax-1
+          WRITE(303,101,ADVANCE = "NO" ),gkernel(jpred,jprey)
+       enddo
+       WRITE(303,101,ADVANCE = "YES" ),gkernel(jpred,npmax)
+    enddo
+    close(303)
     !****************************************************************************************
     !****************************************************************************************
 
@@ -726,75 +774,81 @@ CONTAINS
 
     ! local variables
     INTEGER::n
-    INTEGER           :: loc_n_elements,loc_n_start
-    CHARACTER(len=16) :: loc_plnktn_pft
+    INTEGER           ::loc_n_elements,loc_n_start
+    CHARACTER(len=16) ::loc_plnktn_pft
     CHARACTER(len=255)::loc_filename
-    logical           ::loc_herbivory
-    logical           ::loc_carnivory
+    real           ::loc_herbivory
+    real           ::loc_carnivory
     real              ::loc_pp_opt_a
     real              ::loc_pp_sig_a
     real              ::loc_ns
     real              ::loc_mort_protect
     real              ::loc_palatability
     real              ::loc_growthcost_factor
+    real              ::loc_kg
+    real              ::loc_respir
 
     ! if setting plankton specific parameters
-   ! check file format and determine number of lines of data
+    ! check file format and determine number of lines of data
     loc_filename = TRIM(par_indir_name)//"/"//TRIM(par_ecogem_grazing_file)
     CALL sub_check_fileformat(loc_filename,loc_n_elements,loc_n_start)
 
+    if (loc_n_elements.eq.0) then
+       print*," "
+       print*,"! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       print*,"! No plankton types specified in grazing input file ",TRIM(par_indir_name)//"/"//TRIM(par_ecogem_grazing_file)
+       print*,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       stop
+    endif
 
-      if (loc_n_elements.eq.0) then
-         print*," "
-         print*,"! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-         print*,"! No plankton types specified in grazing input file ",TRIM(par_indir_name)//"/"//TRIM(par_ecogem_grazing_file)
-         print*,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-         stop
-      endif
+    if (loc_n_elements.ne.npmax) then
+       print*," "
+       print*,"! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       print*,"! Different number of plankton types defined in ",TRIM(par_indir_name)//"/"//TRIM(par_ecogem_plankton_file),'and',TRIM(par_indir_name)//"/"//TRIM(par_ecogem_grazing_file)
+       print*,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       stop
+    endif
 
-      if (loc_n_elements.ne.npmax) then
-         print*," "
-         print*,"! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-         print*,"! Different number of plankton types defined in ",TRIM(par_indir_name)//"/"//TRIM(par_ecogem_plankton_file),'and',TRIM(par_indir_name)//"/"//TRIM(par_ecogem_grazing_file)
-         print*,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-         stop
-      endif
+    !open file pipe
+    OPEN(unit=in,file=loc_filename,action='read')
+    DO n = 1,loc_n_start
+       READ(unit=in,fmt='(1X)')
+    END DO
 
-      !open file pipe
-      OPEN(unit=in,file=loc_filename,action='read')
-      DO n = 1,loc_n_start
-         READ(unit=in,fmt='(1X)')
-      END DO
+    ! re-set filepipe
+    REWIND(unit=in)
+    DO n = 1,loc_n_start
+       READ(unit=in,fmt='(1X)')
+    END DO
+    !read in population specifications
+    DO n = 1,loc_n_elements
+       READ(unit=in,FMT=*)            &
+            & loc_plnktn_pft,         & ! COLUMN #01: plankton PFT (not used here)
+            & loc_herbivory,          & ! COLUMN #02: herbivory
+            & loc_carnivory,          & ! COLUMN #03: carnivory
+            & loc_pp_opt_a,           & ! COLUMN #04: pp_opt_a
+            & loc_pp_sig_a,           & ! COLUMN #05: pp_sig_a
+            & loc_ns,                 & ! COLUMN #06: ns (prey switching)
+            & loc_mort_protect,       & ! COLUMN #07: mortality_protection
+            & loc_palatability,       & ! COLUMN #08: palatability - in development - Fanny Mar21
+            & loc_growthcost_factor,  & ! COLUMN #09: growth-cost factor - in development - Fanny Mar21
+            & loc_kg,                 & ! COLUMN #10: spine-derived kg modification Rui Oct21
+            & loc_respir                ! COLUMN #11:
 
-      ! re-set filepipe
-      REWIND(unit=in)
-      DO n = 1,loc_n_start
-         READ(unit=in,fmt='(1X)')
-      END DO
-      !read in population specifications
-      DO n = 1,loc_n_elements
-         READ(unit=in,FMT=*)            &
-              & loc_plnktn_pft,         & ! COLUMN #01: plankton PFT (not used here)
-              & loc_herbivory,          & ! COLUMN #02: herbivory
-              & loc_carnivory,          & ! COLUMN #03: carnivory
-              & loc_pp_opt_a,           & ! COLUMN #04: pp_opt_a
-              & loc_pp_sig_a,           & ! COLUMN #05: pp_sig_a
-              & loc_ns,                 & ! COLUMN #06: ns (prey switching)
-              & loc_mort_protect,       & ! COLUMN #07: mortality_protection
-	      & loc_palatability,       & ! COLUMN #08: palatability - in development - Fanny Mar21
-              & loc_growthcost_factor     ! COLUMN #09: growth-cost factor - in development - Fanny Mar21
-         herbivory(n)         = loc_herbivory
-         carnivory(n)         = loc_carnivory
-         pp_opt_a_array(n)    = loc_pp_opt_a
-         pp_sig_a_array(n)    = loc_pp_sig_a
-         ns_array(n)          = loc_ns
-         mort_protect(n)      = loc_mort_protect
-         palatability(n)      = loc_palatability
-         growthcost_factor(n) = loc_growthcost_factor
+       herbivory(n)         = loc_herbivory
+       carnivory(n)         = loc_carnivory
+       pp_opt_a_array(n)    = loc_pp_opt_a
+       pp_sig_a_array(n)    = loc_pp_sig_a
+       ns_array(n)          = loc_ns
+       mort_protect(n)      = loc_mort_protect
+       palatability(n)      = loc_palatability
+       growthcost_factor(n) = loc_growthcost_factor
+       kg_factor(n)         = loc_kg
+       extra_respir(n)      = loc_respir
 
-      END DO
-      !close file pipe
-      CLOSE(unit=in)
+    END DO
+    !close file pipe
+    CLOSE(unit=in)
 
   END SUBROUTINE sub_init_explicit_grazing_params
 
@@ -816,7 +870,7 @@ CONTAINS
     loc_lat(1:n_j) = fun_get_grid_lat(n_j)
 
     ! check file format and determine number of lines of data
-    loc_filename = TRIM(par_indir_name)//"/"//TRIM(par_ecogem_timeseries_file)
+    loc_filename = TRIM(par_indir_name)//"/timeseries_sites.eco"!//TRIM(par_ecogem_timeseries_file)
     CALL sub_check_fileformat(loc_filename,loc_n_elements,loc_n_start)
 
     ! open file pipe
@@ -922,21 +976,21 @@ CONTAINS
   ! ****************************************************************************************************************************** !
   ! READ IN TEMPERATURE FORCING FILE - JDW
   subroutine sub_init_load_forceT()
-  ! local variables
-  integer::ios
-  character(LEN=127)::loc_filename
+    ! local variables
+    integer::ios
+    character(LEN=127)::loc_filename
 
-  loc_filename = TRIM(par_indir_name)//TRIM(par_ecogem_force_T_file)
-  !CALL sub_check_fileformat(loc_filename,loc_n_elements,loc_n_start)
+    loc_filename = TRIM(par_indir_name)//TRIM(par_ecogem_force_T_file)
+    !CALL sub_check_fileformat(loc_filename,loc_n_elements,loc_n_start)
 
-  ! open file pipe
-  OPEN(unit=in,file=loc_filename,action='read',iostat=ios)
-  call check_iostat(alloc_error,__LINE__,__FILE__)
-  READ(unit=in,fmt=*,IOSTAT=ios) T_input
+    ! open file pipe
+    OPEN(unit=in,file=loc_filename,action='read',iostat=ios)
+    call check_iostat(alloc_error,__LINE__,__FILE__)
+    READ(unit=in,fmt=*,IOSTAT=ios) T_input
 
-  ! close file pipe
-  CLOSE(unit=in,iostat=ios)
-  call check_iostat(ios,__LINE__,__FILE__)
+    ! close file pipe
+    CLOSE(unit=in,iostat=ios)
+    call check_iostat(ios,__LINE__,__FILE__)
 
   end subroutine sub_init_load_forceT
   ! ****************************************************************************************************************************** !
