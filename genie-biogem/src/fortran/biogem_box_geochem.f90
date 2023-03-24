@@ -72,7 +72,7 @@ CONTAINS
           CASE ('Ozaki')
              ! from: Ozaki et al. [EPSL ... ?]
              loc_NH4_oxidation = dum_dtyr*(18250.0/conv_m3_kg)*loc_NH4*loc_O2
-          CASE ('Fanny')
+          CASE ('Monteiro')
 	     ! Second order equation of enzyme kinetics which accounts for both O2 and NH4 limitations on nitrification
              ! NOTE: this scheme was used in 2019 PNAS paper (but only in the svn, not git repository code version)
              loc_potO2cap = ocn(io_O2,dum_i,dum_j,k) + bio_remin(io_O2,dum_i,dum_j,k)
@@ -83,7 +83,7 @@ CONTAINS
              If (loc_NH4_oxidation > min(loc_NH4,loc_potO2cap*par_bio_red_POP_PON/(-par_bio_red_POP_PO2))) then
                 loc_NH4_oxidation = min(loc_NH4,loc_potO2cap*loc_potO2cap*par_bio_red_POP_PON/(-par_bio_red_POP_PO2))
              end if
-          CASE ('Monteiro')
+          CASE ('Monteiro2')
 	     ! Second order equation of enzyme kinetics which accounts for both O2 and NH4 limitations on nitrification
              loc_NH4_oxidation = dum_dtyr*par_nitri_mu*min(loc_NH4,0.5*loc_O2)* &
                   & loc_NH4*loc_O2/ &
@@ -94,9 +94,9 @@ CONTAINS
              loc_NH4_oxidation = min(loc_NH4,0.5*loc_O2)
           end select
           ! cap NH4 oxidation and O2 consumption
-          ! NOTE: omitt reaction rate limitation term for 2019 PNAS paper compatability (CASE ('Fanny'))
+          ! NOTE: omitt reaction rate limitation term for 2019 PNAS paper compatability (CASE ('Monteiro'))
           SELECT CASE (opt_bio_remin_oxidize_NH4toNO3)
-          CASE ('Fanny')
+          CASE ('Monteiro')
              ! (nothing)
           case default
              loc_NH4_oxidation = min(loc_NH4_oxidation,loc_f*loc_NH4,loc_f*0.5*loc_O2)
@@ -1482,7 +1482,6 @@ CONTAINS
              endif 
              ! Dijkstra et al. (2018) scheme 
              loc_Fe3PO42_precipitation = dum_dtyr * 0.025e-3 * loc_Fe2 * loc_PO4
-                
           else
              loc_Fe3PO42_precipitation = 0.0 
           end if
@@ -2277,33 +2276,26 @@ CONTAINS
              ! NOTE: remember that the O2 change is negative upon OM oxidation ...
              ! NOTE: no need for a dependence on [I-] (excessive consumption is caught later)
              ! NOTE: no need for dum_dtyr, because diag_redox is per time-step
-             ! NOTE: ctrl_bio_remin_redox_save must be .TRUE.
-             if (ctrl_bio_remin_redox_save) then
-                if (ctrl_bio_remin_iodine_POConly) then
-                   loc_O2_consumption = -1.0*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k) 
-                else
-                   loc_O2_consumption = -1.0*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k) + &
-                        & -1.0*diag_redox(conv_lslo2idD(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k)
-                end if
-                loc_I_oxidation = par_bio_remin_O2toI*loc_O2_consumption
+             ! NOTE: assume that ctrl_bio_remin_redox_save is TRUE (it is checked/corrected in sub_check_par_biogem)
+             if (ctrl_bio_remin_iodine_POConly) then
+                loc_O2_consumption = (-1.0)*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k) 
              else
-                loc_I_oxidation = 0.0
+                loc_O2_consumption = (-1.0)*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k) + &
+                     & (-1.0)*diag_redox(conv_lslo2idD(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k)
              end if
+             loc_I_oxidation = par_bio_remin_O2toI*loc_O2_consumption
           case ('reminO2lifetime')
              ! an attempt to recreate a I- 'lifetime'
-             if (ctrl_bio_remin_redox_save) then
-                if (ctrl_bio_remin_iodine_POConly) then
-                   loc_O2_consumption = -1.0*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k) 
-                else
-                   loc_O2_consumption = -1.0*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k) + &
-                        & -1.0*diag_redox(conv_lslo2idD(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k)
-                end if
-                ! NOTE: only calculate lifetime if there is some O2 consumption
-                if (loc_O2_consumption > const_real_nullsmall) then
-                   loc_I_oxidation = (dum_dtyr/(par_bio_remin_O2toIlifetime/loc_O2_consumption))*loc_I
-                else
-                   loc_I_oxidation = 0.0
-                end if
+             ! NOTE: assume that ctrl_bio_remin_redox_save is TRUE (it is checked/corrected in sub_check_par_biogem)
+             if (ctrl_bio_remin_iodine_POConly) then
+                loc_O2_consumption = (-1.0)*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k) 
+             else
+                loc_O2_consumption = (-1.0)*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k) + &
+                     & (-1.0)*diag_redox(conv_lslo2idD(is2l(is_POC),io2l(io_O2)),dum_i,dum_j,k)
+             end if
+             ! NOTE: only calculate lifetime if there is some O2 consumption
+             if (loc_O2_consumption > const_real_nullsmall) then
+                loc_I_oxidation = (dum_dtyr/(par_bio_remin_O2toIlifetime/loc_O2_consumption))*loc_I
              else
                 loc_I_oxidation = 0.0
              end if
@@ -2383,7 +2375,9 @@ CONTAINS
           case ('inhibition')
              ! NOTE: this is meant to be a parallel to the Fennel scheme for I- oxidation
              !       but with an [O2] inhibition of reduction rather than MM [O2] limitation of oxidation
-             ! NOTE: par_bio_remin_iO2_IO3toI/(par_bio_remin_iO2_IO3toI + loc_O2) -> provides inhibition at high [O2] 
+             ! NOTE: par_bio_remin_iO2_IO3toI/(par_bio_remin_iO2_IO3toI + loc_O2) -> provides inhibition at high [O2]
+             ! NOTE: make sure [O2] is not negative (even though O2 is being released by IO3 reduction) ...
+             if (loc_O2 < const_real_nullsmall) loc_O2 = 0.0
              loc_IO3_reduction = dum_dtyr*par_bio_remin_kIO3toI*loc_IO3* &
                   & (par_bio_remin_iO2_IO3toI/(par_bio_remin_iO2_IO3toI + loc_O2))
           case ('threshold')
@@ -2391,6 +2385,18 @@ CONTAINS
                 loc_IO3_reduction = loc_IO3
              else
                 loc_IO3_reduction = 0.0
+             endif
+          case ('thresholdflex')
+             ! NOTE: assume that ctrl_bio_remin_redox_save is TRUE (it is checked/corrected in sub_check_par_biogem)
+             loc_SO4_consumption = (-1.0)*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k)
+             if (loc_O2 > const_real_nullsmall) then
+                if (loc_SO4_consumption/loc_O2 > par_bio_remin_r_IO3toI) then
+                   loc_IO3_reduction = loc_IO3
+                else
+                   loc_IO3_reduction = 0.0
+                end if
+             else
+                loc_IO3_reduction = loc_IO3
              endif
           case ('reminSO4')
              ! alt scheme for in the absence of NO3 reduction
@@ -2400,34 +2406,27 @@ CONTAINS
              !       => don't both with either a [IO3] dependence or limitaion (meaning that IO3 reduction can do to completion)
              ! NOTE: remember that the O2 change is negative upon OM oxidation ...
              ! NOTE: no need for dum_dtyr, because diag_redox is per time-step
-             ! NOTE: ctrl_bio_remin_redox_save must be .TRUE.
-             if (ctrl_bio_remin_redox_save) then
-                if (ctrl_bio_remin_iodine_POConly) then
-                   loc_SO4_consumption = -1.0*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k)
-                else
-                   loc_SO4_consumption = -1.0*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k) + &
-                        & -1.0*diag_redox(conv_lslo2idD(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k)
-                end if
-                loc_IO3_reduction = par_bio_remin_SO4toIO3*loc_SO4_consumption
+             ! NOTE: assume that ctrl_bio_remin_redox_save is TRUE (it is checked/corrected in sub_check_par_biogem)
+             if (ctrl_bio_remin_iodine_POConly) then
+                loc_SO4_consumption = (-1.0)*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k)
              else
-                loc_IO3_reduction = 0.0
+                loc_SO4_consumption = (-1.0)*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k) + &
+                     & (-1.0)*diag_redox(conv_lslo2idD(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k)
              end if
+             loc_IO3_reduction = par_bio_remin_SO4toIO3*loc_SO4_consumption
           case ('reminSO4lifetime')
              ! an attempt to recreate a IO3- 'lifetime'
-             if (ctrl_bio_remin_redox_save) then
-                if (ctrl_bio_remin_iodine_POConly) then
-                   loc_SO4_consumption = -1.0*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k)
-                else
-                   loc_SO4_consumption = -1.0*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k) + &
-                        & -1.0*diag_redox(conv_lslo2idD(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k)
-                end if
-                loc_IO3_reduction = par_bio_remin_SO4toIO3*loc_SO4_consumption
-                ! NOTE: only calculate lifetime if there is some SO4 consumption
-                if (loc_SO4_consumption > const_real_nullsmall) then
-                   loc_IO3_reduction = (dum_dtyr/(par_bio_remin_SO4toIO3lifetime/loc_SO4_consumption))*loc_IO3
-                else
-                   loc_IO3_reduction = 0.0
-                end if
+             ! NOTE: assume that ctrl_bio_remin_redox_save is TRUE (it is checked/corrected in sub_check_par_biogem)
+             if (ctrl_bio_remin_iodine_POConly) then
+                loc_SO4_consumption = (-1.0)*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k)
+             else
+                loc_SO4_consumption = (-1.0)*diag_redox(conv_lslo2idP(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k) + &
+                     & (-1.0)*diag_redox(conv_lslo2idD(is2l(is_POC),io2l(io_SO4)),dum_i,dum_j,k)
+             end if
+             loc_IO3_reduction = par_bio_remin_SO4toIO3*loc_SO4_consumption
+             ! NOTE: only calculate lifetime if there is some SO4 consumption
+             if (loc_SO4_consumption > const_real_nullsmall) then
+                loc_IO3_reduction = (dum_dtyr/(par_bio_remin_SO4toIO3lifetime/loc_SO4_consumption))*loc_IO3
              else
                 loc_IO3_reduction = 0.0
              end if
