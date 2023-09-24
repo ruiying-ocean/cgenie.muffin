@@ -44,8 +44,11 @@ bg_par_bio_remin_sinkingrate_reaction=125.0
 #
 # *** ECOGEM ********************************************************
 #
+gm_ctrl_debug_init          =0
+eg_ctrl_debug_eco_init      =.false.
+
 # ecosystem configuration
-eg_par_ecogem_plankton_file='8P8Z.eco'
+eg_par_ecogem_plankton_file='8P8Z8M.eco'
 #################### Nitrogen ############################
 eg_useNO3                   =.false.
 eg_nquota                   =.false.
@@ -82,27 +85,39 @@ eg_par_bio_red_POC_CaCO3_pP  = 0.0 # exponent for modifier of CaCO3:POC export r
 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
 eg_par_bio_red_POC_CaCO3     = 0.200 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
 #
+# disable ECOGEM restarts (as not currently coded up / used)
+eg_ctrl_ncrst               =.false.
+eg_ctrl_continuing          =.false.
+
 # --- DATA SAVING ----------------------------------------------
 #
 bg_par_data_save_level=8
-bg_ctrl_debug_lvl0=.true.
+bg_ctrl_debug_lvl2=.true.
 ma_debug_loop=1
 #
+bg_par_infile_slice_name='save_timeslice_kpg.dat'
+## must accompany the light-off forcing with same time series saving file
+bg_par_infile_sig_name='save_timeseries_kpg.dat'
+
 # --- FORCINGS -------------------------------------------------
 #
-
 ma_genie_solar_constant=1360.33
 
-## sine of obliquity, 23.5 degree
+# sine of obliquity, 23.5 degree
 ea_par_orbit_oscsob=0.39874906892
 
-# pCO2 level 3xPI
-bg_par_atm_force_scale_val_3=834.0E-06
+## seasonal insolation
+ea_dosc=.true.
+go_dosc=.true.
+gs_dosc=.true.
 
 bg_ctrl_force_GOLDSTEInTS=.false.
-bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR"
+bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.EXP4"
+
+# scale
 bg_par_ocn_force_scale_val_2=0.005
-bg_par_atm_force_scale_val_4=-4.9
+bg_par_atm_force_scale_val_3=8.3333e+013 #?
+bg_par_atm_force_scale_val_4=-27.0
 
 # set alternative wind speed field
 bg_par_windspeed_file="u067b__windspeed.dat"
@@ -112,28 +127,33 @@ bg_par_gastransfer_a=0.4675
 
 # INIT ALK
 bg_ocn_init_12=2.000-03
+
 #
 # *** MISC **********************************************************
+
 # EcoGEnIE 1.1. Parameters
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld = 1
 
 # *** optional changes to align with PALEO recommendations **********
+
 # set mixed layer to be only diagnosed (for ECOGEM)
 go_ctrl_diagmld=.true.
+
 # add seaice attenuation of PAR
 eg_ctrl_PARseaicelimit=.true.
+
 # relative partitioning of C into DOM
 eg_par_beta_POCtoDOC=0.75
+
 # maximum time-scale to geochemical reaction completion (days)
 bg_par_bio_geochem_tau=90.0
+
 # extend solubility and geochem constant T range (leave S range as default)
 gm_par_geochem_Tmin  = -2.0
 gm_par_geochem_Tmax  = 45.0
 gm_par_carbchem_Tmin = -2.0
 gm_par_carbchem_Tmax = 45.0
-#
+
 # limit negative biomass
 eg_ctrl_limit_neg_biomass=.true.
-
-bg_par_misc_t_start=200
