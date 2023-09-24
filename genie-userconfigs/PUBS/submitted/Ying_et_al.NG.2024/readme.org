@@ -1,0 +1,41 @@
+*Title*: Modelling marine plankton community after the Cretaceous-Paleogene boundary 
+*Authors*: Rui Ying, Fanny Monteiro, James Witts, Daniela Schmidt
+
+* end-Cretaceous spin up
+** Main parameters
++ CO2 = 834 ppm (as Schmidt et al. 2016 setting, and consistent with Henehan et al. 2019 measurment)
++ solar irradiance = 1360.33 W/m2, reduced by 0.56% from 1368 as HadCM3
++ Obliquity: 23.5° (as CESM)
++ No iron limitation
++ CaCO3:POC export ratio is assumed to be globally uniform and set to a value of 0.2; (after-extinction can be less)
+
+* transient experiments
+** Marine ecosystem: 8 Phytoplankton, 8 Zooplankton, 8 Mixotroph
+** EXP1: reduced solar fluxes
++ fixed CO2, 12 simulations
++ larger `x`, recover later; larger `k`, recover faster
+
+** EXP2: CO2 only
++ 1 simulation
++ up to 6500 Gt CO2, or 1655.68 Gt C (cannot make CO2 rise from 900 to 1600 ppm as Henehan et al. 2019 suggested)
++ δ13C values of −27‰ for fossil carbon
+  
+** EXP3: CO2 + reduced solar fluxes
++ 12 simulation
++ up to 6500 Gt CO2, or 1655.68 Gt C (cannot make CO2 rise from 900 to 1600 ppm as Henehan et al. 2019 suggested)
++ δ13C values of −27‰ for fossil carbon
+
+* Commands
+
+1. uncomment `call radfor_wrapper` in `genie.F`
+2. run the following commands
+      
+#+begin_src
+qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES RUI_LABS/kpg muffin.u067bc.PO4.8P8Z.SPIN 10000
+qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES RUI_LABS/kpg muffin.u067bc.PO4.8P8Z.EXP1.XXXX 200 muffin.u067bc.PO4.8P8Z.SPIN
+#+end_src
+
+
+
+* References
+Schmidt, A. et al. Selective environmental stress from sulphur emitted by continental flood basalt eruptions. Nature Geoscience 9, 77–82 (2016). https://doi.org/10.1038/ngeo2588.
