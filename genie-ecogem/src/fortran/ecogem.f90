@@ -365,7 +365,7 @@ subroutine ecogem(          &
                  ! additional rate and efficiency calculations
 
                  ! calculate mortality rates
-                 mortality(:)   = mort(:)   * (1.0 - exp(-1.0e10 * loc_biomass(iCarb,:))) ! reduce mortality at very low biomass
+                 mortality(:)   = mort(:)
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                  ! Stoopid calcification related moratlity
                  !mortality(:)   = mortality(:) + mortality(:) * calcify(:) / omega(i,j,k) ! Coccolithophores and Forams only
