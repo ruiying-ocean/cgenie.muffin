@@ -33,9 +33,9 @@ bg_par_bio_red_POC_CaCO3_pP=0.7440
 # *** REMINERALIZATION **********************************************
 #
 # DOC lifetime (yrs)
-bg_par_bio_remin_DOMlifetime=0.5
+bg_par_bio_remin_DOMlifetime=1.0
 # initial fractional abundance of POC component #2
-bg_par_bio_remin_POC_frac2=0.0557
+bg_par_bio_remin_POC_frac2=0.055
 # depth of remineralization or particulate organic matter
 bg_par_bio_remin_POC_eL1=589.9451
 # remineralization length #2 for POC
@@ -50,14 +50,13 @@ bg_par_bio_remin_CaCO3_eL2=1000000.0
 # *** IRON CYCLING **************************************************
 #
 # iron tracer scheme
-# NOTE: the base-config requires TFe and TL tracers
 bg_opt_geochem_Fe='hybrid'
-# exponent for aeolian Fe solubility [use 1.0 for uniform solubility]
-bg_par_det_Fe_sol_exp=0.500
 # aeolian Fe solubility
 bg_par_det_Fe_sol=0.002441
-# modifier of the scavenging rate of dissolved Fe
-bg_par_scav_Fe_sf_POC=0.225
+# modifier of the scavenging rate of dissolved Fe [Albani tuning]
+bg_par_scav_Fe_sf_POC=0.2250
+#exponent for aeolian Fe solubility [use 1.0 for uniform solubility]
+bg_par_det_Fe_sol_exp=0.500
 # no scavenged regeneration
 bg_par_scav_fremin=0.0
 # return POFe
@@ -126,20 +125,6 @@ ea_11=1.3
 
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld=1
-
-# maximum time-scale to geochemical reaction completion (days)
-bg_par_bio_geochem_tau=90.0
-
-# extend solubility and geochem constant T range (leave S range as default)
-gm_par_geochem_Tmin  = -2.0
-gm_par_geochem_Tmax  = 45.0
-gm_par_carbchem_Tmin = -2.0
-gm_par_carbchem_Tmax = 45.0
-
-# *** optional changes to align with PALEO recommendations **********
-# set 'instantaneous' water column remineralziation
-bg_par_bio_remin_sinkingrate_physical=9.9E9
-bg_par_bio_remin_sinkingrate_reaction=125.0
 #
 # *******************************************************************
 # *** END ***********************************************************
