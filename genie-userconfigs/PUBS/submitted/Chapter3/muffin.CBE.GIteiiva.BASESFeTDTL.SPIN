@@ -12,22 +12,16 @@ bg_par_bio_prodopt="NONE"
 #
 # --- ORGANIC MATTER EXPORT RATIOS ----------------------------------
 #
-# production fraction of dissolved organic matter
-bg_par_bio_red_DOMfrac=0.66
 #
 # --- INORGANIC MATTER EXPORT RATIOS --------------------------------
 #
-# underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-bg_par_bio_red_POC_CaCO3=0.0485
-# exponent for modifier of CaCO3:POC export ratio
-bg_par_bio_red_POC_CaCO3_pP=0.7440
 #
 # --- REMINERALIZATION ----------------------------------------------
 #
 # DOC lifetime (yrs)
-bg_par_bio_remin_DOMlifetime=1.0
+bg_par_bio_remin_DOMlifetime=0.5
 # initial fractional abundance of POC component #2
-bg_par_bio_remin_POC_frac2=0.055
+bg_par_bio_remin_POC_frac2=0.0557
 # depth of remineralization or particulate organic matter
 bg_par_bio_remin_POC_eL1=589.9451
 # remineralization length #2 for POC
@@ -41,16 +35,15 @@ bg_par_bio_remin_CaCO3_eL2=1000000.0
 #
 # --- IRON ----------------------------------------------------------
 #
+# iron tracer scheme
+# NOTE: the base-config requires TFe and TL tracers
 bg_opt_geochem_Fe='hybrid'
-# aeolian Fe solubility
-bg_par_det_Fe_sol=0.002014275
-#exponent for aeolian Fe solubility [use 1.0 for uniform solubility]
+# exponent for aeolian Fe solubility [use 1.0 for uniform solubility]
 bg_par_det_Fe_sol_exp=0.500
+# aeolian Fe solubility
+bg_par_det_Fe_sol=0.002441
 # modifier of the scavenging rate of dissolved Fe
-bg_par_scav_Fe_sf_POC=0.344104
-bg_par_scav_Fe_sf_CaCO3=0.000
-bg_par_scav_Fe_sf_opal=0.000
-bg_par_scav_Fe_sf_det=0.000
+bg_par_scav_Fe_sf_POC=0.225
 # no scavenged regeneration
 bg_par_scav_fremin=0.0
 # return POFe
@@ -74,16 +67,9 @@ gm_ctrl_debug_init          =0
 eg_ctrl_debug_eco_init=.false.
 
 eg_gkernel_cap=.false.
-eg_ctrl_grazing_explicit=.true.
+eg_ctrl_grazing_explicit=.false.
 
-eg_ctrl_use_foramecogenie=.true.
-
-eg_par_ecogem_plankton_file='8P7Z4F.eco'
-eg_par_ecogem_grazing_file='FORAMECOGEM.zoo'
-eg_foram_symbiont_esd_scale=0.01
-eg_foram_auto_cost=0.04
-eg_foram_hetero_cost=0.35
-eg_foram_spine_scale=3.5
+eg_par_ecogem_plankton_file='8P8Z.eco'
 
 #----------------- Nitrogen -------------------------
 eg_useNO3                   =.false.
@@ -129,20 +115,68 @@ eg_ctrl_continuing=.false.
 # --- DATA SAVING -----------------------------------------------------
 #
 bg_par_data_save_level=10
-bg_ctrl_debug_lvl0=.true.
-ma_debug_loop=1
-bg_par_infile_slice_name='save_timeslice_historicalfuture_fakeSSP.dat'
-bg_par_infile_sig_name='save_timeseries_historicalfuture_FINE.dat'
+bg_par_infile_slice_name='save_timeslice_NONE.dat'
 #
 # --- FORCINGS ------------------------------------------------------
 #
 # specify forcings
-bg_par_forcing_name="worlg4.RpCO2_Rp13CO2.FeMahowald2006.2100.3deg"
-bg_par_atm_force_scale_val_4=-6.5
+bg_par_forcing_name="GIteiiva.RpCO2_Rp13CO2.Fsal_SUR.Albani.21ka"
+bg_par_atm_force_scale_val_3=193.0E-06
+bg_par_atm_force_scale_val_4=-6.46
+# Orbital parameters
+ea_par_orbit_osce=0.018994 # eccentricity
+ea_par_orbit_oscsob=0.389911 # sine of obliquity
+ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
+#
+#
+# *** TUNING ********************************************************
+#
+# parameter: bg_par_misc_brinerejection_frac -- default value (1) modified by factor: 0.2
+bg_par_misc_brinerejection_frac=0.2
+# parameter: bg_par_ocn_force_scale_val_2 -- default value (1) modified by factor: 0.05
+bg_par_ocn_force_scale_val_2=0.05
+#
+# *** INITIAL CONDITIONS ********************************************
+#
+# modern DIC (2.244E-03) + 1%
+bg_ocn_init_3=0.002275818239634
+# modern 13C DIC
+bg_ocn_init_4=0.4
+# modern ALK (2.363E-03) + 1%
+bg_ocn_init_12=0.002396505570523
+# modern PO4 (2.159E-06) + 1%
+bg_ocn_init_8=2.189613003283920e-06
+# modern SAL + 0.33 PSU
+go_saln0=35.23
 #
 # --- MISC ----------------------------------------------------------
-## starting year
-bg_par_misc_t_start=2022.0
+#
+# (no preformed)
+bg_ctrl_bio_preformed=.false.
+# add ventillation tracers
+bg_ctrl_force_ocn_age1=.false.
+# add brine rejection SH limit
+bg_par_misc_brinerejection_jmax=19
+# wind-stress
+go_13=1.3
+ea_11=1.3
+#
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld=1
+
+# maximum time-scale to geochemical reaction completion (days)
+bg_par_bio_geochem_tau=90.0
+
+# extend solubility and geochem constant T range (leave S range as default)
+gm_par_geochem_Tmin  = -2.0
+gm_par_geochem_Tmax  = 45.0
+gm_par_carbchem_Tmin = -2.0
+gm_par_carbchem_Tmax = 45.0
+
+# *** optional changes to align with PALEO recommendations **********
+# set 'instantaneous' water column remineralziation
+bg_par_bio_remin_sinkingrate_physical=9.9E9
+bg_par_bio_remin_sinkingrate_reaction=125.0
+
+#
 # --- END -----------------------------------------------------------
