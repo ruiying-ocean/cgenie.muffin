@@ -11,5 +11,5 @@ qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CB.worlg4.BASESFeTDT
 ## LGM BIOGEM
 
 ```sh
-qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CB.GIteiiva.BASESFeTDTL_rb PUBS/submitted/Chapter3 muffin.CB.GIteiiva.BASESFeTDTL.SPIN
+qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CB.GIteiiva.BASESFeTDTL_rb PUBS/submitted/Chapter3 muffin.CB.GIteiiva.BASESFeTDTL.SPIN 10000
 ```
