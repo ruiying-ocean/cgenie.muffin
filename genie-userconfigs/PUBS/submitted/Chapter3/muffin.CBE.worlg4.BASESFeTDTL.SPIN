@@ -123,7 +123,7 @@ eg_ctrl_continuing=.false.
 #
 bg_par_data_save_level=10
 bg_ctrl_debug_lvl0=.true.
-ma_debug_loop=1
+bg_par_infile_slice_name='save_timeslice_NONE.dat'
 #
 # --- FORCINGS ------------------------------------------------------
 #
