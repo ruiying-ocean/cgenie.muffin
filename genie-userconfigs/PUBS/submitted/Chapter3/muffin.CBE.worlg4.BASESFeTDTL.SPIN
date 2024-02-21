@@ -121,6 +121,7 @@ eg_ctrl_continuing=.false.
 #
 # --- DATA SAVING -----------------------------------------------------
 #
+bg_ctrl_bio_preformed=.true.
 bg_par_data_save_level=10
 bg_ctrl_debug_lvl0=.true.
 bg_par_infile_slice_name='save_timeslice_NONE.dat'

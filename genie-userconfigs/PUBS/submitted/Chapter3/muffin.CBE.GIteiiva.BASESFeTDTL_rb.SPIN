@@ -152,7 +152,7 @@ go_saln0=35.23
 # --- MISC ----------------------------------------------------------
 #
 # (no preformed)
-bg_ctrl_bio_preformed=.false.
+bg_ctrl_bio_preformed=.true.
 # add ventillation tracers
 bg_ctrl_force_ocn_age1=.true.
 # add brine rejection SH limit
