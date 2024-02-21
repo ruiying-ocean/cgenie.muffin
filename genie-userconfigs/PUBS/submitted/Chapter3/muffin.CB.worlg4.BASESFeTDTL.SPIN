@@ -78,10 +78,6 @@ bg_par_bio_FetoC_C=0.0
 #
 # BASIC + biology + tracer + proxy diagnostics
 bg_par_data_save_level=11
-# force time-slice save at run end only
-bg_par_infile_slice_name='save_timeslice_NONE.dat'
-bg_ctrl_bio_preformed=.true.
-#
 # *** FORCINGS ******************************************************
 #
 bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Albani.0ka"
@@ -91,6 +87,7 @@ bg_par_atm_force_scale_val_4=-6.5
 # --- MISC ------------------------------------------------------
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld=1
+bg_ctrl_bio_preformed=.true.
 #
 # *******************************************************************
 # *** END ***********************************************************

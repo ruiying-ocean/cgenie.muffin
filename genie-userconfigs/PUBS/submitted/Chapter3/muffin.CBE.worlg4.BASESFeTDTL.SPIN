@@ -121,10 +121,7 @@ eg_ctrl_continuing=.false.
 #
 # --- DATA SAVING -----------------------------------------------------
 #
-bg_ctrl_bio_preformed=.true.
 bg_par_data_save_level=10
-bg_ctrl_debug_lvl0=.true.
-bg_par_infile_slice_name='save_timeslice_NONE.dat'
 #
 # --- FORCINGS ------------------------------------------------------
 #
@@ -135,5 +132,6 @@ bg_par_atm_force_scale_val_4=-6.5
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld=1
 #
+bg_ctrl_bio_preformed=.true.
 # --- END -----------------------------------------------------------
 #
