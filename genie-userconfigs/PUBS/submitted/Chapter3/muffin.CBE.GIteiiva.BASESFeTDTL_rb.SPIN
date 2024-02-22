@@ -115,6 +115,7 @@ eg_ctrl_continuing=.false.
 # --- DATA SAVING -----------------------------------------------------
 #
 bg_par_data_save_level=11
+bg_ctrl_bio_remin_redox_save=.true.
 #
 # --- FORCINGS ------------------------------------------------------
 #

@@ -78,6 +78,7 @@ bg_par_bio_FetoC_C=0.0
 #
 # BASIC + biology + tracer + proxy diagnostics
 bg_par_data_save_level=11
+bg_ctrl_bio_remin_redox_save=.true.
 # *** FORCINGS ******************************************************
 #
 bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Albani.0ka"
