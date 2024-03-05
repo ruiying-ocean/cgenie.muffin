@@ -67,9 +67,16 @@ gm_ctrl_debug_init          =0
 eg_ctrl_debug_eco_init=.false.
 
 eg_gkernel_cap=.false.
-eg_ctrl_grazing_explicit=.false.
+eg_ctrl_grazing_explicit=.true.
 
-eg_par_ecogem_plankton_file='8P8Z.eco'
+eg_ctrl_use_foramecogenie=.true.
+
+eg_par_ecogem_plankton_file='8P7Z4F.eco'
+eg_par_ecogem_grazing_file='FORAMECOGEM.zoo'
+eg_foram_symbiont_esd_scale=0.01
+eg_foram_auto_cost=0.04
+eg_foram_hetero_cost=0.35
+eg_foram_spine_scale=3.5
 
 #----------------- Nitrogen -------------------------
 eg_useNO3                   =.false.

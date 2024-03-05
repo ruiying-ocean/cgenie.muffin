@@ -13,5 +13,5 @@ qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CBE.worlg4.BASESFeTD
 
 ```sh
 qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CB.GIteiiva.BASESFeTDTL_14Crbcol0123789 PUBS/submitted/Chapter3 muffin.CB.GIteiiva.BASESFeTDTL.SPIN 10000
-qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL_14Crbcol0123789 PUBS/submitted/Chapter3 muffin.CBE.GIteiiva.BASESFeTDTL.SPIN 10000
+qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL_14Crbcol0123789 PUBS/submitted/Chapter3 muffin.CBE.GIteiiva.BASESFeTDTL_rb.SPIN 10000
 ```
