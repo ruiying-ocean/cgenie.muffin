@@ -25,8 +25,6 @@
 + up to 6500 Gt CO2, or 1655.68 Gt C (cannot make CO2 rise from 900 to 1600 ppm as Henehan et al. 2019 suggested)
 + δ13C values of −27‰ for fossil carbon
 
-** EXP4: run after EXP3 200 kyr  
-
 * Commands
 
 1. uncomment `call radfor_wrapper` in `genie.F`
