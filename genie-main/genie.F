@@ -273,7 +273,7 @@ c     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                endif
             endif
 c     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-ccc            call radfor_wrapper
+            call radfor_wrapper
 c     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 c     *** c-GOLDSTEIN surface flux routine
             if (flag_ebatmos.and.flag_goldsteinocean) then
