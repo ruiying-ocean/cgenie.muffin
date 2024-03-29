@@ -183,6 +183,12 @@ MODULE ecogem_lib
   namelist /ini_ecogem_nml/ctrl_force_T
   character(LEN=127)::par_ecogem_force_T_file
   namelist /ini_ecogem_nml/par_ecogem_force_T_file
+  ! RY force PAR fields
+  logical::ctrl_force_PAR
+  namelist /ini_ecogem_nml/ctrl_force_PAR
+  character(LEN=127)::par_ecogem_force_PAR_file
+  namelist /ini_ecogem_nml/par_ecogem_force_PAR_file
+  ! ------------------- GRAZING PARAMETERS -------------------------------------------------------------------------------------- !
   ! explicit grazing parameters
   logical::ctrl_grazing_explicit
   namelist /ini_ecogem_nml/ctrl_grazing_explicit
@@ -369,6 +375,8 @@ MODULE ecogem_lib
 
  ! JDW: force temperature array
   real,allocatable,dimension(:,:)::T_input! (i,j,k) array for forced temperature JDW
+  ! RY, force PAR array as temperature
+  real,allocatable,dimension(:,:)::PAR_input
 
   ! ############################################################################################################################## !
   ! ### ADD ADDITIONAL TIME-SERIES ARRAY DEFINITIONS HERE ######################################################################## !

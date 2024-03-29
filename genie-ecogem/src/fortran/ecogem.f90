@@ -126,7 +126,14 @@ subroutine ecogem(          &
   kbase        = n_k-n_keco+1
   isocean(:,:) = wet_mask_ij ! use SST~=abs.zero as ocean flag
   ! calculate PAR fraction of total shortwave solar radiation
-  PAR(:,:) = PARfrac * dum_egbg_fxsw(:,:)
+
+  if (ctrl_force_PAR) then
+     PAR(:,:) = PAR_input
+  else
+     PAR(:,:) = PARfrac * dum_egbg_fxsw(:,:)
+  end if
+     
+  
   ! optional attenutation by sea-ice cover
   if (ctrl_PARseaicelimit) then
      PAR(:,:) = (1.0 - dum_frac_sic) * PAR(:,:)

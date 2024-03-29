@@ -390,6 +390,12 @@ SUBROUTINE initialise_ecogem(    &
         call sub_init_load_forceT()
   end if
 
+  if(ctrl_force_PAR)then
+     allocate(PAR_input(n_i,n_j),STAT=alloc_error)
+     PAR_input(:,:)=0.0
+     call sub_init_load_forcePAR()
+  end if
+  
   ! ---------------------------------------------------------- ! INITIALIZE netCDF OUTPUT
   IF (ctrl_debug_init > 0) print*,'INITIALIZE netCDF OUTPUT'
   string_ncout2d = TRIM(par_outdir_name)//'fields_ecogem_2d.nc'
