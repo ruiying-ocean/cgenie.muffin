@@ -123,7 +123,7 @@ gs_dosc=.true.
 # force solar constant and CO2 emission
 bg_ctrl_force_GOLDSTEInTS=.false.
 bg_ctrl_force_solconst = .true. # remember to uncomment rador.F
-bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.EXP3.x2k1"
+bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.EXP3.x4k1"
 
 # scale
 bg_par_ocn_force_scale_val_2=0.005
