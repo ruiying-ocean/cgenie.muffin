@@ -9237,8 +9237,12 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
                     </param>
                     <param name="par_ecogem_force_T_file">
 			<value datatype="string">temperature.dat</value>
-		     			<description>Input file for forcing temperature in ecogem</description>
+		     	<description>Input file for forcing temperature in ecogem</description>
                     </param>
+                    <param name="par_ecogem_force_PAR_file">
+			<value datatype="string">PAR.dat</value>
+		     	<description>Input file for forcing PAR in ecogem</description>
+                    </param>		    
 		    <!-- Misc -->
                     <param name="par_cocco_palatability_mod">
 		      <value datatype="real">1.0</value>
