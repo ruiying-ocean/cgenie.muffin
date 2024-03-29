@@ -135,5 +135,3 @@ gm_par_carbchem_Tmax = 45.0
 #
 # limit negative biomass
 eg_ctrl_limit_neg_biomass=.true.
-
-bg_par_misc_t_start=200
