@@ -1218,7 +1218,7 @@ CONTAINS
     integer::ios
     character(LEN=127)::loc_filename
 
-    loc_filename = TRIM(par_indir_name)//TRIM(par_ecogem_force_T_file)
+    loc_filename = TRIM(par_indir_name)//TRIM(par_ecogem_force_PAR_file)
     !CALL sub_check_fileformat(loc_filename,loc_n_elements,loc_n_start)
 
     ! open file pipe
