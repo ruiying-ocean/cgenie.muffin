@@ -123,7 +123,7 @@ gs_dosc=.true.
 # force solar constant and CO2 emission
 bg_ctrl_force_GOLDSTEInTS=.false.
 bg_ctrl_force_solconst = .true. # remember to uncomment rador.F
-bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.EXP3.x2k5"
+bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.EXP3"
 
 # scale
 bg_par_ocn_force_scale_val_2=0.005
@@ -169,6 +169,5 @@ gm_par_carbchem_Tmax = 45.0
 # limit negative biomass
 eg_ctrl_limit_neg_biomass=.true.
 
-## eliminate SST impact
-eg_ctrl_force_T=.true.
-eg_par_ecogem_force_T_file="muffin.u067bc.PO4.SST.dat"
+eg_ctrl_force_PAR=.true.
+eg_par_ecogem_force_PAR_file="muffin.u067bc.PO4.PAR.dat"
