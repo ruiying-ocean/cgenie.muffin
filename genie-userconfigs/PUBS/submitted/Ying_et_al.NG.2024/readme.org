@@ -33,7 +33,6 @@
 #+begin_src
 qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.NG.2024 muffin.u067bc.PO4.8P8Z.SPIN 10000
 qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.NG.2024 muffin.u067bc.PO4.8P8Z.EXP1.XXXX 200 muffin.u067bc.PO4.8P8Z.SPIN
-qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.NG.2024 muffin.u067bc.PO4.8P8Z.EXP4 200000 muffin.u067bc.PO4.8P8Z.EXP3.x4k1
 #+end_src
 
 
