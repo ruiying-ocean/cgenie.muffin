@@ -445,6 +445,11 @@ CONTAINS
                 food2 = food2 + (gkernel(jpred,jprey)*palatability(jprey) * biomass(iCarb,jprey))**ns_array(jpred) ! available food ^ ns
              endif
           enddo
+
+          ! if low biomass, food = 0
+          food1 = MERGE(food1,0.0,biomass(iCarb,jpred).gt.min_cell_biomass(jpred))
+          food2 = MERGE(food2,0.0,biomass(iCarb,jpred).gt.min_cell_biomass(jpred))
+
           ! calculate grazing effort
           if (food1 + kg(jpred).gt.0.0) then
              Refuge(jpred) = (1.0 - exp(Lambda * food1)) ! pref refuge function
