@@ -560,7 +560,7 @@ CONTAINS
        else
           min_cell_biomass(jp) = volume(jp) * 0.08 / 12.011 * 1E-9
        endif
-    
+    enddo
     
     ! Seprarate the symbiont and host body size (auto_volume and hetero_volume) in ForamECOGENIE
     if(ctrl_use_foramecogenie)then
