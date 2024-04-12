@@ -447,8 +447,10 @@ CONTAINS
           enddo
 
           ! if low biomass, food = 0
-          food1 = MERGE(food1,0.0,biomass(iCarb,jpred).gt.min_cell_biomass(jpred))
-          food2 = MERGE(food2,0.0,biomass(iCarb,jpred).gt.min_cell_biomass(jpred))
+          if (ctrl_real_extinction) then
+             food1 = MERGE(food1,0.0,biomass(iCarb,jpred).gt.min_cell_biomass(jpred))
+             food2 = MERGE(food2,0.0,biomass(iCarb,jpred).gt.min_cell_biomass(jpred))
+          endif
 
           ! calculate grazing effort
           if (food1 + kg(jpred).gt.0.0) then
