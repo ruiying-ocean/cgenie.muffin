@@ -243,6 +243,8 @@ MODULE ecogem_lib
   ! ------------------- MISC ----------------------------------------------------------------------------------------------------- !
   logical::ctrl_limit_neg_biomass
   NAMELIST /ini_ecogem_nml/ctrl_limit_neg_biomass
+  logical::ctrl_real_extinction
+  NAMELIST /ini_ecogem_nml/ctrl_real_extinction
   ! functional type parameters
   real::par_cocco_palatability_mod , par_cocco_vmax_mod
   namelist /ini_ecogem_nml/ par_cocco_palatability_mod,par_cocco_vmax_mod
@@ -337,6 +339,7 @@ MODULE ecogem_lib
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::symbiont_auto_cost, symbiont_hetero_cost ! RY, foramecogenie symbiont cost parameter
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::auto_volume, spine_esd_scale, symbiont_esd_scale           ! RY, foramecogenie size parameter
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::respir_cost                              ! RY, foramecogenie grazing parameter
+  REAL             ,ALLOCATABLE,DIMENSION(:)    ::min_cell_biomass                     ! RY, For K-Pg extinction
   
   ! Grazing kernel
   REAL,ALLOCATABLE,DIMENSION(:,:)::gkernel,gkernelT

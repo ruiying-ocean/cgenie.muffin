@@ -294,6 +294,8 @@ SUBROUTINE initialise_ecogem(    &
   call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(beta_mort(npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
+  ALLOCATE(min_cell_biomass(npmax),STAT=alloc_error)
+  call check_iostat(alloc_error,__LINE__,__FILE__)  
 
   ! Quota string labels
   ALLOCATE(quotastrng(iomax+iChl),STAT=alloc_error)
