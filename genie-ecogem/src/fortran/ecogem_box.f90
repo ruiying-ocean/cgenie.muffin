@@ -328,7 +328,7 @@ CONTAINS
           Chl2C(:) = MERGE(Chl2C(:),0.0,Cbiomass(:).gt.0.0) ! Check for divide by zero
           ! theoretical light replete photosynthesis given current temperature and nutrient limitation: (s^-1)
           if (ctrl_real_extinction) then
-             diag_vmax(iDIC,:) = merge(vmax(iDIC,:),0.0, Cbiomass(:).gt.min_cell_biomass(:))
+             diag_vmax(iDIC,:) = merge(vmax(iDIC,:),0.0, Cbiomass(:).gt.qcarbon(:))
              PCmax(:) = diag_vmax(iDIC,:) * VLlimit(:) * gamma_T
           else
              PCmax(:) = vmax(iDIC,:) * VLlimit(:) * gamma_T
@@ -452,8 +452,8 @@ CONTAINS
 
           ! if low biomass, food = 0
           if (ctrl_real_extinction) then
-             food1 = MERGE(food1,0.0,biomass(iCarb,jpred).gt.min_cell_biomass(jpred))
-             food2 = MERGE(food2,0.0,biomass(iCarb,jpred).gt.min_cell_biomass(jpred))
+             food1 = MERGE(food1,0.0,biomass(iCarb,jpred).gt.qcarbon(jpred))
+             food2 = MERGE(food2,0.0,biomass(iCarb,jpred).gt.qcarbon(jpred))
           endif
 
           ! calculate grazing effort

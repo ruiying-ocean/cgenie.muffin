@@ -550,17 +550,6 @@ CONTAINS
     ! set growth costs (could do the same for autotrophy in coccolithophores) - Fanny Mar21
     heterotrophy(:) = heterotrophy(:)*growthcost_factor(:)
 
-    ! set the minimum plankton biomass, which is the volume times the plankton carbon density
-    ! this will be used to prevent photosynthesis for plankton with very low biomass, if ctrl_real_extinction is .TRUE.
-    ! if phytoplankton and not zooplankton: 0.5 pg C um^-3
-    ! if zooplankton: 0.08 pg C um^-3    
-    do jp=1,npmax
-       if (autotrophy(jp).gt.0.0 .AND. heterotrophy(jp).eq.0.0) then
-          min_cell_biomass(jp) = volume(jp) * 0.5 / 12.011 * 1E-9
-       else
-          min_cell_biomass(jp) = volume(jp) * 0.08 / 12.011 * 1E-9
-       endif
-    enddo
     
     ! Seprarate the symbiont and host body size (auto_volume and hetero_volume) in ForamECOGENIE
     if(ctrl_use_foramecogenie)then

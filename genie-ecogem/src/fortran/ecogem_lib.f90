@@ -339,7 +339,6 @@ MODULE ecogem_lib
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::symbiont_auto_cost, symbiont_hetero_cost ! RY, foramecogenie symbiont cost parameter
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::auto_volume, spine_esd_scale, symbiont_esd_scale           ! RY, foramecogenie size parameter
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::respir_cost                              ! RY, foramecogenie grazing parameter
-  REAL             ,ALLOCATABLE,DIMENSION(:)    ::min_cell_biomass                     ! RY, For K-Pg extinction
   
   ! Grazing kernel
   REAL,ALLOCATABLE,DIMENSION(:,:)::gkernel,gkernelT
