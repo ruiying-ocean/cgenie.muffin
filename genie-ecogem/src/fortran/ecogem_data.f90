@@ -506,7 +506,6 @@ CONTAINS
     respir(:)     = 0.0
     biosink(:)    = 0.0
     mort(:)       = 0.0
-    min_cell_biomass(:) = 0.0
 
     ! initialise foram parameters
     if (ctrl_use_foramecogenie) then
