@@ -52,7 +52,7 @@ eg_ctrl_grazing_explicit=.true.
 
 eg_ctrl_use_foramecogenie=.true.
 
-eg_par_ecogem_plankton_file='8P7Z4F.eco'
+eg_par_ecogem_plankton_file='8P8Z4F.eco'
 eg_par_ecogem_grazing_file='FORAMECOGEM.zoo'
 eg_foram_symbiont_esd_scale=0.01
 eg_foram_auto_cost=0.04
@@ -167,4 +167,6 @@ gm_par_carbchem_Tmin = -2.0
 gm_par_carbchem_Tmax = 45.0
 
 # limit negative biomass
-eg_ctrl_limit_neg_biomass=.true.
+eg_ctrl_limit_neg_biomass=.false.
+eg_ctrl_real_extinction=.true.
+
