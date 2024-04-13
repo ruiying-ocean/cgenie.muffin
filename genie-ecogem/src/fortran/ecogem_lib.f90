@@ -332,7 +332,7 @@ MODULE ecogem_lib
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::growthcost_factor                        ! PFT dependent traits - Added by Grigoratou, Dec18
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::palatability                             ! Lower value for defence strategy
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::NO3up,Nfix,calcify,silicify              ! PFT dependent traits
-  REAL             ,ALLOCATABLE,DIMENSION(:,:)  ::qmin,qmax,vmax,affinity,kexc             ! Nutrient quota parameters
+  REAL             ,ALLOCATABLE,DIMENSION(:,:)  ::qmin,qmax,vmax,affinity,kexc, diag_vmax             ! Nutrient quota parameters
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::qcarbon,alphachl                         ! Carbon quota and Photosynthesis parameters
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::graz,kg,pp_opt,pp_sig                    ! Grazing parameters
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::respir,biosink,mort,beta_graz,beta_mort  ! Other loss parameters

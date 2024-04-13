@@ -261,6 +261,8 @@ SUBROUTINE initialise_ecogem(    &
   call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(vmax(iimax,npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
+  ALLOCATE(diag_vmax(iimax,npmax),STAT=alloc_error)
+  call check_iostat(alloc_error,__LINE__,__FILE__)  
   ALLOCATE(affinity(iimax,npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(kexc(iomax,npmax),STAT=alloc_error)
