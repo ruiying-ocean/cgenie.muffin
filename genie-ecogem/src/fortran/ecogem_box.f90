@@ -116,6 +116,10 @@ CONTAINS
     if (pquota) limit(iPhos,:) = (1.0 - qmin(iPhos,:)/quota(iPhos,:)) / (1.0 - qmin(iPhos,:)/qmax(iPhos,:) )
     if (fquota) limit(iIron,:) = (1.0 - qmin(iIron,:)/quota(iIron,:)) / (1.0 - qmin(iIron,:)/qmax(iIron,:) )
 
+    ! if quota is smaller than the qmin, set limit to 0
+    if (ctrl_real_extinction) limit(iPhos,:) = merge(0.0,limit(iPhos,:),quota(iPhos,:).lt.qmin(iPhos,:))
+
+    
     ! Set Von Leibig limitation according to most limiting nutrient (excluding iCarb=1)
     ! VLlimit(:) = minval(limit(2:iomax,:),1) ! original
     VLlimit(:) = minval(limit(2:max(iNitr,iPhos,iIron),:),1) ! JDW: calculate limitation for N,P,Fe only
@@ -127,7 +131,14 @@ CONTAINS
        !qreg(io,:) = (qmax(io,:) - quota(io,:)) / (qmax(io,:) - qmin(io,:) ) ! original Aaron Diatom 23
        ! Transform regulation term using hill number
        qreg_h(io,:) = qreg(io,:) ** hill
+
+
     enddo
+
+    ! if quota is smaller than the qmin, set qreg to 0
+    if (ctrl_real_extinction) qreg(io,:) = merge(0.0,qreg(io,:),quota(io,:).lt.qmin(io,:))
+       
+       
 
   END SUBROUTINE quota_limitation
 
@@ -188,6 +199,7 @@ CONTAINS
     endif
     ! check > 0.0
     up_inorg(:,:) = MERGE(up_inorg(:,:),0.0,up_inorg(:,:).gt.0.0)
+    
 
   END SUBROUTINE nutrient_uptake
 
@@ -450,12 +462,9 @@ CONTAINS
              endif
           enddo
 
-          ! if low biomass, food = 0
-          if (ctrl_real_extinction) then
-             food1 = MERGE(food1,0.0,biomass(iCarb,jpred).gt.qcarbon(jpred))
-             food2 = MERGE(food2,0.0,biomass(iCarb,jpred).gt.qcarbon(jpred))
-          endif
-
+          ! if extinction is on, set food1 to 0 if predator has too little carbon
+          if (ctrl_real_extinction) food1 = merge(food1,0.0,biomass(iCarb, jpred).gt.qcarbon(jpred))
+          
           ! calculate grazing effort
           if (food1 + kg(jpred).gt.0.0) then
              Refuge(jpred) = (1.0 - exp(Lambda * food1)) ! pref refuge function
@@ -468,6 +477,7 @@ CONTAINS
                      &             * (gkernel(jpred,jprey)*palatability(jprey)*biomass(iCarb,jprey))**ns_array(jpred)/food2 ! * switching
 !BAW: zoolimit should be optional zoolimit(jpred,jprey) = tmp1 *(gkernel(jpred,jprey)*palatability(jprey)*biomass(iCarb,jprey))**ns_array(jpred)/food2 ! food limitation calulation for zooplankton - Maria May 2019
                 ! other organic elements (+ chlorophyll) are grazed in stoichiometric relation to carbon
+                
                 do io=2,iomax+iChl
                    if (biomass(iCarb,jprey).gt.0.0) then
                       GrazingMat(io,jpred,jprey) = GrazingMat(iCarb,jpred,jprey) &
@@ -476,8 +486,11 @@ CONTAINS
                 enddo ! io
              endif ! endif any food available
           enddo ! jprey
+       
        endif  ! endif non-zero max grazing rate
     enddo ! jpred
+
+
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
