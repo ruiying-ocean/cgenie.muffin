@@ -382,7 +382,7 @@ subroutine ecogem(          &
                  ! mortality(:) = mortality(:)  * gamma_TK ! temp adjusted?
 
                  ! calculate respiration
-                 respiration(:) = respir(:) * gamma_TK !* (1.0 - exp(-1.0e10 * loc_biomass(iCarb,:))) ! reduce respiration at very low biomass
+                 respiration(:) = respir(:) * gamma_TK * (1.0 - exp(-1.0e10 * loc_biomass(iCarb,:))) ! reduce respiration at very low biomass
 
                  ! calculate assimilation efficiency based on quota status
 !BAW: zoolimit should be optional                 Totzoolimit(:) = 0.0  !total food limitation - Maria May 2019 !!! Need to check if consistent!!!

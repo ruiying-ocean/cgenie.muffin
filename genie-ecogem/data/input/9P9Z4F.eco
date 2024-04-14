@@ -3,6 +3,7 @@
  \/                 \/    \/
 
 -START-OF-DATA-
+ Phytoplankton     0.20   1
  Phytoplankton     0.60   1
  Phytoplankton     1.90   1
  Phytoplankton     6.00   1
@@ -11,6 +12,7 @@
  Phytoplankton   190.00   1
  Phytoplankton   600.00   1
  Phytoplankton  1900.00   1
+ Zooplankton       0.20   1  
  Zooplankton       0.60   1 
  Zooplankton       1.90   1
  Zooplankton       6.00   1
