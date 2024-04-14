@@ -337,13 +337,15 @@ CONTAINS
           ! Photosynthesis Calculations
           ! Chl2C ratio: (mg chl (mmol C)^-1)
           Chl2C(:) = chl(:) / Cbiomass(:)
-          Chl2C(:) = MERGE(Chl2C(:),0.0,Cbiomass(:).gt.0.0) ! Check for divide by zero
+
           ! theoretical light replete photosynthesis given current temperature and nutrient limitation: (s^-1)
           if (ctrl_real_extinction) then
              diag_vmax(iDIC,:) = merge(vmax(iDIC,:),0.0, Cbiomass(:).gt.qcarbon(:))
              PCmax(:) = diag_vmax(iDIC,:) * VLlimit(:) * gamma_T
+             Chl2C(:) = MERGE(Chl2C(:),0.0,Cbiomass(:).gt.qcarbon(:)) ! Check for divide by zero
           else
              PCmax(:) = vmax(iDIC,:) * VLlimit(:) * gamma_T
+             Chl2C(:) = MERGE(Chl2C(:),0.0,Cbiomass(:).gt.0.0) ! Check for divide by zero
           endif
 
           ! light-limited photosynthesis: (s^-1)

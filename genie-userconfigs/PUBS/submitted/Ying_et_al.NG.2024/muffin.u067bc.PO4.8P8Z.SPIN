@@ -60,9 +60,10 @@ eg_chlquota                 =.true.
 ################# d13C ###################################
 eg_useDIC_13C               =.true.
 # Tuned parameters
-eg_qminP_a     =   3.33e-3
-eg_qminFe_a    =   1.00e-6
-eg_qmaxFe_a    =   4.00e-6
+eg_qminP_a=0.0027022
+eg_qmaxP_a=0.0216773
+eg_affinPO4_a=0.94403
+eg_affinPO4_b=-0.43718
 # ???
 eg_ns=2
 # ???
