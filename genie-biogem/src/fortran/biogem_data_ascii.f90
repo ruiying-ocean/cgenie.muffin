@@ -2262,10 +2262,14 @@ CONTAINS
                & loc_opsi_scale*int_misc_opsid_min_sig/int_t_sig, &
                & loc_opsi_scale*int_misc_opsid_max_sig/int_t_sig
        case default
-          WRITE(unit=out,fmt='(f12.3,4f9.3)',iostat=ios)          &
+          !! A very dirty and temporary way to export LGM opsia, RY 2024 Apr
+          !! i.e., copy from the last section of codes
+          WRITE(unit=out,fmt='(f12.3,6f9.3)',iostat=ios)          &
                & loc_t,                                           &
                & loc_opsi_scale*int_misc_opsi_min_sig/int_t_sig,  &
                & loc_opsi_scale*int_misc_opsi_max_sig/int_t_sig,  &
+               & loc_opsi_scale*int_misc_opsia_min_sig/int_t_sig, &
+               & loc_opsi_scale*int_misc_opsia_max_sig/int_t_sig, &
                & loc_opsi_scale*int_misc_opsid_min_sig/int_t_sig, &
                & loc_opsi_scale*int_misc_opsid_max_sig/int_t_sig
        end select
