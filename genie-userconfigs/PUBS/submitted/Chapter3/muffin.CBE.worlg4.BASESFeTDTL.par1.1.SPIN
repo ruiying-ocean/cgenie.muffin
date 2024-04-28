@@ -1,0 +1,145 @@
+#
+#
+# --- CLIMATE -------------------------------------------------------
+#
+# set climate feedback
+ea_36=y
+#
+# --- BIOLOGICAL NEW PRODUCTION -------------------------------------
+#
+# biological scheme ID string
+bg_par_bio_prodopt="NONE"
+#
+# --- ORGANIC MATTER EXPORT RATIOS ----------------------------------
+#
+# production fraction of dissolved organic matter
+bg_par_bio_red_DOMfrac=0.66
+#
+# --- INORGANIC MATTER EXPORT RATIOS --------------------------------
+#
+# underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+bg_par_bio_red_POC_CaCO3=0.0485
+# exponent for modifier of CaCO3:POC export ratio
+bg_par_bio_red_POC_CaCO3_pP=0.7440
+#
+# --- REMINERALIZATION ----------------------------------------------
+#
+# DOC lifetime (yrs)
+bg_par_bio_remin_DOMlifetime=1.0
+# initial fractional abundance of POC component #2
+bg_par_bio_remin_POC_frac2=0.055
+# depth of remineralization or particulate organic matter
+bg_par_bio_remin_POC_eL1=589.9451
+# remineralization length #2 for POC
+bg_par_bio_remin_POC_eL2=1000000.0
+# initial fractional abundance of CaCO3 component #2
+bg_par_bio_remin_CaCO3_frac2=0.45
+# depth of remineralization or CaCO3
+bg_par_bio_remin_CaCO3_eL1=1.8905e+003
+# remineralization length #2 for CaCO3
+bg_par_bio_remin_CaCO3_eL2=1000000.0
+#
+# --- IRON ----------------------------------------------------------
+#
+bg_opt_geochem_Fe='hybrid'
+# aeolian Fe solubility
+bg_par_det_Fe_sol=0.002014275
+#exponent for aeolian Fe solubility [use 1.0 for uniform solubility]
+bg_par_det_Fe_sol_exp=0.500
+# modifier of the scavenging rate of dissolved Fe
+bg_par_scav_Fe_sf_POC=0.344104
+bg_par_scav_Fe_sf_CaCO3=0.000
+bg_par_scav_Fe_sf_opal=0.000
+bg_par_scav_Fe_sf_det=0.000
+# no scavenged regeneration
+bg_par_scav_fremin=0.0
+# return POFe
+bg_ctrl_bio_NO_fsedFe=.false.
+# Variable Fe:C
+bg_ctrl_bio_red_fixedFetoC=.false.
+# adjust pK'(FeL)
+bg_par_K_FeL_pP=11.0
+#(max) C/Fe organic matter ratio
+bg_par_bio_red_POFe_POC=250000.0
+#[FeT] dependent Fe:C ratio [Ridgwell, 2001] -- power
+bg_par_bio_FetoC_pP=-0.4225
+#[FeT] dependent Fe:C ratio [Ridgwell, 2001] -- scaling
+bg_par_bio_FetoC_K=103684.0
+#[FeT] dependent Fe:C ratio [Ridgwell, 2001] -- constant
+bg_par_bio_FetoC_C=0.0
+#
+# --- ECOGEM ----------------------------------------------------------
+#
+gm_ctrl_debug_init          =0
+eg_ctrl_debug_eco_init=.false.
+
+eg_gkernel_cap=.false.
+eg_par_ecogem_plankton_file ='NoDiat4ZP_PiEu.eco'
+eg_vmaxDIC_a_pft_eukaryote = 2.2000
+
+eg_qminP_a=0.0027022
+eg_qmaxP_a=0.0216773
+eg_qminFe_a=6.8572e-07
+eg_qmaxFe_a=4.09512e-06
+
+eg_affinPO4_a=0.94403
+eg_affinPO4_b=-0.43718
+eg_affinFe_a=0.17761
+eg_affinFe_b=-0.2574
+eg_vmaxFe_a=0.00016885
+eg_vmaxFe_b=-0.12635
+
+#----------------- Nitrogen -------------------------
+eg_useNO3                   =.false.
+eg_nquota                   =.false.
+#----------------  Phosphorus -----------------------
+eg_usePO4                   =.true.
+eg_pquota                   =.true.
+#----------------  Iron -----------------------------
+eg_useFe                    =.true.
+eg_fquota                   =.true.
+#---------------- Chlorophyll -----------------------
+eg_chlquota                 =.true.
+#---------------- d13C ------------------------------
+eg_useDIC_13C               =.true.
+
+
+eg_ns          =   2
+
+eg_respir_a    = 0
+
+eg_beta_mort_a =   0.8 # Maximum fraction to DOM as ESD --> zero
+eg_beta_mort_b =   0.4 # Minimum fraction to DOM as ESD --> infinity 
+eg_beta_mort_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
+eg_beta_graz_a =   0.8 # Maximum fraction to DOM as ESD --> zero
+eg_beta_graz_b =   0.4 # Minimum fraction to DOM as ESD --> infinity
+eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
+
+eg_par_bio_red_POC_CaCO3     = 0.0285 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
+
+eg_nsubtime                 =25
+eg_n_keco                   =1
+
+# disable ECOGEM restarts (as not currently coded up / used)
+eg_ctrl_ncrst=.false.
+eg_ctrl_continuing=.false.
+
+#
+# --- DATA SAVING -----------------------------------------------------
+#
+bg_par_data_save_level=10
+bg_ctrl_bio_remin_redox_save=.true.
+#
+# --- FORCINGS ------------------------------------------------------
+#
+# specify forcings
+bg_par_forcing_name="worlg4.RpCO2_Rp13CO2.FeMahowald2006"
+bg_par_atm_force_scale_val_3=278.0E-06
+bg_par_atm_force_scale_val_4=-6.5
+# kraus-turner mixed layer scheme on (1) or off (0)
+go_imld=1
+#
+bg_ctrl_bio_preformed=.true.
+# --- END -----------------------------------------------------------
+#
