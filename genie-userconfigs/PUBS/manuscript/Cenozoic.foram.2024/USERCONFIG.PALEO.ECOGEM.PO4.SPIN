@@ -128,7 +128,13 @@ bg_par_atm_force_scale_val_4=-6.5
 #
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld = 1
-
+# *** recommended for paleo ***************************************************
+# set mixed layer to be only diagnosed (for ECOGEM)
+go_ctrl_diagmld=.true.
+# add seaice attenuation of PAR
+eg_ctrl_PARseaicelimit=.true.
+# relative partitioning of C into DOM
+eg_par_beta_POCtoDOC=0.70
 # maximum time-scale to geochemical reaction completion (days)
 bg_par_bio_geochem_tau=45.0
 # extend solubility and geochem constant T range (leave S range as default)
