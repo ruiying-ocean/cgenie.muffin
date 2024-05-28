@@ -100,15 +100,16 @@ eg_beta_mort_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
 eg_beta_graz_a =   0.8 # Maximum fraction to DOM as ESD --> zero
 eg_beta_graz_b =   0.4 # Minimum fraction to DOM as ESD --> infinity
 eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
-# exponent for modifier of CaCO3:POC export ratio
-# NOTE: set power to zero for invarient ratio
-eg_par_bio_red_POC_CaCO3_pP=0.0
-# underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-# NOTE: reduced by 50% on the basis that the modern ECOGEM scaling parameter is also ca. 50% lower
-eg_par_bio_red_POC_CaCO3     = 0.0100 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-# *** alternative for > 200 Ma **************************************
-###eg_par_bio_red_POC_CaCO3=0.0
-#
+
+eg_par_bio_red_POC_CaCO3     = 0.0285 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
+
+eg_nsubtime                 =25
+eg_n_keco                   =1
+
+# disable ECOGEM restarts (as not currently coded up / used)
+eg_ctrl_ncrst=.false.
+eg_ctrl_continuing=.false.
 # *** DATA SAVING ***************************************************
 #
 # BASIC + biology + tracer + proxy diagnostics
