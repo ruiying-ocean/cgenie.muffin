@@ -81,7 +81,7 @@ bg_par_infile_slice_name='save_timeslice_NONE.dat'
 #
 # specify forcings -- restoring of atmopsheric pCO2 and d13C
 bg_par_forcing_name="pyyyyz.RpCO2_Rp13CO2"
-bg_par_atm_force_scale_val_3= 843.02E-06
+bg_par_atm_force_scale_val_3=278.0E-06
 bg_par_atm_force_scale_val_4=-6.5
 #
 # *** MISC **********************************************************

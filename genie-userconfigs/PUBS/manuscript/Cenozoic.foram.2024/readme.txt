@@ -18,6 +18,16 @@ PUBLICATION DETAILS [summary of manuscript/publication]
 [AUTHOR LIST]
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Main files
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+BASECONFIG.16lvl.ECOGEM.config: template merged from muffingen (BASECONFIG.16lvl.config + TRACERCONFIG.Ridgwelletal.2007.txt + Si related parameters)
+
+USERCONFIG.PALEO.BIOGEM.PO4.SPIN: template directly from muffingen (used to test circulation)
+USERCONFIG.PALEO.ECOGEM.PO4.SPIN: template directly from muffingen (might delete later)
+USERCONFIG.PALEO.ECOGEM.PO4.SiO4.SPIN: template modified from muffingen (USERCONFIG.PALEO.ECOGEM.PO4.SPIN + Foram and Diatom setting)
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 EDITING LOG [list of changes made to this file, when, and by who]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
