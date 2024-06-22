@@ -54,6 +54,14 @@ bg_par_bio_remin_CaCO3_eL2=1000000.0
 ###bg_par_bio_remin_POC_Ea2=80000.0
 ###bg_par_bio_remin_POC_frac2=0.008
 #
+# --- Si ----------------------------------------------
+#
+bg_ctrl_bio_remin_opal_fixed = .false.
+bg_par_bio_red_POC_opal = 0.17185
+
+# epsilon 30Si associated with opal formation [DEFAULT: -1.1]
+bg_par_d30Si_opal_epsilon = -1.1
+#
 # *** ECOGEM ********************************************************
 #
 # specify ecosystem structure definition file
@@ -69,8 +77,8 @@ eg_ctrl_grazing_explicit=.true.
 
 eg_ctrl_use_foramecogenie=.true.
 
-eg_par_ecogem_plankton_file ='3Diat4ZP_PiEu_4F.eco'
-eg_par_ecogem_grazing_file='3Diat4ZP_PiEu_4F.zoo'
+eg_par_ecogem_plankton_file ='2P3D2E3M4Z4F.eco'
+eg_par_ecogem_grazing_file='2P3D2E3M4Z4F.zoo'
 eg_foram_symbiont_esd_scale=0.01
 eg_foram_auto_cost=0.04
 eg_foram_hetero_cost=0.35
@@ -108,9 +116,6 @@ eg_qmaxSi_a=0.407638
 
 eg_affinSiO2_a=4.7769
 eg_affinSiO2_b=-0.40131
-
-bg_ctrl_bio_remin_opal_fixed = .false.
-bg_par_bio_red_POC_opal = 0.17185
 
 eg_par_diatom_palatability_mod = 0.92802
 
