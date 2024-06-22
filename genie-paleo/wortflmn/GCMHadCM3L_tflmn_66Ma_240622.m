@@ -66,7 +66,7 @@ par_age=66.0;                   % [0.0-4570.0] optional age (Myr)
 %
 opt_makeall=false;             % [false/true] apply all common options?
 opt_user=true;                 % [false/true] enable user input to grid
-opt_plots=true;                % [false/true] plot all input and output?
+opt_plots=false;                % [false/true] plot all input and output?
 %
 % *** OPTIONS -- DATA GENERATION **************************************** %
 %
