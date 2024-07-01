@@ -29,16 +29,20 @@
          (1) left button to turn grid cell to ocean
          (2) right button to turn grid cell to land
          (3) middle button, or clickoutside the grid, to finish
+         -> Cell at (9, 35) now ocean
          -> Cell at (18, 36) now ocean
+         -> Cell at (36, 36) now ocean
+         -> Cell at (1, 36) now ocean
          -> Cell at (18, 23) now land
          -> Cell at (19, 22) now land
+         -> Cell at (11, 34) now ocean
        - Out of grid range
        * Mask alteration complete
-       * Revised land area fraction = 0.28549
+       * Revised land area fraction = 0.28241
        - User-editing complete.
 >   8. CREATE FINAL MASK ...
        - .mask_out.FINAL.dat saved
-       * Final land area fraction   = 0.28549
+       * Final land area fraction   = 0.28241
 >   9. RE-GRIDING TOPOGRAPHY ...
        - Topography re-gridded.
 >   10. RE-GRIDING OCEAN BATHYMETRY ...
@@ -83,7 +87,9 @@
          -> MAKE DEEPER :: Loop count = 1 @ (8,31,8); d = 4; l = 0
          -> MAKE SHALLOWER :: Loop count = 1 @ (8,34,1); s = 4; l = 0
          -> MAKE DEEPER :: Loop count = 1 @ (8,36,9); d = 2; l = 2
-         -> MAKE DEEPER :: Loop count = 1 @ (10,3,14); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (9,1,8); s = 2; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (9,2,15); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (10,3,14); d = 3; l = 1
          -> MAKE SHALLOWER :: Loop count = 1 @ (11,36,2); s = 2; l = 1
          -> MAKE DEEPER :: Loop count = 1 @ (12,24,3); d = 4; l = 0
          -> MAKE DEEPER :: Loop count = 1 @ (12,36,4); d = 2; l = 2
@@ -191,7 +197,8 @@
          -> MAKE DEEPER :: Loop count = 2 @ (5,30,3); d = 3; l = 1
          -> MAKE SHALLOWER :: Loop count = 2 @ (6,29,3); s = 2; l = 1
          -> MAKE DEEPER :: Loop count = 2 @ (8,36,8); d = 2; l = 2
-         -> MAKE DEEPER :: Loop count = 2 @ (10,3,13); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (9,2,14); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (10,3,13); d = 3; l = 1
          -> MAKE SHALLOWER :: Loop count = 2 @ (18,1,9); s = 2; l = 2
          -> MAKE DEEPER :: Loop count = 2 @ (18,10,8); d = 2; l = 2
          -> MAKE SHALLOWER :: Loop count = 2 @ (19,34,3); s = 3; l = 0
@@ -226,7 +233,8 @@
          -> MAKE DEEPER :: Loop count = 3 @ (2,12,7); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 3 @ (2,20,9); d = 3; l = 1
          -> MAKE DEEPER :: Loop count = 3 @ (8,36,7); d = 2; l = 2
-         -> MAKE DEEPER :: Loop count = 3 @ (10,3,12); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 3 @ (9,2,13); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 3 @ (10,3,12); d = 3; l = 1
          -> MAKE DEEPER :: Loop count = 3 @ (21,5,9); d = 3; l = 1
          -> MAKE DEEPER :: Loop count = 3 @ (21,29,5); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 3 @ (21,36,9); d = 2; l = 2
@@ -236,13 +244,16 @@
          -> MAKE SHALLOWER :: Loop count = 3 @ (31,34,1); s = 3; l = 0
          -> MAKE DEEPER :: Loop count = 4 @ (2,12,6); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 4 @ (2,20,8); d = 3; l = 1
-         -> MAKE DEEPER :: Loop count = 4 @ (10,3,11); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 4 @ (9,2,12); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 4 @ (10,3,11); d = 3; l = 1
          -> MAKE DEEPER :: Loop count = 4 @ (21,5,8); d = 3; l = 1
          -> MAKE SHALLOWER :: Loop count = 4 @ (24,24,1); s = 3; l = 0
          -> MAKE DEEPER :: Loop count = 4 @ (26,5,6); d = 2; l = 2
-         -> MAKE DEEPER :: Loop count = 5 @ (10,3,10); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 5 @ (9,2,11); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 5 @ (10,3,10); d = 3; l = 1
          -> MAKE SHALLOWER :: Loop count = 5 @ (24,23,1); s = 3; l = 0
          -> MAKE DEEPER :: Loop count = 5 @ (26,5,5); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 6 @ (9,2,10); d = 2; l = 2
        - Topography filtered.
 >  12. USER EDITING OF TOPO ...
        * Topography alteration procedure :
@@ -262,6 +273,7 @@
        * found 5 land masses
        * found 6 land masses
        * found 7 land masses
+       * found 8 land masses
 >  15. UPDATING ISLANDS & PATHS ...
        * updated find: 1 islands
        * updated find: 2 islands
