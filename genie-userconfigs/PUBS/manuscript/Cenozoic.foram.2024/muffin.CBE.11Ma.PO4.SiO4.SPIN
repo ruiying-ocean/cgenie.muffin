@@ -54,46 +54,80 @@ bg_par_bio_remin_CaCO3_eL2=1000000.0
 ###bg_par_bio_remin_POC_Ea2=80000.0
 ###bg_par_bio_remin_POC_frac2=0.008
 #
+# --- Si ----------------------------------------------
+#
+bg_ctrl_bio_remin_opal_fixed = .false.
+bg_par_bio_red_POC_opal = 0.17185
+
+# epsilon 30Si associated with opal formation [DEFAULT: -1.1]
+bg_par_d30Si_opal_epsilon = -1.1
+#
 # *** ECOGEM ********************************************************
 #
 # specify ecosystem structure definition file
 gm_ctrl_debug_init          =0
 eg_ctrl_debug_eco_init=.false.
 
+# disable ECOGEM restarts (as not currently coded up / used)
+eg_ctrl_ncrst      = .false.
+eg_ctrl_continuing = .false.
+
 eg_gkernel_cap=.false.
 eg_ctrl_grazing_explicit=.true.
 
 eg_ctrl_use_foramecogenie=.true.
 
-eg_par_ecogem_plankton_file='8P7Z4F.eco'
-eg_par_ecogem_grazing_file='FORAMECOGEM.zoo'
+eg_par_ecogem_plankton_file ='2P3D2E4Z4F.eco'
+eg_par_ecogem_grazing_file='2P3D2E4Z4F.zoo'
 eg_foram_symbiont_esd_scale=0.01
 eg_foram_auto_cost=0.04
 eg_foram_hetero_cost=0.35
 eg_foram_spine_scale=3.5
 
-# include cellular quota: N
+#################### Nitrogen ############################
 eg_useNO3                   =.false.
 eg_nquota                   =.false.
-# include cellular quota: PO4
+################## Phosphorus ############################
 eg_usePO4                   =.true.
 eg_pquota                   =.true.
-# include cellular quota: Fe
+######################## Iron ############################
 eg_useFe                    =.false.
 eg_fquota                   =.false.
-# include cellular quota: Chlorophyll
+################# Chlorophyll ############################
 eg_chlquota                 =.true.
-# d13C fractionaton based on d13C of DIC?
+################# d13C ###################################
 eg_useDIC_13C               =.true.
-# P and Fe quota parameters (tuned values)
-eg_qminP_a     =   3.33e-3
-eg_qminFe_a    =   1.00e-6
-eg_qmaxFe_a    =   4.00e-6
+#################### Silicate ############################
+eg_useSiO2                  =.true.
+eg_squota                   =.true.
+
+
+eg_qminP_a=0.0027022
+eg_qmaxP_a=0.0216773
+eg_affinPO4_a=0.94403
+eg_affinPO4_b=-0.43718
+
+# Si properties - Fanny June2020
+eg_vmaxSiO2_a=0.068039
+eg_vmaxSiO2_b=0.031868
+
+eg_qminSi_a=0.043259
+eg_qmaxSi_a=0.407638
+
+eg_affinSiO2_a=4.7769
+eg_affinSiO2_b=-0.40131
+
+eg_par_diatom_palatability_mod = 0.92802
+
+# eukaryote photosynthetic rate - Fanny Jun20 (equivalent to 0.56 times diatoms Pmax)
+eg_vmaxDIC_a_pft_eukaryote = 2.2000
+
 # Prey switching exponent (Holling 2 or 3 [= ns+1])
 eg_ns=2
-# Carbon respiration rate - intercept
-eg_respir_a=0.0
-# DOM (ca. POM) partitioning parameters
+
+eg_respir_a=0
+
+# DOM parameters
 eg_beta_mort_a =   0.8 # Maximum fraction to DOM as ESD --> zero
 eg_beta_mort_b =   0.4 # Minimum fraction to DOM as ESD --> infinity 
 eg_beta_mort_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
@@ -101,16 +135,18 @@ eg_beta_graz_a =   0.8 # Maximum fraction to DOM as ESD --> zero
 eg_beta_graz_b =   0.4 # Minimum fraction to DOM as ESD --> infinity
 eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
 
-eg_par_bio_red_POC_CaCO3     = 0.0285 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
+eg_nsubtime=25
+eg_n_keco=1
 
-eg_nsubtime                 =25
-eg_n_keco                   =1
-
-# disable ECOGEM restarts (as not currently coded up / used)
-eg_ctrl_ncrst=.false.
-eg_ctrl_continuing=.false.
-
+# exponent for modifier of CaCO3:POC export ratio
+# NOTE: set power to zero for invarient ratio
+eg_par_bio_red_POC_CaCO3_pP=0.0
+# underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+# NOTE: reduced by 50% on the basis that the modern ECOGEM scaling parameter is also ca. 50% lower
+eg_par_bio_red_POC_CaCO3     = 0.0100 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+# *** alternative for > 200 Ma **************************************
+###eg_par_bio_red_POC_CaCO3=0.0
+#
 # *** DATA SAVING ***************************************************
 #
 # BASIC + biology + tracer + proxy diagnostics
@@ -123,7 +159,7 @@ bg_par_infile_slice_name='save_timeslice_NONE.dat'
 #
 # specify forcings -- restoring of atmopsheric pCO2 and d13C
 bg_par_forcing_name="pyyyyz.RpCO2_Rp13CO2"
-bg_par_atm_force_scale_val_3= 1193.87E-06
+bg_par_atm_force_scale_val_3=281.50E-06
 bg_par_atm_force_scale_val_4=-6.5
 #
 # *** MISC **********************************************************
