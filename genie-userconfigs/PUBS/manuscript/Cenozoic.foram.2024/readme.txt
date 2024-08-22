@@ -42,8 +42,22 @@ SUMMARY OF EXPERIMENTS [summerize experiments detailed and in which e.g. figures
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups, main experiments, SI, etc where appropriate]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+qsub -j y -o cgenie_output -V -S /bin/bash
 
-./runmuffin.sh muffin.CBE.wortflmm.p0061c.BASES PUBS/manuscript/Cenozoic.foram.2024 YING.61ma.ECOGEM.PO4.SPIN
+./runmuffin.sh muffin.CBE.wortflma.p0000c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.00Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmb.p0003c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.03Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmc.p0011c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.11Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmd.p0015c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.15Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflme.p0020c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.20Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmf.p0026c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.26Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmg.p0031c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.31Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmh.p0036c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.36Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmi.p0040c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.40Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmj.p0045c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.45Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmk.p0052c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.52Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflml.p0056c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.56Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmm.p0061c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.61Ma.PO4.SiO4.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmn.p0066c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.66Ma.PO4.SiO4.SPIN 10000
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
