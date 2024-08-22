@@ -3,18 +3,18 @@
  \/                 \/    \/
 
 -START-OF-DATA-
+ Picoplankton       0.6    1
+ Picoplankton       2.00   1
  Diatom             2.00   1
  Diatom            20.00   1
  Diatom           200.00   1
- Picoplankton       0.6    1
- Picoplankton       2.00   1
  Eukaryote         20.00   1
  Eukaryote        200.00   1
  Zooplankton        6.00   1
  Zooplankton       20.00   1 
  Zooplankton      200.00   1
  Zooplankton     2000.00   1
- foram_bn	 200.00	   1
+ foram_bn	 200.00    1
  foram_bs	 200.00	   1
  foram_sn	 300.00	   1
  foram_ss	 300.00	   1

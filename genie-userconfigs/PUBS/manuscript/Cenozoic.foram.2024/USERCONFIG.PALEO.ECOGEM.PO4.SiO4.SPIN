@@ -77,8 +77,8 @@ eg_ctrl_grazing_explicit=.true.
 
 eg_ctrl_use_foramecogenie=.true.
 
-eg_par_ecogem_plankton_file ='2P3D2E3M4Z4F.eco'
-eg_par_ecogem_grazing_file='2P3D2E3M4Z4F.zoo'
+eg_par_ecogem_plankton_file ='2P3D2E4Z4F.eco'
+eg_par_ecogem_grazing_file='2P3D2E4Z4F.zoo'
 eg_foram_symbiont_esd_scale=0.01
 eg_foram_auto_cost=0.04
 eg_foram_hetero_cost=0.35
