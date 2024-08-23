@@ -1,5 +1,5 @@
 *Title*: Modelling marine plankton community after the Cretaceous-Paleogene boundary 
-*Authors*: Rui Ying, Fanny Monteiro, James Witts, Daniela Schmidt
+*Authors*: Rui Ying, Fanny Monteiro,Daniela Schmidt
 
 * end-Cretaceous spin up
 ** Main parameters
