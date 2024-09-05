@@ -37,26 +37,8 @@ bg_par_bio_remin_CaCO3_frac2=0.45
 bg_par_bio_remin_CaCO3_eL1=1.8905e+003
 # remineralization length #2 for CaCO3
 bg_par_bio_remin_CaCO3_eL2=1000000.0
-# *** optional changes to align with PALEO recommendations **********
-# set 'instantaneous' water column remineralziation
-bg_par_bio_remin_sinkingrate_physical=9.9E9
-bg_par_bio_remin_sinkingrate_reaction=125.0
 #
-# --- NITROGEN ------------------------------------------------------ Fanny - June 2020
-## Nitrification
-# NH4 oxidation rate constant (yr-1)
-bg_par_nitri_mu=7.30
-# NH4 half-saturatation constant for NH4 oxidation (mol kg-1)
-bg_par_nitri_c0_NH4=0.01E-06
-# O2 half-saturatation constant for NH4 oxidation (mol kg-1)
-bg_par_nitri_c0_O2=0.02E-06
-## Denitrification
-#F switch hard threshold scheme for OM remineralisation
-bg_ctrl_bio_remin_thresh = .true.
-#F denitrification O2 threshold (40E-6, Naafs etal 2019)
-bg_par_bio_remin_cthresh_O2=30E-6
-#
-# iron tracer scheme
+# *** IRON **********************************************
 # NOTE: the base-config requires TFe and TL tracers
 bg_opt_geochem_Fe='hybrid'
 # exponent for aeolian Fe solubility [use 1.0 for uniform solubility]
@@ -81,18 +63,12 @@ bg_par_bio_FetoC_pP=-0.4225
 bg_par_bio_FetoC_K=103684.0
 #[FeT] dependent Fe:C ratio [Ridgwell, 2001] -- constant
 bg_par_bio_FetoC_C=0.0
+# *** Silicon **********************************************
 #
-# --- Si ----------------------------------------------
-#
-# Si:C [DEFAULT: 0.175]   ***** TO CHECK
-bg_par_bio_red_POC_opal=0.65
-# remin   ***** TO CHECK
 bg_ctrl_bio_remin_opal_fixed=.false.
-bg_par_bio_remin_sinkingrate=125.0
-# 30Si   ***** TO CHECK
-# epsilon 30Si associated with opal formation [DEFAULT: -1.1]
+bg_par_bio_red_POC_opal=0.17185
 bg_par_d30Si_opal_epsilon=-1.1
-#
+
 # *** ECOGEM ********************************************************
 #
 # ecosystem configuration
@@ -116,17 +92,25 @@ eg_useDIC_13C               =.true.
 eg_useSiO2                  =.true.
 eg_squota                   =.true.
 
-# Tuned - Ward et al. (2018)
-eg_qminP_a     =   3.33e-3
-eg_qminFe_a    =   1.00e-6
-eg_qmaxFe_a    =   4.00e-6
-# Si properties - Fanny June2020
-eg_vmaxSiO2_a=4.4e-2
-eg_vmaxSiO2_b=0.06
-eg_qminSi_a=0.033600
-eg_qmaxSi_a=0.176000
-eg_affinSiO2_a = 3.900
-eg_affinSiO2_b = -0.35
+# Tuned - Naidoo-Bagwell et al. (2023)
+eg_qminP_a=0.0027022
+eg_qmaxP_a=0.0216773
+eg_qminFe_a=6.8572e-07
+eg_qmaxFe_a=4.09512e-06
+eg_qminSi_a=0.043259
+eg_qmaxSi_a=0.407638
+eg_affinSiO2_a=4.7769
+eg_affinSiO2_b=-0.40131
+eg_affinPO4_a=0.94403
+eg_affinPO4_b=-0.43718
+eg_affinFe_a=0.17761
+eg_affinFe_b=-0.2574
+eg_vmaxFe_a=0.00016885
+eg_vmaxFe_b=-0.12635
+eg_vmaxSiO2_a=0.068039
+eg_vmaxSiO2_b=0.031868
+
+eg_par_diatom_palatability_mod=0.92802
 
 # eukaryote photosynthetic rate - Fanny Jun20 (equivalent to 0.56 times diatoms Pmax)
 eg_vmaxDIC_a_pft_eukaryote = 2.2000
@@ -149,14 +133,18 @@ eg_n_keco=1
 eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
 eg_par_bio_red_POC_CaCO3     = 0.0285 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-#
+
+# disable ECOGEM restarts (as not currently coded up / used)
+eg_ctrl_ncrst      = .false.
+eg_ctrl_continuing = .false.
+
 # *** DATA SAVING ***************************************************
 #
 # BASIC + biology + tracer + proxy diagnostics
 bg_par_data_save_level=10
-# disable ECOGEM restarts (as not currently coded up / used)
-eg_ctrl_ncrst      = .false.
-eg_ctrl_continuing = .false.
+bg_ctrl_bio_preformed=.true.
+bg_ctrl_bio_remin_redox_save=.true.
+bg_par_infile_slice_name='save_timeslice_NONE.dat'
 #
 # *** FORCINGS ******************************************************
 #
@@ -165,9 +153,16 @@ bg_par_atm_force_scale_val_3=278.0E-06
 bg_par_atm_force_scale_val_4=-6.5
 #
 # *** MISC **********************************************************
-#
+# --- EcoGENIE1.1 settings ----
+
+# set 'instantaneous' water column remineralziation
+bg_par_bio_remin_sinkingrate_physical=9.9E9
+bg_par_bio_remin_sinkingrate_reaction=49.689
+bg_par_bio_remin_sinkingrate=83.146
+
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld = 1
+
 # *** optional changes to align with PALEO recommendations **********
 # set mixed layer to be only diagnosed (for ECOGEM)
 go_ctrl_diagmld=.true.
@@ -182,34 +177,19 @@ gm_par_geochem_Tmin  = -2.0
 gm_par_geochem_Tmax  = 45.0
 gm_par_carbchem_Tmin = -2.0
 gm_par_carbchem_Tmax = 45.0
-#
+
 # *******************************************************************
 # *** END ***********************************************************
 # *******************************************************************
 #
-Ensemble created: 180712   ***** TO CHECK
-bg_ctrl_bio_remin_opal_fixed=.false.
-bg_par_bio_remin_sinkingrate=83.146
-bg_par_bio_red_POC_opal=0.17185
-Ensemble created: 221224
-eg_qminP_a=0.0027022
-eg_qmaxP_a=0.0216773
-eg_qminFe_a=6.8572e-07
-eg_qmaxFe_a=4.09512e-06
-eg_qminSi_a=0.043259
-eg_qmaxSi_a=0.407638
-eg_affinSiO2_a=4.7769
-eg_affinSiO2_b=-0.40131
-eg_affinPO4_a=0.94403
-eg_affinPO4_b=-0.43718
-eg_affinFe_a=0.17761
-eg_affinFe_b=-0.2574
-eg_vmaxFe_a=0.00016885
-eg_vmaxFe_b=-0.12635
-eg_vmaxSiO2_a=0.068039
-eg_vmaxSiO2_b=0.031868
-eg_par_diatom_palatability_mod=0.92802
-bg_par_bio_remin_sinkingrate_reaction=49.689
 
-bg_ctrl_bio_preformed=.true.
-bg_ctrl_bio_remin_redox_save=.true.
+
+
+
+
+
+
+
+
+
+
