@@ -5,8 +5,14 @@ All four simulation use same physical setting (remineralisation, iron cycle) exc
  PI
 
 ```
-qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CB.worlg4.BASESFeTDTL.colr023789 PUBS/submitted/Chapter3 muffin.CB.worlg4.BASESFeTDTL.SPIN 10000
-qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CBE.worlg4.BASESFeTDTL.colr023789 PUBS/submitted/Chapter3 muffin.CB.worlg4.BASESFeTDTL.SPIN 10000
+## BIOGEM
+qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CB.worjh2.BASESFeTDTLSi.colr023789 \
+     PUBS/submitted/Chapter3 muffin.CB.worjh2.BASESFeTDTLSi.SPIN 10000
+
+
+## ECOGEM 1.1
+qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi \
+     PUBS/submitted/Chapter3 muffin.CBE.worjh2.BASESFeTDTLSi.SPIN 10000
 ```
 
 ## LGM

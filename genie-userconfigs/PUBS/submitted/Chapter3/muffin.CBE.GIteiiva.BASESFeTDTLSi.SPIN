@@ -61,68 +61,71 @@ bg_par_bio_FetoC_K=103684.0
 #[FeT] dependent Fe:C ratio [Ridgwell, 2001] -- constant
 bg_par_bio_FetoC_C=0.0
 #
-# --- ECOGEM ----------------------------------------------------------
+# *** ECOGEM ********************************************************
 #
-gm_ctrl_debug_init          =0
-eg_ctrl_debug_eco_init=.false.
+# ecosystem configuration
+# PFTs with diatoms, pico and eukaryotes Fanny - Jun20
+eg_par_ecogem_plankton_file ='3Diat4ZP_PiEu.eco'
 
-eg_gkernel_cap=.false.
-eg_ctrl_grazing_explicit=.true.
-
-eg_ctrl_use_foramecogenie=.true.
-
-eg_par_ecogem_plankton_file='8P7Z4F.eco'
-eg_par_ecogem_grazing_file='FORAMECOGEM.zoo'
-eg_foram_symbiont_esd_scale=0.01
-eg_foram_auto_cost=0.04
-eg_foram_hetero_cost=0.35
-eg_foram_spine_scale=3.5
-
-#----------------- Nitrogen -------------------------
+#################### Nitrogen ############################
 eg_useNO3                   =.false.
 eg_nquota                   =.false.
-#----------------  Phosphorus -----------------------
+################## Phosphorus ############################
 eg_usePO4                   =.true.
 eg_pquota                   =.true.
-#----------------  Iron -----------------------------
+######################## Iron ############################
 eg_useFe                    =.true.
 eg_fquota                   =.true.
-#---------------- Chlorophyll -----------------------
+################# Chlorophyll ############################
 eg_chlquota                 =.true.
-#---------------- d13C ------------------------------
+################# d13C ###################################
 eg_useDIC_13C               =.true.
+#################### Silicate ############################
+eg_useSiO2                  =.true.
+eg_squota                   =.true.
 
-# Tuned
+# Tuned - Ward et al. (2018)
 eg_qminP_a     =   3.33e-3
 eg_qminFe_a    =   1.00e-6
 eg_qmaxFe_a    =   4.00e-6
+# Si properties - Fanny June2020
+eg_vmaxSiO2_a=4.4e-2
+eg_vmaxSiO2_b=0.06
+eg_qminSi_a=0.033600
+eg_qmaxSi_a=0.176000
+eg_affinSiO2_a = 3.900
+eg_affinSiO2_b = -0.35
 
-eg_ns          =   2
+# eukaryote photosynthetic rate - Fanny Jun20 (equivalent to 0.56 times diatoms Pmax)
+eg_vmaxDIC_a_pft_eukaryote = 2.2000
 
-eg_respir_a    = 0
-
+# ???
+eg_ns=2
+# ???
+eg_respir_a=0
+# DOM parameters
 eg_beta_mort_a =   0.8 # Maximum fraction to DOM as ESD --> zero
 eg_beta_mort_b =   0.4 # Minimum fraction to DOM as ESD --> infinity 
 eg_beta_mort_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
 eg_beta_graz_a =   0.8 # Maximum fraction to DOM as ESD --> zero
 eg_beta_graz_b =   0.4 # Minimum fraction to DOM as ESD --> infinity
 eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
-
-eg_par_bio_red_POC_CaCO3     = 0.0285 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+# ???
+eg_nsubtime=25
+eg_n_keco=1
+# exponent for modifier of CaCO3:POC export ratio
 eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
-
-eg_nsubtime                 =25
-eg_n_keco                   =1
-
+# underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+eg_par_bio_red_POC_CaCO3     = 0.0285 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+#
+# *** DATA SAVING ***************************************************
+#
+# BASIC + biology + tracer + proxy diagnostics
+bg_par_data_save_level=10
 # disable ECOGEM restarts (as not currently coded up / used)
-eg_ctrl_ncrst=.false.
-eg_ctrl_continuing=.false.
-
+eg_ctrl_ncrst      = .false.
+eg_ctrl_continuing = .false.
 #
-# --- DATA SAVING -----------------------------------------------------
-#
-bg_par_data_save_level=11
-bg_ctrl_bio_remin_redox_save=.true.
 #
 # --- FORCINGS ------------------------------------------------------
 #
@@ -158,17 +161,53 @@ go_saln0=35.23
 #
 # --- MISC ----------------------------------------------------------
 #
-# (no preformed)
-bg_ctrl_bio_preformed=.true.
-# add ventillation tracers
-bg_ctrl_force_ocn_age1=.true.
 # add brine rejection SH limit
 bg_par_misc_brinerejection_jmax=19
 # wind-stress
-go_13=1.3
-ea_11=1.3
+go_13=0.8
+ea_11=0.8
 #
-# kraus-turner mixed layer scheme on (1) or off (0)
-go_imld=1
 
+# kraus-turner mixed layer scheme on (1) or off (0)
+go_imld = 1
+# *** optional changes to align with PALEO recommendations **********
+# set mixed layer to be only diagnosed (for ECOGEM)
+go_ctrl_diagmld=.true.
+# add seaice attenuation of PAR
+eg_ctrl_PARseaicelimit=.true.
+# relative partitioning of C into DOM
+#eg_par_beta_POCtoDOC=0.75
+# maximum time-scale to geochemical reaction completion (days)
+bg_par_bio_geochem_tau=90.0
+# extend solubility and geochem constant T range (leave S range as default)
+gm_par_geochem_Tmin  = -2.0
+gm_par_geochem_Tmax  = 45.0
+gm_par_carbchem_Tmin = -2.0
+gm_par_carbchem_Tmax = 45.0
 # --- END -----------------------------------------------------------
+Ensemble created: 180712   ***** TO CHECK
+bg_ctrl_bio_remin_opal_fixed=.false.
+bg_par_bio_remin_sinkingrate=83.146
+bg_par_bio_red_POC_opal=0.17185
+Ensemble created: 221224
+eg_qminP_a=0.0027022
+eg_qmaxP_a=0.0216773
+eg_qminFe_a=6.8572e-07
+eg_qmaxFe_a=4.09512e-06
+eg_qminSi_a=0.043259
+eg_qmaxSi_a=0.407638
+eg_affinSiO2_a=4.7769
+eg_affinSiO2_b=-0.40131
+eg_affinPO4_a=0.94403
+eg_affinPO4_b=-0.43718
+eg_affinFe_a=0.17761
+eg_affinFe_b=-0.2574
+eg_vmaxFe_a=0.00016885
+eg_vmaxFe_b=-0.12635
+eg_vmaxSiO2_a=0.068039
+eg_vmaxSiO2_b=0.031868
+eg_par_diatom_palatability_mod=0.92802
+bg_par_bio_remin_sinkingrate_reaction=49.689
+
+bg_ctrl_bio_preformed=.true.
+bg_ctrl_bio_remin_redox_save=.true.
