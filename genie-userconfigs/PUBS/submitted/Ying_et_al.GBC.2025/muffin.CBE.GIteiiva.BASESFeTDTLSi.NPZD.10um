@@ -80,15 +80,15 @@ eg_nquota                   =.false.
 eg_usePO4                   =.true.
 eg_pquota                   =.true.
 ######################## Iron ############################
-eg_useFe                    =.true.
-eg_fquota                   =.true.
+eg_useFe                    =.false.
+eg_fquota                   =.false.
 ################# Chlorophyll ############################
 eg_chlquota                 =.true.
 ################# d13C ###################################
 eg_useDIC_13C               =.true.
 #################### Silicate ############################
-eg_useSiO2                  =.true.
-eg_squota                   =.true.
+eg_useSiO2                  =.false.
+eg_squota                   =.false.
 
 # Tuned - Naidoo-Bagwell et al. (2023)
 eg_qminP_a=0.0027022
