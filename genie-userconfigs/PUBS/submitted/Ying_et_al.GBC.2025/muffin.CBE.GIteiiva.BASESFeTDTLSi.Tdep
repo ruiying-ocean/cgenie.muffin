@@ -211,7 +211,6 @@ gm_par_carbchem_Tmax = 45.0
 
 ## temperature dependency
 bg_ctrl_bio_remin_POC_fixed=.false.
-bg_par_bio_remin_sinkingrate=125.0
 bg_par_bio_remin_POC_K1=9.0E11
 bg_par_bio_remin_POC_Ea1=54000.0
 bg_par_bio_remin_POC_K2=1.0E14
