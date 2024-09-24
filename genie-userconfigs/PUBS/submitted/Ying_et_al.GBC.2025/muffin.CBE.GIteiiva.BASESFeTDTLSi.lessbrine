@@ -176,7 +176,7 @@ go_saln0=35.23
 #
 # *** MISC **********************************************************
 # parameter: bg_par_misc_brinerejection_frac -- default value (1) modified by factor: 0.2
-bg_par_misc_brinerejection_frac=0
+bg_par_misc_brinerejection_frac=0.1
 #
 # add brine rejection SH limit
 bg_par_misc_brinerejection_jmax=19
