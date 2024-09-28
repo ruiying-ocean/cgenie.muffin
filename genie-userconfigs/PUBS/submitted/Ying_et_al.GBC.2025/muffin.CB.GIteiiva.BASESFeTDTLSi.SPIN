@@ -12,8 +12,6 @@ bg_par_bio_prodopt="bio_PFeSi"
 # biological uptake time-scales
 bg_par_bio_tau_sp=60.0
 bg_par_bio_tau_nsp=120.0
-# spsilon 30Si associated with opal formation [DEFAULT: -1.1]
-bg_par_d30Si_opal_epsilon=0.0
 #
 # --- ORGANIC MATTER EXPORT RATIOS ----------------------------------
 #
@@ -75,6 +73,14 @@ bg_ctrl_bio_remin_opal_fixed=.false.
 bg_par_bio_red_POC_opal=0.17185
 bg_par_d30Si_opal_epsilon=-1.1
 
+# *** DATA SAVING ***************************************************
+#
+# BASIC + biology + tracer + proxy diagnostics
+bg_par_data_save_level=10
+bg_ctrl_bio_preformed=.true.
+bg_ctrl_bio_remin_redox_save=.true.
+bg_par_infile_slice_name='save_timeslice_NONE.dat'
+#
 # --- FORCINGS ------------------------------------------------------
 #
 # specify forcings
