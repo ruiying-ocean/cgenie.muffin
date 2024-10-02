@@ -35,10 +35,10 @@ RUNNING THE EXPERIMENTS
 
 qsub -j y -o cgenie_log -V -S /bin/bash
 
-./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 ECOGEM.full 10000
+./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi.colr023789 PUBS/submitted/Ying_2024.GRL.2024 ECOGEM.full 10000
 
 
-./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 ECOGEM.2D2Z 10000
+./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi.colr023789 PUBS/submitted/Ying_2024.GRL.2024 ECOGEM.2D2Z 10000
 
 
 ./runmuffin.sh muffin.CB.worjh2.BASESFeTDTLSi.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 BIOGEM 10000

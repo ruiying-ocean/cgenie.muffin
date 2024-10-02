@@ -12,6 +12,8 @@ ea_36=y
 # biological scheme ID string
 # NOTE: with ECOGEM, no BIOGEM biological scheme must be selected
 bg_par_bio_prodopt="NONE"
+bg_par_bio_tau_sp=60.0
+bg_par_bio_tau_nsp=120.0
 #
 # *** ORGANIC MATTER EXPORT RATIOS **********************************
 #
@@ -132,8 +134,7 @@ eg_n_keco=1
 # exponent for modifier of CaCO3:POC export ratio
 eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-eg_par_bio_red_POC_CaCO3     = 0.0285 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-
+eg_par_bio_red_POC_CaCO3=0.0485 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
 # disable ECOGEM restarts (as not currently coded up / used)
 eg_ctrl_ncrst      = .false.
 eg_ctrl_continuing = .false.
