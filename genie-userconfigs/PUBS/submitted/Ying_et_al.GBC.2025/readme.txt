@@ -33,6 +33,12 @@ SUMMARY OF EXPERIMENTS [summerize experiments detailed and in which e.g. figures
 RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups, main experiments, SI, etc where appropriate]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+qsub -j y -o cgenie_log -V -S /bin/bash
+
+./runmuffin.sh muffin.CBE.worlg4.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 PI_ECOGEM.dat 10000
+./runmuffin.sh muffin.CB.worlg4.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 PI_BIOGEM.dat 10000
+./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 LGM_ECOGEM.dat 10000
+./runmuffin.sh muffin.CB.GIteiiva.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 LGM_BIOGEM.dat 10000
 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
