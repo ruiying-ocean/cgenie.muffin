@@ -3,8 +3,9 @@
  \/                 \/    \/
 
 -START-OF-DATA-
- Diatom             2.00   1
  Diatom            20.00   1
+ Picoplankton       2.00   1
+ Eukaryote         20.00   1
  Zooplankton       20.00   1 
  Zooplankton      200.00   1
 -END-OF-DATA-

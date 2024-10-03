@@ -3,7 +3,7 @@
 ================================================================
 
 Provided are as part of the code release the configuration files necessary to run the key model experiments presented in the paper.
-The intention is to provide an opportunity to question the paper assumptions and interpretation through re-analysis,
+The intention is to provide an oppertunity to question the paper assumptions and interpretation through re-analysis,
 as well as the creation of new and different experiments. (Plus, to provide a means to replicate published results.)
 This readme file details how the experiments can be run.
 Refer to the muffin manual:
@@ -11,38 +11,35 @@ https://github.com/derpycode/muffindoc
 for details on model code installation and configuration, locating and visualizing model results, etc.
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-PUBLICATION DETAILS
+PUBLICATION DETAILS [summary of manuscript/publication]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Test plankton trait role in preventing carbon from outgassing
+
+[PAPER TITLE]
+[AUTHOR LIST]
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 EDITING LOG [list of changes made to this file, when, and by who]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-2024/09/30 -- README.txt file created by RY
+2024/10/03 -- README.txt file created by RY
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-SUMMARY OF EXPERIMENTS
+SUMMARY OF EXPERIMENTS [summerize experiments detailed and in which e.g. figures they appear]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-Full biology + Si/P/Fe
-2D2Z + Si/P/Fe
-BIOGEM + Si/P/Fe
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-RUNNING THE EXPERIMENTS
+RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups, main experiments, SI, etc where appropriate]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 qsub -j y -o cgenie_log -V -S /bin/bash
 
-./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi.colr023789 PUBS/submitted/Ying_2024.GRL.2024 ECOGEM.full 10000
+./runmuffin.sh muffin.CBE.worlg4.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 PI_ECOGEM.dat 10000
+./runmuffin.sh muffin.CB.worlg4.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 PI_BIOGEM.dat 10000
+./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 LGM_ECOGEM.dat 10000
+./runmuffin.sh muffin.CB.GIteiiva.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 LGM_BIOGEM.dat 10000
 
-
-./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi.colr023789 PUBS/submitted/Ying_2024.GRL.2024 ECOGEM.2D2Z 10000
-
-
-./runmuffin.sh muffin.CB.worjh2.BASESFeTDTLSi.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 BIOGEM 10000
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
