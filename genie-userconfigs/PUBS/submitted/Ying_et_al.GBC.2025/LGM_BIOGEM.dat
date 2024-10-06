@@ -95,8 +95,6 @@ ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
 #
 # *** MISC **********************************************************
 #
-# (no preformed)
-bg_ctrl_bio_preformed=.false.
 # add ventillation tracers
 bg_ctrl_force_ocn_age1=.true.
 # add brine rejection SH limit
