@@ -52,7 +52,7 @@ eg_ctrl_grazing_explicit=.false.
 
 eg_ctrl_use_foramecogenie=.false.
 
-eg_par_ecogem_plankton_file='32P32Z.eco'
+eg_par_ecogem_plankton_file='32P32Z32M.eco'
 
 #################### Nitrogen ############################
 eg_useNO3                   =.false.
