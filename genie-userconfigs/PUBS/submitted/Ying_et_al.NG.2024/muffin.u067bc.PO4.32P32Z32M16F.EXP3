@@ -173,3 +173,4 @@ eg_ctrl_limit_neg_biomass=.false.
 
 eg_ctrl_real_extinction=.true.
 
+eg_trophic_tradeoff = 0.3
