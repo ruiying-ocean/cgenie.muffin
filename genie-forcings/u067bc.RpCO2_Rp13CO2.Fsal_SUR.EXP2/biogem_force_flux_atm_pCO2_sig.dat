@@ -1,12 +1,11 @@
 -START-OF-DATA-
         0.0  0.0
-        10.0  0.0
-        11.0  3500.0
-        11.0  3500.0
-        11.0  0.0
+        100.0  0.0
+        101.0  3500.0
+        101.0  3500.0
+        101.0  0.0
 999999999.0  0.0
 -END-OF-DATA-
-
 NOTE:
 Unit in mol C, covert to Pg C by multiplying 8.3333e+013 (bg_par_atm_force_scale_val_3)
 pCO2, 900 to 1600, Henehan et al. (2019) PNAS
