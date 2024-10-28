@@ -48,12 +48,16 @@ gm_ctrl_debug_init          =0
 eg_ctrl_debug_eco_init=.false.
 
 eg_gkernel_cap=.false.
-eg_ctrl_grazing_explicit=.false.
+eg_ctrl_grazing_explicit=.true.
 
-eg_ctrl_use_foramecogenie=.false.
+eg_ctrl_use_foramecogenie=.true.
 
-eg_par_ecogem_plankton_file='32P32Z.eco'
-
+eg_par_ecogem_plankton_file='32P32Z32M16F.eco'
+eg_par_ecogem_grazing_file='32P32Z32M16F.zoo'
+eg_foram_symbiont_esd_scale=0.01
+eg_foram_auto_cost=0.04
+eg_foram_hetero_cost=0.35
+eg_foram_spine_scale=3.5
 #################### Nitrogen ############################
 eg_useNO3                   =.false.
 eg_nquota                   =.false.
@@ -164,7 +168,11 @@ gm_par_carbchem_Tmin = -2.0
 gm_par_carbchem_Tmax = 45.0
 
 # limit negative biomass
-eg_ctrl_limit_neg_biomass=.false.
+eg_ctrl_limit_neg_biomass=.true.
 
 eg_ctrl_real_extinction=.true.
 
+## eliminate SST impact
+eg_ctrl_force_T=.true.
+eg_par_ecogem_force_T_file="muffin.u067bc.PO4.SST.dat"
+eg_trophic_tradeoff = 0.3
