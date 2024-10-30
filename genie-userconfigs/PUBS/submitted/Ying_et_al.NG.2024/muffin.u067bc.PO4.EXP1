@@ -167,8 +167,8 @@ gm_par_geochem_Tmax  = 45.0
 gm_par_carbchem_Tmin = -2.0
 gm_par_carbchem_Tmax = 45.0
 
-# limit negative biomass
-eg_ctrl_limit_neg_biomass=.true.
+# limit negative biomass (which is default)
+eg_ctrl_limit_neg_biomass=.false.
 eg_ctrl_real_extinction=.true.
 
 eg_trophic_tradeoff = 0.3
