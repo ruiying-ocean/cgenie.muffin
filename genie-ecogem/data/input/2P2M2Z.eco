@@ -3,10 +3,12 @@
  \/                 \/    \/
 
 -START-OF-DATA-
- Phytoplankton     0.60   1
- Phytoplankton     1.90   1
- Mixotroph	   0.60   1
- Mixotroph         1.90   1 
+ Phytoplankton     0.20   1
+ Phytoplankton     2.00   1
+ Mixotroph	   0.20   1
+ Mixotroph         2.00   1 
+ Zooplankton       0.20   1
+ Zooplankton       0.60   1
 -END-OF-DATA-
 
  /\                 /\    /\
