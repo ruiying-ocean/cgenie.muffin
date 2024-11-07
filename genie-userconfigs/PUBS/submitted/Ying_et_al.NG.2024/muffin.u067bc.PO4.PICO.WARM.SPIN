@@ -45,7 +45,7 @@ bg_par_bio_remin_sinkingrate_reaction=125.0
 # *** ECOGEM ********************************************************
 #
 # ecosystem configuration
-eg_par_ecogem_plankton_file='2P2M2Z.eco'
+eg_par_ecogem_plankton_file='12P12M6Z.eco'
 #################### Nitrogen ############################
 eg_useNO3                   =.false.
 eg_nquota                   =.false.
@@ -98,7 +98,7 @@ ma_genie_solar_constant=1360.33
 ea_par_orbit_oscsob=0.39874906892
 
 # pCO2 level 3xPI
-bg_par_atm_force_scale_val_3=1600.0E-06
+bg_par_atm_force_scale_val_3=1400.0E-06
 
 bg_ctrl_force_GOLDSTEInTS=.false.
 bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR"
