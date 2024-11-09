@@ -148,7 +148,7 @@ CONTAINS
     ! ---------------------------------------------------------- !
     real,dimension(iomax,npmax),intent(in)    :: qreg
     real,dimension(iimax)      ,intent(in)    :: nuts
-    real,                       intent(in)    :: gamma_T
+    real, dimension(npmax)     ,intent(in)    :: gamma_T
     real,dimension(iimax,npmax),intent(inout) :: up_inorg
     ! ---------------------------------------------------------- !
     ! DEFINE LOCAL VARIABLES
@@ -165,11 +165,11 @@ CONTAINS
     do ii=2,iimax ! not carbon...
        ! resource and temperature limited uptake
        if (nuts(ii).gt.0.0) then
-          up_inorg(ii,:) = gamma_T * vmax(ii,:) * affinity(ii,:) * nuts(ii) &
+          up_inorg(ii,:) = gamma_T(:) * vmax(ii,:) * affinity(ii,:) * nuts(ii) &
                & / (vmax(ii,:) + affinity(ii,:) * nuts(ii))
           ! Equivalent to classic Michaelis-Menten form ...
           !     up_inorg(ii,:) = gamma_T * vmax(ii,:) * nuts(ii) / (nuts(ii) +kn(ii,:))
-          if (fundamental) up_inorg(ii,:) = gamma_T * vmax(ii,:)
+          if (fundamental) up_inorg(ii,:) = gamma_T(:) * vmax(ii,:)
        else
           up_inorg(ii,:) = 0.0
        endif
