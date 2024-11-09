@@ -153,6 +153,8 @@ MODULE ecogem_lib
   ! Temperature dependence
   real ::  temp_A,temp_P,temp_K,temp_T0   !
   namelist/ini_ecogem_nml/temp_A,temp_P,temp_K,temp_T0
+  logical::ctrl_use_q10
+  namelist/ini_ecogem_nml/ctrl_use_q10
   ! maximum temperature
   real ::  temp_max
   namelist/ini_ecogem_nml/temp_max
