@@ -487,7 +487,7 @@ CONTAINS
           ! loop prey to calculate grazing rates on each prey and element
           do jprey=1,npmax
              if (biomass(iCarb,jprey).gt.0.0.and.food2.gt.0.0) then ! if any prey food available
-                GrazingMat(iCarb,jpred,jprey) = tmp1 * gamma_T(pred) * graz(jpred)   &                        ! total grazing rate
+                GrazingMat(iCarb,jpred,jprey) = tmp1 * gamma_T(jpred) * graz(jpred)   &                        ! total grazing rate
                      &             * (gkernel(jpred,jprey)*palatability(jprey)*biomass(iCarb,jprey))**ns_array(jpred)/food2 ! * switching
 !BAW: zoolimit should be optional zoolimit(jpred,jprey) = tmp1 *(gkernel(jpred,jprey)*palatability(jprey)*biomass(iCarb,jprey))**ns_array(jpred)/food2 ! food limitation calulation for zooplankton - Maria May 2019
                 ! other organic elements (+ chlorophyll) are grazed in stoichiometric relation to carbon
