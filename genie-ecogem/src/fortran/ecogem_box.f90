@@ -208,25 +208,25 @@ CONTAINS
     ! DUMMY ARGUMENTS
     ! ---------------------------------------------------------- !
     real,intent(in)  :: Tlocal
-    real,intent(out) :: gamma_TP, gamma_TK
+    real,dimension(npmax),intent(out) :: gamma_TP, gamma_TK
     
     if     (ctrl_tdep_form.eq.'Default')   then ! Ward, Dutkiewicz, Jahn & Follows - L&O (2012) 57(6), 1877-1891
     											! originally Laws et al. - GBC (2000) 14/4, 1231-1246
-       gamma_TP=exp(temp_A*(Tlocal-273.15-temp_T0))
-       gamma_TK=gamma_TP
+       gamma_TP(:)=exp(temp_A*(Tlocal-273.15-temp_T0))
+       gamma_TK(:)=gamma_TP(:)
        
     elseif (ctrl_tdep_form.eq.'Laws')    then ! Laws et al. - GBC (2000) 14/4, 1231-1246
-       gamma_TP = exp(temp_P*(Tlocal-273.15-temp_T0))
-       gamma_TK = exp(temp_K*(Tlocal-273.15-temp_T0))
+       gamma_TP(:) = exp(temp_P*(Tlocal-273.15-temp_T0))
+       gamma_TK(:) = exp(temp_K*(Tlocal-273.15-temp_T0))
     elseif (ctrl_tdep_form.eq.'Eppley')    then ! Eppley - Fish. Bull. (1972) 70, 1063-1085
-       gamma_TP=0.59*exp(0.0633*(Tlocal-273.15))
-       gamma_TK=gamma_TP
+       gamma_TP(:)=0.59*exp(0.0633*(Tlocal-273.15))
+       gamma_TK(:)=gamma_TP(:)
     elseif (ctrl_tdep_form.eq.'MEDUSA')    then ! Eppley - Fish. Bull. (1972) 70, 1063-1085
-       gamma_TP=1.066**(Tlocal-273.15)
-       gamma_TK=gamma_TP
+       gamma_TP(:)=1.066**(Tlocal-273.15)
+       gamma_TK(:)=gamma_TP(:)
     elseif (ctrl_tdep_form.eq.'Bissinger') then ! Bissinger, Montagnes, Sharples and Atkinson - L&O (2008) 53(2), 487-493
-       gamma_TP=0.81*exp(0.0631*(Tlocal-273.15))
-       gamma_TK=gamma_TP
+       gamma_TP(:)=0.81*exp(0.0631*(Tlocal-273.15))
+       gamma_TK(:)=gamma_TP(:)
     else
        print*,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
        print*,"ERROR: ctrl_tdep_form = '"//trim(ctrl_tdep_form)//"' is not a valid temperature dependence function."
@@ -235,7 +235,7 @@ CONTAINS
        STOP
     endif
 
-    if (gamma_TP.le.0.0.or.gamma_TK.le.0.0) then
+    if (any(gamma_TP(:).le.0.0).or.any(gamma_TK(:).le.0.0)) then
        print*,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
        print*,"ERROR: T-dependence function yields gamma_T<=0."
        print*,"Stopped in SUBROUTINE t_limitation (ecogem_box)."

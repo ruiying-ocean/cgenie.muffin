@@ -59,7 +59,8 @@ subroutine ecogem(          &
   REAL,DIMENSION(iimaxiso,npmax)           ::up_inorgiso !ckc isotopes
   REAL,DIMENSION(iomax+iChl,npmax,npmax)   ::GrazMat
   REAL,DIMENSION(npmax)                    ::VLlimit,chlsynth
-  REAL                                     ::gamma_TP,gamma_TK,totPP
+  REAL,DIMENSION(npmax)                    ::gamma_TP,gamma_TK
+  REAL                                     ::totPP
   REAL                                     ::mld,totchl,k_tot
   INTEGER                                  ::imld
 !BAW: zoolimit should be optional  REAL,DIMENSION(npmax)                    ::Totzoolimit
@@ -151,8 +152,8 @@ subroutine ecogem(          &
   up_inorg(:,:)           = 0.0
   up_inorgiso(:,:)        = 0.0 !ckc isotopes
   ! t_limitation outputs
-  gamma_TP                 = 0.0
-  gamma_TK                 = 0.0
+  gamma_TP(:)              = 0.0
+  gamma_TK(:)              = 0.0
   ! photosynthesis outputs
   chlsynth(:)             = 0.0
   totPP                   = 0.0
@@ -346,11 +347,11 @@ subroutine ecogem(          &
 
                  call quota_limitation(quota,limit,VLlimit,qreg,qreg_h)
 
-                 call t_limitation(templocal,gamma_TP,gamma_TK)
+                 call t_limitation(templocal,gamma_TP(:),gamma_TK(:))
 
-                 call nutrient_uptake(qreg(:,:),loc_nuts(:),gamma_TK,up_inorg(:,:))
+                 call nutrient_uptake(qreg(:,:),loc_nuts(:),gamma_TK(:),up_inorg(:,:))
 
-                 call photosynthesis(PAR_layer,loc_biomass,limit,VLlimit,up_inorg,gamma_TP,up_inorg(iDIC,:),chlsynth,totPP)
+                 call photosynthesis(PAR_layer,loc_biomass,limit,VLlimit,up_inorg,gamma_TP(:),up_inorg(iDIC,:),chlsynth,totPP)
 
 !BAW: zoolimit should be optional                 call grazing(loc_biomass,gamma_TK,zoolimit(:,:),GrazMat(:,:,:))
 				call grazing(loc_biomass,gamma_TK,GrazMat(:,:,:))
@@ -665,7 +666,7 @@ subroutine ecogem(          &
                     phys_limit(io,:,i,j,k)    = limit(io,:)
                  enddo
                  phys_limit(iomax+1,:,i,j,k) = 0.0
-                 phys_limit(iomax+1,1,i,j,k) = gamma_TK
+                 phys_limit(iomax+1,:,i,j,k) = gamma_TK(:)
                  phys_limit(iomax+2,:,i,j,k) = 0.0
 !BAW: zoolimit should be optional                 zoo_limit(:,i,j,k) = Totzoolimit(:)
                  !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
