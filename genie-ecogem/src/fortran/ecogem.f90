@@ -358,7 +358,7 @@ subroutine ecogem(          &
                  call photosynthesis(PAR_layer,loc_biomass,limit,VLlimit,up_inorg,gamma_TP(:),up_inorg(iDIC,:),chlsynth,totPP)
 
 !BAW: zoolimit should be optional                 call grazing(loc_biomass,gamma_TK,zoolimit(:,:),GrazMat(:,:,:))
-                 call grazing(loc_biomass,gamma_TK,GrazMat(:,:,:))
+                 call grazing(loc_biomass,gamma_TK(:),GrazMat(:,:,:))
 
                  !ckc isotopes uptake, from nutrient uptake, nutrient concentration and fractionation
                  if (c13trace) then
