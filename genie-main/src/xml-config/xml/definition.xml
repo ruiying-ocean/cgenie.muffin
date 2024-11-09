@@ -8660,6 +8660,10 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
                         <value datatype="string">Default</value>
                         <description>Name describing form of temperature dependence</description>
                     </param>
+                    <param name="ctrl_use_q10">
+                        <value datatype="boolean">.TRUE.</value>
+                        <description>Use Q10 temperature dependency</description>
+                    </param>		    
                     <param name="ctrl_photosynth_form">
                         <value datatype="string">Geider98</value>
                         <description>Name describing form of photosynthesis equations</description>

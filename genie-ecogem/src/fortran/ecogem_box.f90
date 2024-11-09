@@ -263,7 +263,7 @@ CONTAINS
 
     ! Loop through each plankton type and calculate gamma_TP based on its Q10 value
     do i = 1, size(Q10_vals)
-       gamma_TP(i) = Q10_PFT(i) ** temp_diff
+       gamma_TP(i) = Q10(i) ** temp_diff
     end do
 
 

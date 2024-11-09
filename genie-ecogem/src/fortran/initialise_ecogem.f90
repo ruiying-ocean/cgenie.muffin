@@ -230,6 +230,8 @@ SUBROUTINE initialise_ecogem(    &
   call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(prey_refuge(npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
+  ALLOCATE(Q10(npmax),STAT=alloc_error)
+  call check_iostat(alloc_error,__LINE__,__FILE__)
   !ALLOCATE(grazing_protect(npmax),STAT=alloc_error)
   !call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(pp_opt_a_array(npmax),STAT=alloc_error)

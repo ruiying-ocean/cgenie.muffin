@@ -334,6 +334,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
+          Q10(jp)             = 2.0
        elseif (pft(jp).eq.'synechococcus') then
           NO3up(jp)       = 1.0
           Nfix(jp)        = 0.0
@@ -342,6 +343,7 @@ CONTAINS
           autotrophy(jp)  = 1.0
           heterotrophy(jp)= 0.0
           palatability(jp)= 1.0
+          Q10(jp)         = 2.0
        elseif (pft(jp).eq.'picoplankton') then
           NO3up(jp)       = 1.0
           Nfix(jp)        = 0.0
@@ -350,6 +352,7 @@ CONTAINS
           autotrophy(jp)  = 1.0
           heterotrophy(jp)= 0.0
           palatability(jp)= 1.0
+          Q10(jp)         = 2.0
        elseif (pft(jp).eq.'picoeukaryote') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -357,6 +360,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
+          Q10(jp)         = 2.0
        elseif (pft(jp).eq.'diatom') then
           NO3up(jp)       = 1.0
           Nfix(jp)        = 0.0
@@ -365,6 +369,7 @@ CONTAINS
           autotrophy(jp)  = 1.0
           heterotrophy(jp)= 0.0
           palatability(jp)= par_diatom_palatability_mod ! JDW / Aaron Diatom 23
+          Q10(jp)         = 2.0          
        elseif (pft(jp).eq.'coccolithophore') then
           NO3up(jp)       = 1.0
           Nfix(jp)        = 0.0
@@ -373,6 +378,7 @@ CONTAINS
           autotrophy(jp)  = 1.0
           heterotrophy(jp)= 0.0
           palatability(jp)= 1.0 * par_cocco_palatability_mod
+          Q10(jp)         = 2.0          
        elseif (pft(jp).eq.'diazotroph') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -380,6 +386,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
+          Q10(jp)         = 2.0          
        elseif (pft(jp).eq.'phytoplankton') then
           NO3up(jp)       = 1.0
           Nfix(jp)        = 0.0
@@ -388,6 +395,7 @@ CONTAINS
           autotrophy(jp)  = 1.0
           heterotrophy(jp)= 0.0
           palatability(jp)= 1.0
+          Q10(jp)         = 2.0          
        elseif (pft(jp).eq.'eukaryote') then
            NO3up(jp)       = 1.0
            Nfix(jp)        = 0.0
@@ -396,6 +404,7 @@ CONTAINS
            autotrophy(jp)  = 1.0
            heterotrophy(jp)= 0.0
            palatability(jp)= 1.0 ! Aaron Diatom 23
+           Q10(jp)         = 2.0           
        elseif (pft(jp).eq.'zooplankton') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -403,6 +412,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 0.0
           heterotrophy(jp)    = 1.0
+          Q10(jp)         = 2.0          
        elseif (pft(jp).eq.'mixotroph') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -410,6 +420,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = trophic_tradeoff
           heterotrophy(jp)    = trophic_tradeoff
+          Q10(jp)         = 2.0          
        elseif (pft(jp).eq.'foram') then
           NO3up(jp)       = 0.0
           Nfix(jp)        = 0.0
@@ -418,6 +429,7 @@ CONTAINS
           autotrophy(jp)  = trophic_tradeoff*0.5
           heterotrophy(jp)= trophic_tradeoff*0.5
           palatability(jp)= 0.5
+          Q10(jp)         = 2.0          
        else
           print*," "
           print*,"! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"

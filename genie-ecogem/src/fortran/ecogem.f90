@@ -347,7 +347,10 @@ subroutine ecogem(          &
 
                  call quota_limitation(quota,limit,VLlimit,qreg,qreg_h)
 
-                 call t_limitation(templocal,gamma_TP(:),gamma_TK(:))
+                 if (ctrl_use_Q10) then
+                    call t_limitation_Q10(templocal,gamma_TP(:),gamma_TK(:))
+                 else
+                    call t_limitation(templocal,gamma_TP(:),gamma_TK(:))
 
                  call nutrient_uptake(qreg(:,:),loc_nuts(:),gamma_TK(:),up_inorg(:,:))
 
