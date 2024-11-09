@@ -245,6 +245,42 @@ CONTAINS
 
   END SUBROUTINE t_limitation
 
+  SUBROUTINE t_limitation_Q10(Tlocal, gamma_TP, gamma_TK)
+    IMPLICIT NONE
+
+    ! Input parameters
+    real, intent(in) :: Tlocal        ! Local temperature (e.g., in Kelvin or Celsius)
+
+    ! Output parameter
+    real, dimension(size(Q10_vals)), intent(out) :: gamma_TP, gamma_TK ! Temperature limitation factors
+
+    ! Local variables
+    integer :: i                     ! Loop variable
+    real :: temp_diff                ! Temperature difference from reference
+
+    ! Calculate the temperature difference (in 10°C units)
+    temp_diff = (Tlocal - temp_T0) / 10.0
+
+    ! Loop through each plankton type and calculate gamma_TP based on its Q10 value
+    do i = 1, size(Q10_vals)
+       gamma_TP(i) = Q10_PFT(i) ** temp_diff
+    end do
+
+
+    gamma_TK = gamma_TP
+
+    ! Ensure gamma_TP values are positive
+    if (any(gamma_TP_array <= 0.0)) then
+       print *, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       print *, "ERROR: Q10-based calculation yielded non-positive gamma_TP values."
+       print *, "Stopped in SUBROUTINE t_limitation_Q10."
+       print *, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       STOP
+    endif
+
+  END SUBROUTINE t_limitation_Q10
+  
+
   ! ****************************************************************************************************************************** !
   ! ****************************************************************************************************************************** !
   ! ****************************************************************************************************************************** !
@@ -451,7 +487,7 @@ CONTAINS
           ! loop prey to calculate grazing rates on each prey and element
           do jprey=1,npmax
              if (biomass(iCarb,jprey).gt.0.0.and.food2.gt.0.0) then ! if any prey food available
-                GrazingMat(iCarb,jpred,jprey) = tmp1 * gamma_T * graz(jpred)   &                        ! total grazing rate
+                GrazingMat(iCarb,jpred,jprey) = tmp1 * gamma_T(pred) * graz(jpred)   &                        ! total grazing rate
                      &             * (gkernel(jpred,jprey)*palatability(jprey)*biomass(iCarb,jprey))**ns_array(jpred)/food2 ! * switching
 !BAW: zoolimit should be optional zoolimit(jpred,jprey) = tmp1 *(gkernel(jpred,jprey)*palatability(jprey)*biomass(iCarb,jprey))**ns_array(jpred)/food2 ! food limitation calulation for zooplankton - Maria May 2019
                 ! other organic elements (+ chlorophyll) are grazed in stoichiometric relation to carbon
