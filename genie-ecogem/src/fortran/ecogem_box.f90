@@ -252,7 +252,7 @@ CONTAINS
     real, intent(in) :: Tlocal        ! Local temperature (e.g., in Kelvin or Celsius)
 
     ! Output parameter
-    real, dimension(size(Q10_vals)), intent(out) :: gamma_TP, gamma_TK ! Temperature limitation factors
+    real, dimension(size(npmax)), intent(out) :: gamma_TP, gamma_TK ! Temperature limitation factors
 
     ! Local variables
     integer :: i                     ! Loop variable
@@ -262,7 +262,7 @@ CONTAINS
     temp_diff = (Tlocal - temp_T0) / 10.0
 
     ! Loop through each plankton type and calculate gamma_TP based on its Q10 value
-    do i = 1, size(Q10_vals)
+    do i = 1, size(Q10)
        gamma_TP(i) = Q10(i) ** temp_diff
     end do
 
@@ -270,7 +270,7 @@ CONTAINS
     gamma_TK = gamma_TP
 
     ! Ensure gamma_TP values are positive
-    if (any(gamma_TP_array <= 0.0)) then
+    if (any(gamma_TP <= 0.0)) then
        print *, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
        print *, "ERROR: Q10-based calculation yielded non-positive gamma_TP values."
        print *, "Stopped in SUBROUTINE t_limitation_Q10."
