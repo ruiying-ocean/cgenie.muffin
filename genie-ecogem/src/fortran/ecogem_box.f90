@@ -252,7 +252,7 @@ CONTAINS
     real, intent(in) :: Tlocal        ! Local temperature (e.g., in Kelvin or Celsius)
 
     ! Output parameter
-    real, dimension(size(npmax)), intent(out) :: gamma_TP, gamma_TK ! Temperature limitation factors
+    real, dimension(npmax), intent(out) :: gamma_TP, gamma_TK ! Temperature limitation factors
 
     ! Local variables
     integer :: i                     ! Loop variable
