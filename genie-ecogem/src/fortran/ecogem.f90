@@ -331,8 +331,8 @@ subroutine ecogem(          &
                  qreg_h(:,:) = 0.0 ! (iomax,npmax)
                  quota(:,:) = 0.0 ! (iomax,npmax)
                  VLlimit(:) = 0.0 ! (npmax)
-                 gamma_TP = 0.0 !
-                 gamma_TK = 0.0 !
+                 gamma_TP(:) = 0.0 !
+                 gamma_TK(:) = 0.0 !
                  PP(:) = 0.0 ! (npmax)
                  chlsynth(:) = 0.0 ! (npmax)
                  totPP = 0.0 !
@@ -343,14 +343,14 @@ subroutine ecogem(          &
                  !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
                  ! call ecophysiological subroutines
 
-                 call quota_status(loc_biomass(1:iomax,:),quota)
+                 call quota_status(loc_biomass(1:iomax,:),quota)                 
 
                  call quota_limitation(quota,limit,VLlimit,qreg,qreg_h)
 
                  if (ctrl_use_q10) then
                     call t_limitation_Q10(templocal,gamma_TP(:),gamma_TK(:))
                  else
-                    call t_limitation(templocal,gamma_TP(:),gamma_TK(:))
+                    call t_limitation(templocal,gamma_TP(:),gamma_TK(:))                    
                  end if
 
                  call nutrient_uptake(qreg(:,:),loc_nuts(:),gamma_TK(:),up_inorg(:,:))

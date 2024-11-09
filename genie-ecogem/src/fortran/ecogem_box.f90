@@ -259,7 +259,7 @@ CONTAINS
     real :: temp_diff                ! Temperature difference from reference
 
     ! Calculate the temperature difference (in 10°C units)
-    temp_diff = (Tlocal - temp_T0) / 10.0
+    temp_diff = (Tlocal -273.15- temp_T0) / 10.0
 
     ! Loop through each plankton type and calculate gamma_TP based on its Q10 value
     do i = 1, size(Q10)
