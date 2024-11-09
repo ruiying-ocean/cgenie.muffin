@@ -259,7 +259,7 @@ CONTAINS
        &                         limit,     &
        &                         VLlimit,   &
        &                         up_inorg,  &
-       &                         gamma_T,   &
+       &                         gamma_TP,  &
        &                         PP,        &
        &                         chlsynth,  &
        &                         totPP      &
@@ -274,7 +274,7 @@ CONTAINS
     real,dimension(iomax,npmax),     intent(in) ::limit
     real,dimension(npmax),           intent(in) ::VLlimit
     real,dimension(iimax,npmax),     intent(in) ::up_inorg
-    real,                            intent(in) ::gamma_T
+    real,dimension(npmax),           intent(in) ::gamma_TP
     real,dimension(npmax),           intent(out)::PP
     real,dimension(npmax),           intent(out)::chlsynth
     real,                            intent(out)::totPP
@@ -327,7 +327,7 @@ CONTAINS
           Chl2C(:) = chl(:) / Cbiomass(:)
           Chl2C(:) = MERGE(Chl2C(:),0.0,Cbiomass(:).gt.0.0) ! Check for divide by zero
           ! theoretical light replete photosynthesis given current temperature and nutrient limitation: (s^-1)
-          PCmax(:) = vmax(iDIC,:) * VLlimit(:) * gamma_T
+          PCmax(:) = vmax(iDIC,:) * VLlimit(:) * gamma_TP(:)
           ! light-limited photosynthesis: (s^-1)
           PCPhot(:) = PCmax(:) * (1.0 - exp(-alpha(:)*Chl2C(:)*E0/PCmax))
           PCPhot(:) = MERGE(PCPhot(:),0.0,PCmax.gt.0.0) ! Check for divide by zero
@@ -370,7 +370,7 @@ CONTAINS
   ! ****************************************************************************************************************************** !
   SUBROUTINE grazing(          &
        &                  biomass,  &
-       &                  gamma_T,  &
+       &                  gamma_TK, &
 !BAW: zoolimit should be optional &                  zoolimit,  &
        &                  GrazingMat &
        &                 )
@@ -379,7 +379,7 @@ CONTAINS
     ! ---------------------------------------------------------- !
     ! DUMMY ARGUMENTS
     ! ---------------------------------------------------------- !
-    real,                                  intent(in)  :: gamma_T
+    real,dimension(npmax),                 intent(in)  :: gamma_TK
     real,dimension(iomax+iChl,npmax)      ,intent(in)  :: biomass
     real,dimension(iomax+iChl,npmax,npmax),intent(out) :: GrazingMat
 !BAW: zoolimit should be optional     real,dimension(npmax,npmax),intent(out)            :: zoolimit
