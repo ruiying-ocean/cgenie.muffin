@@ -71,6 +71,10 @@ SUBROUTINE initialise_ecogem(    &
 
   ! get specifications of plankton populations from input file
   CALL sub_init_populations()
+
+  if (ctrl_use_q10) then
+     CALL sub_init_q10()
+  endif
   
   if (ctrl_debug_eco_init) then
      write(*,*) ' ---------------------------------------------------'

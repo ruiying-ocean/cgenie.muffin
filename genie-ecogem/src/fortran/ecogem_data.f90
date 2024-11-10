@@ -334,7 +334,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
-          Q10(jp)             = 2.0
+          Q10(jp)             = 1.88
        elseif (pft(jp).eq.'synechococcus') then
           NO3up(jp)       = 1.0
           Nfix(jp)        = 0.0
@@ -343,7 +343,7 @@ CONTAINS
           autotrophy(jp)  = 1.0
           heterotrophy(jp)= 0.0
           palatability(jp)= 1.0
-          Q10(jp)         = 2.0
+          Q10(jp)         = 1.88
        elseif (pft(jp).eq.'picoplankton') then
           NO3up(jp)       = 1.0
           Nfix(jp)        = 0.0
@@ -352,7 +352,7 @@ CONTAINS
           autotrophy(jp)  = 1.0
           heterotrophy(jp)= 0.0
           palatability(jp)= 1.0
-          Q10(jp)         = 2.0
+          Q10(jp)         = 1.88
        elseif (pft(jp).eq.'picoeukaryote') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -360,7 +360,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
-          Q10(jp)         = 2.0
+          Q10(jp)         = 1.88
        elseif (pft(jp).eq.'diatom') then
           NO3up(jp)       = 1.0
           Nfix(jp)        = 0.0
@@ -369,7 +369,7 @@ CONTAINS
           autotrophy(jp)  = 1.0
           heterotrophy(jp)= 0.0
           palatability(jp)= par_diatom_palatability_mod ! JDW / Aaron Diatom 23
-          Q10(jp)         = 2.0          
+          Q10(jp)         = 1.88
        elseif (pft(jp).eq.'coccolithophore') then
           NO3up(jp)       = 1.0
           Nfix(jp)        = 0.0
@@ -378,7 +378,7 @@ CONTAINS
           autotrophy(jp)  = 1.0
           heterotrophy(jp)= 0.0
           palatability(jp)= 1.0 * par_cocco_palatability_mod
-          Q10(jp)         = 2.0          
+          Q10(jp)         = 1.88
        elseif (pft(jp).eq.'diazotroph') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -386,7 +386,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 1.0
           heterotrophy(jp)    = 0.0
-          Q10(jp)         = 2.0          
+          Q10(jp)         = 1.88
        elseif (pft(jp).eq.'phytoplankton') then
           NO3up(jp)       = 1.0
           Nfix(jp)        = 0.0
@@ -395,7 +395,7 @@ CONTAINS
           autotrophy(jp)  = 1.0
           heterotrophy(jp)= 0.0
           palatability(jp)= 1.0
-          Q10(jp)         = 2.0          
+          Q10(jp)         = 1.88
        elseif (pft(jp).eq.'eukaryote') then
            NO3up(jp)       = 1.0
            Nfix(jp)        = 0.0
@@ -404,7 +404,7 @@ CONTAINS
            autotrophy(jp)  = 1.0
            heterotrophy(jp)= 0.0
            palatability(jp)= 1.0 ! Aaron Diatom 23
-           Q10(jp)         = 2.0           
+           Q10(jp)         = 1.88
        elseif (pft(jp).eq.'zooplankton') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -412,7 +412,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = 0.0
           heterotrophy(jp)    = 1.0
-          Q10(jp)         = 2.0          
+          Q10(jp)         = 1.88
        elseif (pft(jp).eq.'mixotroph') then
           NO3up(jp)           = 0.0
           Nfix(jp)            = 0.0
@@ -420,7 +420,7 @@ CONTAINS
           silicify(jp)        = 0.0
           autotrophy(jp)      = trophic_tradeoff
           heterotrophy(jp)    = trophic_tradeoff
-          Q10(jp)         = 2.0          
+          Q10(jp)         = 1.88
        elseif (pft(jp).eq.'foram') then
           NO3up(jp)       = 0.0
           Nfix(jp)        = 0.0
@@ -429,7 +429,7 @@ CONTAINS
           autotrophy(jp)  = trophic_tradeoff*0.5
           heterotrophy(jp)= trophic_tradeoff*0.5
           palatability(jp)= 0.5
-          Q10(jp)         = 2.0          
+          Q10(jp)         = 1.88
        else
           print*," "
           print*,"! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -766,6 +766,62 @@ CONTAINS
     CLOSE(unit=in)
 
   END SUBROUTINE sub_init_populations
+
+  SUBROUTINE sub_init_q10()
+    ! Local variables
+    INTEGER           :: n
+    INTEGER           :: loc_n_elements, loc_n_start
+    CHARACTER(len=16) :: loc_pft
+    REAL              :: loc_q10
+    CHARACTER(len=255):: loc_filename
+
+    ! Define the input file path
+    loc_filename = TRIM(par_indir_name) // "/" // TRIM(par_ecogem_pft_q10_file)
+
+    ! Check the file format and determine the number of lines of data
+    CALL sub_check_fileformat(loc_filename, loc_n_elements, loc_n_start)
+
+    IF (loc_n_elements .EQ. 0) THEN
+       PRINT*, " "
+       PRINT*, "! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       PRINT*, "! No plankton types specified in input file ", TRIM(loc_filename)
+       PRINT*, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       STOP
+    END IF
+
+    ! Open the file for reading
+    OPEN(unit=in, file=loc_filename, action='read')
+
+    ! Move to the start of the data section in the file
+    DO n = 1, loc_n_start
+       READ(unit=in, fmt='(1X)')
+    END DO
+
+    ! Allocate arrays to store pft and q10 values
+    ALLOCATE(pft(loc_n_elements), STAT=alloc_error)
+    CALL check_iostat(alloc_error, __LINE__, __FILE__)
+    ALLOCATE(q10(loc_n_elements), STAT=alloc_error)
+    CALL check_iostat(alloc_error, __LINE__, __FILE__)
+
+    ! Rewind the file to the start of the data
+    REWIND(unit=in)
+    DO n = 1, loc_n_start
+       READ(unit=in, fmt='(1X)')
+    END DO
+
+    ! Read in the PFT and Q10 values
+    DO n = 1, loc_n_elements
+       READ(unit=in, FMT=*) loc_pft, loc_q10
+       pft(n) = loc_pft
+       Q10(n) = loc_q10
+    END DO
+
+    ! Store the number of elements read
+    npmax = loc_n_elements
+
+    ! Close the file
+    CLOSE(unit=in)
+  END SUBROUTINE sub_init_q10
 
   ! ****************************************************************************************************************************** !
   ! DEFINE AND INITIALIZE EXPLICIT GRAZER PARMAETERS FROM INPUT FILE
