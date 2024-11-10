@@ -797,12 +797,6 @@ CONTAINS
        READ(unit=in, fmt='(1X)')
     END DO
 
-    ! Allocate arrays to store pft and q10 values
-    ALLOCATE(pft(loc_n_elements), STAT=alloc_error)
-    CALL check_iostat(alloc_error, __LINE__, __FILE__)
-    ALLOCATE(q10(loc_n_elements), STAT=alloc_error)
-    CALL check_iostat(alloc_error, __LINE__, __FILE__)
-
     ! Rewind the file to the start of the data
     REWIND(unit=in)
     DO n = 1, loc_n_start
