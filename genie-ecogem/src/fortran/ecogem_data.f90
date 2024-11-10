@@ -776,7 +776,7 @@ CONTAINS
     CHARACTER(len=255):: loc_filename
 
     ! Define the input file path
-    loc_filename = TRIM(par_indir_name) // "/" // TRIM(par_ecogem_pft_q10_file)
+    loc_filename = TRIM(par_indir_name) // "/" // TRIM(par_ecogem_q10_file)
 
     ! Check the file format and determine the number of lines of data
     CALL sub_check_fileformat(loc_filename, loc_n_elements, loc_n_start)
@@ -812,12 +812,9 @@ CONTAINS
     ! Read in the PFT and Q10 values
     DO n = 1, loc_n_elements
        READ(unit=in, FMT=*) loc_pft, loc_q10
-       pft(n) = loc_pft
+       !ignore the pft, shouldn't be modified here
        Q10(n) = loc_q10
     END DO
-
-    ! Store the number of elements read
-    npmax = loc_n_elements
 
     ! Close the file
     CLOSE(unit=in)
