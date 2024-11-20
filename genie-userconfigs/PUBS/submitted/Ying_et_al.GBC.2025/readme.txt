@@ -40,6 +40,7 @@ qsub -j y -o cgenie_log -V -S /bin/bash
 ./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 LGM_ECOGEM.dat 10000
 ./runmuffin.sh muffin.CB.GIteiiva.BASESFeTDTL_colr023789 PUBS/submitted/Ying_et_al.GBC.2025 LGM_BIOGEM.dat 10000
 
+./runmuffin.sh muffin.CBE.p0055c.BASES PUBS/submitted PUBS/submitted/Ying_et_al.GBC.2025 EECO_ECOGEM_Q10 10000
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
