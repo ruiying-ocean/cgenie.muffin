@@ -21,7 +21,7 @@ PUBLICATION DETAILS [summary of manuscript/publication]
 EDITING LOG [list of changes made to this file, when, and by who]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-2024/10/03 -- README.txt file created by RY
+2024/11/21 -- README.txt file created by RY
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 SUMMARY OF EXPERIMENTS [summerize experiments detailed and in which e.g. figures they appear]
