@@ -35,12 +35,10 @@ RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups,
 
 qsub -j y -o cgenie_log -V -S /bin/bash
 
-./runmuffin.sh muffin.CBE.worlg4.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 PI_ECOGEM.dat 10000
-./runmuffin.sh muffin.CB.worlg4.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 PI_BIOGEM.dat 10000
-./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 LGM_ECOGEM.dat 10000
-./runmuffin.sh muffin.CB.GIteiiva.BASESFeTDTL_colr023789 PUBS/submitted/Ying_et_al.GBC.2025 LGM_BIOGEM.dat 10000
+./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL.colr023789 PUBS/submitted/Ying_et_al.GBC.2025 LGM_ECOGEM_ctrl.dat 10000
+./runmuffin.sh muffin.CB.GIteiiva.BASESFeTDTL_colr023789 PUBS/submitted/Ying_et_al.GBC.2025 LGM_BIOGEM_q10.dat 10000
 
-./runmuffin.sh muffin.CBE.p0055c.BASES PUBS/submitted/Ying_et_al.GBC.2025 EECO_ECOGEM_Q10 10000
+
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
