@@ -176,4 +176,4 @@ eg_ctrl_PARseaicelimit=.true.
 
 # relative partitioning of C into DOM
 eg_par_beta_POCtoDOC=0.75
-eg_par_ecogem_q10_file='8P8Z.q10b'
+eg_par_ecogem_q10_file='8P8Z.q10.2.2'
