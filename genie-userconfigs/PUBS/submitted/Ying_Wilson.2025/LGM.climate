@@ -148,3 +148,6 @@ eg_ctrl_PARseaicelimit=.true.
 # relative partitioning of C into DOM
 eg_par_beta_POCtoDOC=0.75
 eg_par_ecogem_q10_file='8P8Z.q10'
+
+# albedo file
+ea_par_albedo1d_name=malod_albs_LGM.dat

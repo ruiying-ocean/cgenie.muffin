@@ -116,15 +116,18 @@ ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
 # add ventillation tracers
 bg_ctrl_force_ocn_age1=.true.
 # add brine rejection SH limit
-bg_par_misc_brinerejection_jmax=19
+#bg_par_misc_brinerejection_jmax=19
 # wind-stress
 go_13=1.3
 ea_11=1.3
 
+# ocean diffusivites dia (or vert) / OcnVertDiff
+go_15=0.00001 #default is 2.5e-5
+
 # *** TUNING ********************************************************
 #
 # parameter: bg_par_misc_brinerejection_frac -- default value (1) modified by factor: 0.2
-bg_par_misc_brinerejection_frac=0.2
+#bg_par_misc_brinerejection_frac=0.2
 # parameter: bg_par_ocn_force_scale_val_2 -- default value (1) modified by factor: 0.05
 bg_par_ocn_force_scale_val_2=0.05
 #

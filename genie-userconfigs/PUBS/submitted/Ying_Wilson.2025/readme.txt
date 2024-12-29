@@ -37,6 +37,7 @@ qsub -j y -o cgenie_log -V -S /bin/bash
 
 ./runmuffin.sh  muffin.CBE.GIteiiva.BASESFeTDTL_colr023789 PUBS/submitted/Ying_Wilson.2025 XXX 5000
 
+./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTL.colr023789.config PUBS/submitted/Ying_Wilson.2025 XXX 5000
 
 
 
