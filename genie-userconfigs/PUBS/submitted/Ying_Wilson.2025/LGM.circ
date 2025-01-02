@@ -106,10 +106,11 @@ bg_ctrl_bio_remin_redox_save=.true.
 # *** FORCINGS ******************************************************
 #
 # specify forcings
-bg_par_forcing_name="GIteiiva.RpCO2_Rp13CO2.Fsal_SUR.Albani.0ka.rest"
+bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Albani.0ka.norest"
 bg_par_atm_force_scale_val_3=278.0E-06
 bg_par_atm_force_scale_val_4=-6.5
 
+#
 # *******************************************************************
 # *** END ***********************************************************
 # *******************************************************************
@@ -141,3 +142,16 @@ eg_ctrl_PARseaicelimit=.true.
 # relative partitioning of C into DOM
 eg_par_beta_POCtoDOC=0.75
 eg_par_ecogem_q10_file='8P8Z.q10'
+
+## Physics
+# bg_par_misc_brinerejection_jmax=19
+# bg_par_misc_brinerejection_frac=0.2
+
+# ocean diffusivites dia (or vert) / OcnVertDiff
+go_15=0.00001 #default is 2.5e-5
+
+#go_13=0.8
+#ea_11=0.8
+
+bg_par_ocn_force_scale_val_2=0.05
+bg_ctrl_force_ocn_age1=.true.

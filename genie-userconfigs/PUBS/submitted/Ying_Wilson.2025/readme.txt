@@ -27,7 +27,12 @@ EDITING LOG [list of changes made to this file, when, and by who]
 SUMMARY OF EXPERIMENTS [summerize experiments detailed and in which e.g. figures they appear]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
+PI_SPIN
+LGM.climate = PI_SPIN + radiative forcing + albedo profile + orbital forcing
+LGM.climate.q10 = LGM.climate + Zooplankton Q10
+LGM.iron = 
+LGM.circ = reduced mixing + wind
+LGM.brine = brine injection
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups, main experiments, SI, etc where appropriate]
@@ -35,11 +40,9 @@ RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups,
 
 qsub -j y -o cgenie_log -V -S /bin/bash
 
-./runmuffin.sh  muffin.CBE.GIteiiva.BASESFeTDTL_colr023789 PUBS/submitted/Ying_Wilson.2025 XXX 5000
+./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTL.colr023789 PUBS/submitted/Ying_Wilson.2025 PI_SPIN 10000
 
-./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTL.colr023789.config PUBS/submitted/Ying_Wilson.2025 XXX 5000
-
-
+./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTL.colr023789 PUBS/submitted/Ying_Wilson.2025 XXX 5000 PI_SPIN
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
