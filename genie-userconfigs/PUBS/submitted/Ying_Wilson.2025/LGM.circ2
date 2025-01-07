@@ -144,13 +144,9 @@ eg_par_beta_POCtoDOC=0.75
 eg_ctrl_use_q10 = .false.
 
 ## Physics
-bg_par_misc_brinerejection_jmax=19
-bg_par_misc_brinerejection_frac=0.2
-
 # ocean diffusivites dia (or vert) / OcnVertDiff
-# go_15=1.0e-5 #default is 2.5e-5
+go_15=1.0e-5 #default is 2.5e-5
 
-#bg_par_ocn_force_scale_val_2=0.05
 bg_ctrl_force_ocn_age1=.true.
 
 ea_taux_u="GL_taux_u_NA050.interp"
