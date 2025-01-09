@@ -106,11 +106,10 @@ bg_ctrl_bio_remin_redox_save=.true.
 # *** FORCINGS ******************************************************
 #
 # specify forcings
-bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Albani.0ka.norest"
-bg_par_atm_force_scale_val_3=278.0E-06
-bg_par_atm_force_scale_val_4=-6.5
+bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Albani.21ka.norest"
+bg_par_atm_force_scale_val_3=193.0E-06
+bg_par_atm_force_scale_val_4=-6.46
 
-#
 # *******************************************************************
 # *** END ***********************************************************
 # *******************************************************************
@@ -141,14 +140,24 @@ eg_ctrl_PARseaicelimit=.true.
 
 # relative partitioning of C into DOM
 eg_par_beta_POCtoDOC=0.75
-eg_ctrl_use_q10 = .false.
 
-## Physics
-# ocean diffusivites dia (or vert) / OcnVertDiff
-go_15=1.0e-5 #default is 2.5e-5
+eg_ctrl_use_q10 = .true.
+eg_par_ecogem_q10_file='8P8Z.q10.2.7'
 
-bg_ctrl_force_ocn_age1=.true.
+# climate
+# albedo file
+ea_par_albedo1d_name=malod_albs_LGM.dat
 
+# Orbital parameters
+ea_par_orbit_osce=0.018994 # eccentricity
+ea_par_orbit_oscsob=0.389911 # sine of obliquity
+ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
+
+# brine injection
+bg_par_misc_brinerejection_jmax=19
+bg_par_misc_brinerejection_frac=0.2
+
+# wind
 ea_taux_u="GL_taux_u_NA050.interp"
 ea_tauy_u="GL_tauy_u_NA050.interp"
 ea_taux_v="GL_taux_v_NA050.interp"
@@ -156,3 +165,5 @@ ea_tauy_v="GL_tauy_v_NA050.interp"
 
 go_13=0.8
 ea_11=0.8
+
+bg_ctrl_force_ocn_age1=.true.
