@@ -157,6 +157,3 @@ ea_taux_u="GL_taux_u_NA050.interp"
 ea_tauy_u="GL_tauy_u_NA050.interp"
 ea_taux_v="GL_taux_v_NA050.interp"
 ea_tauy_v="GL_tauy_v_NA050.interp"
-
-go_13=0.8
-ea_11=0.8
