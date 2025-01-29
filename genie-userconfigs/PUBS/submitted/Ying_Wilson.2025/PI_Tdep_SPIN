@@ -106,8 +106,8 @@ bg_ctrl_bio_remin_redox_save=.true.
 # *** FORCINGS ******************************************************
 #
 # specify forcings
-bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Fsal_SUR.Albani.21ka.norest"
-bg_par_atm_force_scale_val_3=193.0E-06
+bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Albani.0ka"
+bg_par_atm_force_scale_val_3=278.0E-06
 bg_par_atm_force_scale_val_4=-6.5
 
 # *******************************************************************
@@ -140,34 +140,12 @@ eg_ctrl_PARseaicelimit=.true.
 
 # relative partitioning of C into DOM
 eg_par_beta_POCtoDOC=0.75
+eg_ctrl_use_q10 = .false.
 
-eg_ctrl_use_q10 = .true.
-eg_par_ecogem_q10_file='8P8Z.q10.2.7'
-
-# climate
-# albedo file
-ea_par_albedo1d_name=malod_albs_LGM.dat
-
-# Orbital parameters
-ea_par_orbit_osce=0.018994 # eccentricity
-ea_par_orbit_oscsob=0.389911 # sine of obliquity
-ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
-
-# brine injection
-bg_par_misc_brinerejection_jmax=19
-bg_par_misc_brinerejection_frac=0.2
-
-bg_ctrl_force_ocn_age1=.true.
-
-ea_taux_u="wortdofy.taux_u.dat"
-ea_tauy_u="wortdofy.tauy_u.dat"
-ea_taux_v="wortdofy.taux_v.dat"
-ea_tauy_v="wortdofy.tauy_v.dat"
-ea_adv_u="wortdofy.wvelx.dat"
-ea_adv_v= "wortdofy.wvely.dat"
-bg_par_windspeed_file="wortdofy.windspeed_uvaa.dat"
-
-go_13=1.0
-ea_11=1.0
-
-bg_par_ocn_force_scale_val_2=0.05
+bg_ctrl_bio_remin_POC_fixed=.false.
+bg_par_bio_remin_sinkingrate=125.0
+bg_par_bio_remin_POC_K1=9.0E11
+bg_par_bio_remin_POC_Ea1=54000.0
+bg_par_bio_remin_POC_K2=1.0E14
+bg_par_bio_remin_POC_Ea2=80000.0
+bg_par_bio_remin_POC_frac2=0.008

@@ -108,7 +108,7 @@ bg_ctrl_bio_remin_redox_save=.true.
 # specify forcings
 bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Albani.21ka.norest"
 bg_par_atm_force_scale_val_3=278.0E-06
-bg_par_atm_force_scale_val_4=-6.46
+bg_par_atm_force_scale_val_4=-6.5
 
 #
 # *******************************************************************

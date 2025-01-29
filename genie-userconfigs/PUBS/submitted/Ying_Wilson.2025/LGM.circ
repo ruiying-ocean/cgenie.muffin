@@ -108,7 +108,7 @@ bg_ctrl_bio_remin_redox_save=.true.
 # specify forcings
 bg_par_forcing_name="worjh2.Fsal_SUR.RpCO2_Rp13CO2.Albani.0ka.norest"
 bg_par_atm_force_scale_val_3=278.0E-06
-bg_par_atm_force_scale_val_4=-6.46
+bg_par_atm_force_scale_val_4=-6.5
 
 #
 # *******************************************************************
@@ -145,7 +145,7 @@ eg_ctrl_use_q10 = .false.
 
 ## Physics
 bg_par_misc_brinerejection_jmax=19
-bg_par_misc_brinerejection_frac=0.2
+bg_par_misc_brinerejection_frac=0.4
 
 bg_ctrl_force_ocn_age1=.true.
 
@@ -160,4 +160,4 @@ bg_par_windspeed_file="wortdofy.windspeed_uvaa.dat"
 go_13=1.0
 ea_11=1.0
 
-bg_par_ocn_force_scale_val_2=0.05
+bg_par_ocn_force_scale_val_2=0.0
