@@ -155,7 +155,7 @@ ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
 
 # brine injection
 bg_par_misc_brinerejection_jmax=19
-bg_par_misc_brinerejection_frac=0.2
+bg_par_misc_brinerejection_frac=0.425
 
 bg_ctrl_force_ocn_age1=.true.
 
@@ -167,7 +167,7 @@ ea_adv_u="wortdofy.wvelx.dat"
 ea_adv_v= "wortdofy.wvely.dat"
 bg_par_windspeed_file="wortdofy.windspeed_uvaa.dat"
 
-go_13=1.0
-ea_11=1.0
+go_13=0.8
+ea_11=0.8
 
-bg_par_ocn_force_scale_val_2=0.05
+bg_par_ocn_force_scale_val_2=0.0
