@@ -30,9 +30,8 @@ SUMMARY OF EXPERIMENTS [summerize experiments detailed and in which e.g. figures
 PI_SPIN
 LGM.climate = PI_SPIN + radiative forcing + albedo profile + orbital forcing
 LGM.climate.q10 = LGM.climate + Zooplankton Q10
-LGM.iron = 
-LGM.circ = reduced mixing + wind
-LGM.brine = brine injection
+LGM.dust = 21 ka dust deposition
+LGM.circ = wind + brine injection
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups, main experiments, SI, etc where appropriate]

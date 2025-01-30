@@ -151,4 +151,4 @@ ea_par_albedo1d_name=malod_albs_LGM.dat
 eg_par_beta_POCtoDOC=0.75
 
 eg_ctrl_use_q10 = .true.
-eg_par_ecogem_q10_file='8P8Z.q10.2.7'
+eg_par_ecogem_q10_file='8P8Z.q10.2.2'
