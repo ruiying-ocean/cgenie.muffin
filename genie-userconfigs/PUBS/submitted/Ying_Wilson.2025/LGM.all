@@ -171,3 +171,11 @@ go_13=0.8
 ea_11=0.8
 
 bg_par_ocn_force_scale_val_2=0.0
+
+bg_ctrl_bio_remin_POC_fixed=.false.
+bg_par_bio_remin_sinkingrate=125.0
+bg_par_bio_remin_POC_K1=9.0E11
+bg_par_bio_remin_POC_Ea1=54000.0
+bg_par_bio_remin_POC_K2=1.0E14
+bg_par_bio_remin_POC_Ea2=80000.0
+bg_par_bio_remin_POC_frac2=0.008
