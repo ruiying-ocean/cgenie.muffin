@@ -164,10 +164,15 @@ ea_11=1.3
 bg_par_ocn_force_scale_val_2=0.05
 
 # SclFWF -- scale for zero freshwater re-balancing
-ea_28=0.00
+ea_28=0.70
 
 # reduced sea-ice eddy diffusivity
 gs_11=1000.000
+ea_diffa_scl=1.0
 
 # set a fractional sea-ce coverage threshold for preventing advection
 gs_par_sica_thresh=0.99
+
+# gas transfer
+bg_par_gastransfer_a=0.904
+
