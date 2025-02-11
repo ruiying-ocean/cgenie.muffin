@@ -39,9 +39,9 @@ RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups,
 
 qsub -j y -o cgenie_log -V -S /bin/bash
 
-./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTL.colr023789 PUBS/submitted/Ying_Wilson.2025 PI_SPIN 10000
+./runmuffin.sh muffin.CBE.GIteiiaa.BASESFeTDTL.col012789 PUBS/submitted/Ying_Wilson.2025 HOL.SPIN 10000
 
-./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTL.colr023789 PUBS/submitted/Ying_Wilson.2025 XXX 5000 PI_SPIN
+./runmuffin.sh muffin.CBE.GIteiiaa.BASESFeTDTL.col012789 PUBS/submitted/Ying_Wilson.2025 XXX 5000 HOL.SPIN
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
