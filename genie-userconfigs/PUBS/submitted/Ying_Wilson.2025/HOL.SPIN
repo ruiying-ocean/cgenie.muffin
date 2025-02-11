@@ -106,7 +106,7 @@ bg_ctrl_bio_remin_redox_save=.true.
 # *** FORCINGS ******************************************************
 #
 # specify forcings
-bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Albani.0ka"
+bg_par_forcing_name="GIteiiaa.RpCO2_Rp13CO2.Fsal_SUR.Albani.0ka"
 bg_par_atm_force_scale_val_3=278.0E-06
 bg_par_atm_force_scale_val_4=-6.5
 
@@ -141,3 +141,5 @@ eg_ctrl_PARseaicelimit=.true.
 # relative partitioning of C into DOM
 eg_par_beta_POCtoDOC=0.75
 eg_ctrl_use_q10 = .false.
+
+bg_par_ocn_force_scale_val_2=0.0
