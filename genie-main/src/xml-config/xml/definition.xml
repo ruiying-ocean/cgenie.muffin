@@ -8660,6 +8660,10 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
                         <value datatype="string">Default</value>
                         <description>Name describing form of temperature dependence</description>
                     </param>
+                    <param name="ctrl_use_q10">
+                        <value datatype="boolean">.FALSE.</value>
+                        <description>Use Q10 temperature dependency</description>
+                    </param>		    
                     <param name="ctrl_photosynth_form">
                         <value datatype="string">Geider98</value>
                         <description>Name describing form of photosynthesis equations</description>
@@ -9103,6 +9107,10 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
 			<value datatype="string">one_plankton.zoo</value>
 	                  <description>Plankton specific grazing input file</description>
                     </param>
+                    <param name="par_ecogem_q10_file">
+			<value datatype="string">8P8Z.q10</value>
+	                  <description>Plankton specific Q10 input file</description>
+                    </param>		    
 <!-- Other loss parameters -->
                     <param name="respir_a">
 			<value datatype="real">0.05</value>

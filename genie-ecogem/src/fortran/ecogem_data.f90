@@ -755,6 +755,53 @@ CONTAINS
 
   END SUBROUTINE sub_init_populations
 
+  SUBROUTINE sub_init_q10()
+    ! Local variables
+    INTEGER           :: n
+    INTEGER           :: loc_n_elements, loc_n_start
+    CHARACTER(len=16) :: loc_pft
+    REAL              :: loc_q10
+    CHARACTER(len=255):: loc_filename
+
+    ! Define the input file path
+    loc_filename = TRIM(par_indir_name) // "/" // TRIM(par_ecogem_q10_file)
+
+    ! Check the file format and determine the number of lines of data
+    CALL sub_check_fileformat(loc_filename, loc_n_elements, loc_n_start)
+
+    IF (loc_n_elements .EQ. 0) THEN
+       PRINT*, " "
+       PRINT*, "! ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       PRINT*, "! No plankton types specified in input file ", TRIM(loc_filename)
+       PRINT*, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       STOP
+    END IF
+
+    ! Open the file for reading
+    OPEN(unit=in, file=loc_filename, action='read')
+
+    ! Move to the start of the data section in the file
+    DO n = 1, loc_n_start
+       READ(unit=in, fmt='(1X)')
+    END DO
+
+    ! Rewind the file to the start of the data
+    REWIND(unit=in)
+    DO n = 1, loc_n_start
+       READ(unit=in, fmt='(1X)')
+    END DO
+
+    ! Read in the PFT and Q10 values
+    DO n = 1, loc_n_elements
+       READ(unit=in, FMT=*) loc_pft, loc_q10
+       !ignore the pft, shouldn't be modified here
+       Q10(n) = loc_q10
+    END DO
+
+    ! Close the file
+    CLOSE(unit=in)
+  END SUBROUTINE sub_init_q10
+
   ! ****************************************************************************************************************************** !
   ! DEFINE AND INITIALIZE EXPLICIT GRAZER PARMAETERS FROM INPUT FILE
   SUBROUTINE sub_init_explicit_grazing_params

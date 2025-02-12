@@ -153,6 +153,8 @@ MODULE ecogem_lib
   ! Temperature dependence
   real ::  temp_A,temp_P,temp_K,temp_T0   !
   namelist/ini_ecogem_nml/temp_A,temp_P,temp_K,temp_T0
+  logical::ctrl_use_q10
+  namelist/ini_ecogem_nml/ctrl_use_q10
   ! maximum temperature
   real ::  temp_max
   namelist/ini_ecogem_nml/temp_max
@@ -171,6 +173,8 @@ MODULE ecogem_lib
   NAMELIST /ini_ecogem_nml/nsubtime!
   CHARACTER(len=127)::par_ecogem_plankton_file
   NAMELIST /ini_ecogem_nml/par_ecogem_plankton_file
+  CHARACTER(len=127)::par_ecogem_q10_file
+  NAMELIST /ini_ecogem_nml/par_ecogem_q10_file  
   ! JDW force T fields
   logical::ctrl_force_T
   namelist /ini_ecogem_nml/ctrl_force_T
@@ -307,6 +311,7 @@ MODULE ecogem_lib
   INTEGER          ,ALLOCATABLE,DIMENSION(:)    ::nut2quota                                ! match nutrients to quotas
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::volume,diameter ,logvol,logesd           ! Size parameters
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::autotrophy,heterotrophy                  ! Trophic strategy
+  real             ,ALLOCATABLE,DIMENSION(:)    ::Q10                             
   LOGICAL          ,ALLOCATABLE,DIMENSION(:)    ::herbivory,carnivory                      ! Feeding behavior - Added by Grigoratou, Nov18
   real             ,ALLOCATABLE,DIMENSION(:)    ::pp_opt_a_array,pp_sig_a_array,ns_array   ! grazing parameters as arrays
   REAL             ,ALLOCATABLE,DIMENSION(:)    ::prey_refuge                              ! PFT dependent traits - Added by Grigoratou, Dec18

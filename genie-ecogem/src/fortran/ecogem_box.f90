@@ -148,7 +148,7 @@ CONTAINS
     ! ---------------------------------------------------------- !
     real,dimension(iomax,npmax),intent(in)    :: qreg
     real,dimension(iimax)      ,intent(in)    :: nuts
-    real,                       intent(in)    :: gamma_T
+    real, dimension(npmax)     ,intent(in)    :: gamma_T
     real,dimension(iimax,npmax),intent(inout) :: up_inorg
     ! ---------------------------------------------------------- !
     ! DEFINE LOCAL VARIABLES
@@ -165,11 +165,11 @@ CONTAINS
     do ii=2,iimax ! not carbon...
        ! resource and temperature limited uptake
        if (nuts(ii).gt.0.0) then
-          up_inorg(ii,:) = gamma_T * vmax(ii,:) * affinity(ii,:) * nuts(ii) &
+          up_inorg(ii,:) = gamma_T(:) * vmax(ii,:) * affinity(ii,:) * nuts(ii) &
                & / (vmax(ii,:) + affinity(ii,:) * nuts(ii))
           ! Equivalent to classic Michaelis-Menten form ...
           !     up_inorg(ii,:) = gamma_T * vmax(ii,:) * nuts(ii) / (nuts(ii) +kn(ii,:))
-          if (fundamental) up_inorg(ii,:) = gamma_T * vmax(ii,:)
+          if (fundamental) up_inorg(ii,:) = gamma_T(:) * vmax(ii,:)
        else
           up_inorg(ii,:) = 0.0
        endif
@@ -208,25 +208,25 @@ CONTAINS
     ! DUMMY ARGUMENTS
     ! ---------------------------------------------------------- !
     real,intent(in)  :: Tlocal
-    real,intent(out) :: gamma_TP, gamma_TK
+    real,dimension(npmax),intent(out) :: gamma_TP, gamma_TK
     
     if     (ctrl_tdep_form.eq.'Default')   then ! Ward, Dutkiewicz, Jahn & Follows - L&O (2012) 57(6), 1877-1891
     											! originally Laws et al. - GBC (2000) 14/4, 1231-1246
-       gamma_TP=exp(temp_A*(Tlocal-273.15-temp_T0))
-       gamma_TK=gamma_TP
+       gamma_TP(:)=exp(temp_A*(Tlocal-273.15-temp_T0))
+       gamma_TK(:)=gamma_TP(:)
        
     elseif (ctrl_tdep_form.eq.'Laws')    then ! Laws et al. - GBC (2000) 14/4, 1231-1246
-       gamma_TP = exp(temp_P*(Tlocal-273.15-temp_T0))
-       gamma_TK = exp(temp_K*(Tlocal-273.15-temp_T0))
+       gamma_TP(:) = exp(temp_P*(Tlocal-273.15-temp_T0))
+       gamma_TK(:) = exp(temp_K*(Tlocal-273.15-temp_T0))
     elseif (ctrl_tdep_form.eq.'Eppley')    then ! Eppley - Fish. Bull. (1972) 70, 1063-1085
-       gamma_TP=0.59*exp(0.0633*(Tlocal-273.15))
-       gamma_TK=gamma_TP
+       gamma_TP(:)=0.59*exp(0.0633*(Tlocal-273.15))
+       gamma_TK(:)=gamma_TP(:)
     elseif (ctrl_tdep_form.eq.'MEDUSA')    then ! Eppley - Fish. Bull. (1972) 70, 1063-1085
-       gamma_TP=1.066**(Tlocal-273.15)
-       gamma_TK=gamma_TP
+       gamma_TP(:)=1.066**(Tlocal-273.15)
+       gamma_TK(:)=gamma_TP(:)
     elseif (ctrl_tdep_form.eq.'Bissinger') then ! Bissinger, Montagnes, Sharples and Atkinson - L&O (2008) 53(2), 487-493
-       gamma_TP=0.81*exp(0.0631*(Tlocal-273.15))
-       gamma_TK=gamma_TP
+       gamma_TP(:)=0.81*exp(0.0631*(Tlocal-273.15))
+       gamma_TK(:)=gamma_TP(:)
     else
        print*,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
        print*,"ERROR: ctrl_tdep_form = '"//trim(ctrl_tdep_form)//"' is not a valid temperature dependence function."
@@ -235,7 +235,7 @@ CONTAINS
        STOP
     endif
 
-    if (gamma_TP.le.0.0.or.gamma_TK.le.0.0) then
+    if (any(gamma_TP(:).le.0.0).or.any(gamma_TK(:).le.0.0)) then
        print*,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
        print*,"ERROR: T-dependence function yields gamma_T<=0."
        print*,"Stopped in SUBROUTINE t_limitation (ecogem_box)."
@@ -244,6 +244,42 @@ CONTAINS
     endif
 
   END SUBROUTINE t_limitation
+
+  SUBROUTINE t_limitation_Q10(Tlocal, gamma_TP, gamma_TK)
+    IMPLICIT NONE
+
+    ! Input parameters
+    real, intent(in) :: Tlocal        ! Local temperature (e.g., in Kelvin or Celsius)
+
+    ! Output parameter
+    real, dimension(npmax), intent(out) :: gamma_TP, gamma_TK ! Temperature limitation factors
+
+    ! Local variables
+    integer :: i                     ! Loop variable
+    real :: temp_diff                ! Temperature difference from reference
+
+    ! Calculate the temperature difference (in 10°C units)
+    temp_diff = (Tlocal -273.15- temp_T0) / 10.0
+
+    ! Loop through each plankton type and calculate gamma_TP based on its Q10 value
+    do i = 1, size(Q10)
+       gamma_TP(i) = Q10(i) ** temp_diff
+    end do
+
+
+    gamma_TK = gamma_TP
+
+    ! Ensure gamma_TP values are positive
+    if (any(gamma_TP <= 0.0)) then
+       print *, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       print *, "ERROR: Q10-based calculation yielded non-positive gamma_TP values."
+       print *, "Stopped in SUBROUTINE t_limitation_Q10."
+       print *, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+       STOP
+    endif
+
+  END SUBROUTINE t_limitation_Q10
+  
 
   ! ****************************************************************************************************************************** !
   ! ****************************************************************************************************************************** !
@@ -259,7 +295,7 @@ CONTAINS
        &                         limit,     &
        &                         VLlimit,   &
        &                         up_inorg,  &
-       &                         gamma_T,   &
+       &                         gamma_TP,  &
        &                         PP,        &
        &                         chlsynth,  &
        &                         totPP      &
@@ -274,7 +310,7 @@ CONTAINS
     real,dimension(iomax,npmax),     intent(in) ::limit
     real,dimension(npmax),           intent(in) ::VLlimit
     real,dimension(iimax,npmax),     intent(in) ::up_inorg
-    real,                            intent(in) ::gamma_T
+    real,dimension(npmax),           intent(in) ::gamma_TP
     real,dimension(npmax),           intent(out)::PP
     real,dimension(npmax),           intent(out)::chlsynth
     real,                            intent(out)::totPP
@@ -327,7 +363,7 @@ CONTAINS
           Chl2C(:) = chl(:) / Cbiomass(:)
           Chl2C(:) = MERGE(Chl2C(:),0.0,Cbiomass(:).gt.0.0) ! Check for divide by zero
           ! theoretical light replete photosynthesis given current temperature and nutrient limitation: (s^-1)
-          PCmax(:) = vmax(iDIC,:) * VLlimit(:) * gamma_T
+          PCmax(:) = vmax(iDIC,:) * VLlimit(:) * gamma_TP(:)
           ! light-limited photosynthesis: (s^-1)
           PCPhot(:) = PCmax(:) * (1.0 - exp(-alpha(:)*Chl2C(:)*E0/PCmax))
           PCPhot(:) = MERGE(PCPhot(:),0.0,PCmax.gt.0.0) ! Check for divide by zero
@@ -370,7 +406,7 @@ CONTAINS
   ! ****************************************************************************************************************************** !
   SUBROUTINE grazing(          &
        &                  biomass,  &
-       &                  gamma_T,  &
+       &                  gamma_TK, &
 !BAW: zoolimit should be optional &                  zoolimit,  &
        &                  GrazingMat &
        &                 )
@@ -379,7 +415,7 @@ CONTAINS
     ! ---------------------------------------------------------- !
     ! DUMMY ARGUMENTS
     ! ---------------------------------------------------------- !
-    real,                                  intent(in)  :: gamma_T
+    real,dimension(npmax),                 intent(in)  :: gamma_TK
     real,dimension(iomax+iChl,npmax)      ,intent(in)  :: biomass
     real,dimension(iomax+iChl,npmax,npmax),intent(out) :: GrazingMat
 !BAW: zoolimit should be optional     real,dimension(npmax,npmax),intent(out)            :: zoolimit
@@ -451,7 +487,7 @@ CONTAINS
           ! loop prey to calculate grazing rates on each prey and element
           do jprey=1,npmax
              if (biomass(iCarb,jprey).gt.0.0.and.food2.gt.0.0) then ! if any prey food available
-                GrazingMat(iCarb,jpred,jprey) = tmp1 * gamma_T * graz(jpred)   &                        ! total grazing rate
+                GrazingMat(iCarb,jpred,jprey) = tmp1 * gamma_TK(jpred) * graz(jpred)   &                        ! total grazing rate
                      &             * (gkernel(jpred,jprey)*palatability(jprey)*biomass(iCarb,jprey))**ns_array(jpred)/food2 ! * switching
 !BAW: zoolimit should be optional zoolimit(jpred,jprey) = tmp1 *(gkernel(jpred,jprey)*palatability(jprey)*biomass(iCarb,jprey))**ns_array(jpred)/food2 ! food limitation calulation for zooplankton - Maria May 2019
                 ! other organic elements (+ chlorophyll) are grazed in stoichiometric relation to carbon

@@ -71,6 +71,7 @@ SUBROUTINE initialise_ecogem(    &
 
   ! get specifications of plankton populations from input file
   CALL sub_init_populations()
+
   
   if (ctrl_debug_eco_init) then
      write(*,*) ' ---------------------------------------------------'
@@ -230,6 +231,8 @@ SUBROUTINE initialise_ecogem(    &
   call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(prey_refuge(npmax),STAT=alloc_error)
   call check_iostat(alloc_error,__LINE__,__FILE__)
+  ALLOCATE(Q10(npmax),STAT=alloc_error)
+  call check_iostat(alloc_error,__LINE__,__FILE__)
   !ALLOCATE(grazing_protect(npmax),STAT=alloc_error)
   !call check_iostat(alloc_error,__LINE__,__FILE__)
   ALLOCATE(pp_opt_a_array(npmax),STAT=alloc_error)
@@ -340,7 +343,11 @@ SUBROUTINE initialise_ecogem(    &
   ! get explicit grazing parameters from input file
   if(ctrl_grazing_explicit)then
     CALL sub_init_explicit_grazing_params()
-  endif
+ endif
+
+ if (ctrl_use_q10) then
+    CALL sub_init_q10()
+ endif
 
   ! *** initialise plankton biomass array
   call sub_init_plankton()
