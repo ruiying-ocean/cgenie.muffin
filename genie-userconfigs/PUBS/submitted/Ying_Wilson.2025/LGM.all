@@ -146,7 +146,7 @@ eg_par_ecogem_q10_file='8P8Z.q10.2.2'
 
 # climate
 # albedo file
-ea_par_albedo1d_name=malod_albs_LGM.dat
+ea_par_albedo1d_name=wortdofy.albd.dat
 
 # Orbital parameters
 ea_par_orbit_osce=0.018994 # eccentricity
@@ -155,7 +155,7 @@ ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
 
 # brine injection
 bg_par_misc_brinerejection_jmax=19
-bg_par_misc_brinerejection_frac=0.5
+bg_par_misc_brinerejection_frac=0.4
 
 bg_ctrl_force_ocn_age1=.true.
 
