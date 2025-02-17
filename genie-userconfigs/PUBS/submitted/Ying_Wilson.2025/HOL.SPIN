@@ -151,6 +151,6 @@ ea_13=1.3
 ea_11=1.3
 
 # freshwater fluxes
-bg_par_ocn_force_scale_val_2=0.30
+bg_par_ocn_force_scale_val_2=0.20
 
 bg_ctrl_force_ocn_age1=.true.
