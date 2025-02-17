@@ -106,11 +106,10 @@ bg_ctrl_bio_remin_redox_save=.true.
 # *** FORCINGS ******************************************************
 #
 # specify forcings
-bg_par_forcing_name="GIteiiaa.RpCO2_Rp13CO2.Fsal_SUR.Albani.0ka.norest"
-bg_par_atm_force_scale_val_3=278.0E-06
-bg_par_atm_force_scale_val_4=-6.46
+bg_par_forcing_name="GIteiiaa.RpCO2_Rp13CO2.Fsal_SUR.Albani.0ka"
+bg_par_atm_force_scale_val_3=275.0E-06
+bg_par_atm_force_scale_val_4=-6.35
 
-#
 # *******************************************************************
 # *** END ***********************************************************
 # *******************************************************************
@@ -145,24 +144,13 @@ eg_ctrl_use_q10 = .false.
 
 ## Physics
 bg_par_misc_brinerejection_jmax=19
-bg_par_misc_brinerejection_frac=0.0
+bg_par_misc_brinerejection_frac=0.2
 
-bg_ctrl_force_ocn_age1=.true.
-
-ea_taux_u="wortdofy.taux_u.dat"
-ea_tauy_u="wortdofy.tauy_u.dat"
-ea_taux_v="wortdofy.taux_v.dat"
-ea_tauy_v="wortdofy.tauy_v.dat"
-ea_adv_u="wortdofy.wvelx.dat"
-ea_adv_v= "wortdofy.wvely.dat"
-bg_par_windspeed_file="wortdofy.windspeed_uvaa.dat"
-
-## wind scaling, determines AMOC and pCO2
-go_13=1.3
+# wind stress
+ea_13=1.3
 ea_11=1.3
 
-# ocean vertical diffusivity, default, 2.54e-5
-go_15=1.27e-5
+# freshwater fluxes
+bg_par_ocn_force_scale_val_2=0.30
 
-bg_par_ocn_force_scale_val_2=0.05
-
+bg_ctrl_force_ocn_age1=.true.
