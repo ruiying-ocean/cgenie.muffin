@@ -146,7 +146,8 @@ eg_par_ecogem_q10_file='8P8Z.q10.2.2'
 
 # climate
 # albedo file
-ea_par_albedo1d_name=wortdofy.albd.dat
+# ea_par_albedo1d_name=wortdofy.albd.dat
+ea_par_albedo1d_name=GIteiiva.albd.dat
 
 # Orbital parameters
 ea_par_orbit_osce=0.018994 # eccentricity
