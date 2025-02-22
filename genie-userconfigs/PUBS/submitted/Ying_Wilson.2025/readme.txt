@@ -44,7 +44,7 @@ qsub -j y -o cgenie_log -V -S /bin/bash
 ./runmuffin.sh muffin.CBE.GIteiiaa.BASESFeTDTL.col012789 PUBS/submitted/Ying_Wilson.2025 XXX 5000 HOL.SPIN
 
 
-./runmuffin.sh muffin.CB.worjh2.BASESFeTDTL.colr023789 PUBS/submitted/Ying_Wilson.2025 muffin.CB.worjh2.BASESFeTDTL.Albani.SPIN10000
+./runmuffin.sh muffin.CB.worjh2.BASESFeTDTL.colr023789 PUBS/submitted/Ying_Wilson.2025 muffin.CB.worjh2.BASESFeTDTL.Albani.SPIN 10000
 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
