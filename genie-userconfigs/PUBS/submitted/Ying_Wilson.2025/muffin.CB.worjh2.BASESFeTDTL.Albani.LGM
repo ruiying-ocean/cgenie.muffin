@@ -132,7 +132,7 @@ bg_par_windspeed_file="wortdofy.windspeed_uvaa.dat"
 
 # climate
 # albedo file
-ea_par_albedo1d_name=malod.albd.dat
+ea_par_albedo1d_name=malod_albs_LGM.dat
 
 # Orbital parameters
 ea_par_orbit_osce=0.018994 # eccentricity
