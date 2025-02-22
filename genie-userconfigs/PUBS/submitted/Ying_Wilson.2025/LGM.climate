@@ -149,7 +149,8 @@ eg_ctrl_PARseaicelimit=.true.
 eg_par_beta_POCtoDOC=0.75
 
 # albedo file
-ea_par_albedo1d_name=wortdofy.albd.dat
+# ea_par_albedo1d_name=wortdofy.albd.dat
+ea_par_albedo1d_name=GIteiiva.albd.dat
 
 eg_ctrl_use_q10 = .false.
 
