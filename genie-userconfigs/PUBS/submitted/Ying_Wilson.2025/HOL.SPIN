@@ -18,7 +18,8 @@ bg_par_bio_prodopt="NONE"
 bg_par_bio_remin_DOMlifetime=0.5
 
 # *** common settings ***********************************************
-bg_par_bio_remin_POC_frac2=0.055
+# initial fractional abundance of POC component #2
+bg_par_bio_remin_POC_frac2=0.0557
 # depth of remineralization or particulate organic matter
 bg_par_bio_remin_POC_eL1=589.9451
 # remineralization length #2 for POC
@@ -32,13 +33,14 @@ bg_par_bio_remin_CaCO3_eL2=1000000.0
 #
 # *** IRON CYCLING **************************************************
 # iron tracer scheme
+# NOTE: the base-config requires TFe and TL tracers
 bg_opt_geochem_Fe='hybrid'
-# aeolian Fe solubility
-bg_par_det_Fe_sol=0.002014275
-# modifier of the scavenging rate of dissolved Fe
-bg_par_scav_Fe_sf_POC=0.344104
 # exponent for aeolian Fe solubility [use 1.0 for uniform solubility]
 bg_par_det_Fe_sol_exp=0.500
+# aeolian Fe solubility [Albani tuning]
+bg_par_det_Fe_sol=0.002441
+# modifier of the scavenging rate of dissolved Fe [Albani tuning]
+bg_par_scav_Fe_sf_POC=0.2250
 # no scavenged regeneration
 bg_par_scav_fremin=0.0
 # return POFe
@@ -120,7 +122,7 @@ bg_par_bio_remin_sinkingrate_physical=9.9E9
 bg_par_bio_remin_sinkingrate_reaction=125.0
 
 # maximum time-scale to geochemical reaction completion (days)
-bg_par_bio_geochem_tau=90.0
+bg_par_bio_geochem_tau=45.0
 
 # extend solubility and geochem constant T range (leave S range as default)
 gm_par_geochem_Tmin  = -2.0
