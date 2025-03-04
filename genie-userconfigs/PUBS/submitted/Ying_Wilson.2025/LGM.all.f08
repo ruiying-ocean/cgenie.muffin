@@ -130,7 +130,7 @@ gm_par_carbchem_Tmin = -2.0
 gm_par_carbchem_Tmax = 45.0
 
 # kraus-turner mixed layer scheme on (1) or off (0)
-go_imld = 1
+# go_imld = 1
 
 # *** optional changes to align with PALEO recommendations **********
 # set mixed layer to be only diagnosed (for ECOGEM)
