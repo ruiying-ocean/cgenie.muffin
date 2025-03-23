@@ -164,3 +164,5 @@ bg_par_bio_remin_POC_Ea1=54000.0
 bg_par_bio_remin_POC_K2=1.0E14
 bg_par_bio_remin_POC_Ea2=80000.0
 bg_par_bio_remin_POC_frac2=0.008
+
+ea_par_albedo2d_name=GIteiiaa.2Dalbd.dat

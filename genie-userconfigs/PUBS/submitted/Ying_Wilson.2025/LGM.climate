@@ -164,4 +164,4 @@ ea_par_orbit_osce=0.018994 # eccentricity
 ea_par_orbit_oscsob=0.389911 # sine of obliquity
 ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
 
-ea_par_albedo1d_name=GIteiiva.albd.dat
+ea_par_albedo2d_name=wortdofy.2dalbd.dat
