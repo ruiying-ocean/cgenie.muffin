@@ -876,17 +876,6 @@ c AR/170320 : added option of reading-from-file
       if (debug_init) print*,'climatological albedo, by latitude'
       if (par_albedo2d_name.ne.'NONE') then
 
-         open(35,file=indir_name(1:lenin)//
-     &        trim(par_albedo2d_name),iostat=ios)
-         call check_iostat(ios,__LINE__,__FILE__)
-         
-         do j=jmax,1,-1
-            do i=1,imax
-               read(35,*) albcl(i,j)
-            enddo
-         enddo
-         
-c 2D ABLEDO
          open(34,file=indir_name(1:lenin)//
      &        trim(par_albedo2d_name),iostat=ios)
          call check_iostat(ios,__LINE__,__FILE__)
