@@ -880,7 +880,7 @@ c AR/170320 : added option of reading-from-file
      &        trim(par_albedo2d_name),iostat=ios)
          call check_iostat(ios,__LINE__,__FILE__)
 
-         read(34,*,iostat=ios)((albcl(i,j),i=1,imax),j=1,jmax)
+         read(34,*,iostat=ios) ((albcl(i,j), i=1, imax), j=jmax, 1, -1)         
          close(34,iostat=ios)
          
       elseif (par_albedo1d_name.ne.'NONE') then    
