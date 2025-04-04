@@ -236,6 +236,12 @@
          (1) left button to deepen grid cell
          (2) right button to shallow grid cell
          (3) middle button, or clickoutside the grid, to finish
+         -> Deepening cell at (8, 7) to k=6
+         -> Deepening cell at (8, 7) to k=5
+         -> Deepening cell at (8, 6) to k=6
+         -> Deepening cell at (8, 6) to k=5
+         -> Deepening cell at (8, 5) to k=6
+         -> Deepening cell at (8, 5) to k=5
        - Out of grid range
        * Mask alteration complete
        - User-editing complete.
@@ -281,8 +287,8 @@
 [Warning: PostScript format 'psc2' will not be supported in a future release.] 
 [> In inputcheck
 In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024a.app/toolbox/matlab/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024a.app/toolbox/matlab/graphics/printing/print.m',41,0)">line 41</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('plot_2dgridded', '/Users/yingrui/science/muffingen/source/plot_2dgridded.m', 239)" style="font-weight:bold">plot_2dgridded</a> (<a href="matlab: opentoline('/Users/yingrui/science/muffingen/source/plot_2dgridded.m',239,0)">line 239</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('muffingen', '/Users/yingrui/science/muffingen/muffingen.m', 1198)" style="font-weight:bold">muffingen</a> (<a href="matlab: opentoline('/Users/yingrui/science/muffingen/muffingen.m',1198,0)">line 1198</a>)] 
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('plot_2dgridded', '/Users/yingrui/science/cookiegen/source/plot_2dgridded.m', 239)" style="font-weight:bold">plot_2dgridded</a> (<a href="matlab: opentoline('/Users/yingrui/science/cookiegen/source/plot_2dgridded.m',239,0)">line 239</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('muffingen', '/Users/yingrui/science/cookiegen/muffingen.m', 1198)" style="font-weight:bold">muffingen</a> (<a href="matlab: opentoline('/Users/yingrui/science/cookiegen/muffingen.m',1198,0)">line 1198</a>)] 
        - .depth.dat saved
        - template file .sedcoremask.dat saved
        - template file .reefmask.dat saved

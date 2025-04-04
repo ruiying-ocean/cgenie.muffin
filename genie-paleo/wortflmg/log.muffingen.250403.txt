@@ -23,6 +23,15 @@
        * found 2 water masses
        - Small water bodies cleaned up.
        * Revised land area fraction = 0.33179
+>   7. USER EDITING OF MASK ...
+       * Mask alteration procedure :
+         (1) left button to turn grid cell to ocean
+         (2) right button to turn grid cell to land
+         (3) middle button, or clickoutside the grid, to finish
+       - Out of grid range
+       * Mask alteration complete
+       * Revised land area fraction = 0.33179
+       - User-editing complete.
 >   8. CREATE FINAL MASK ...
        - .mask_out.FINAL.dat saved
        * Final land area fraction   = 0.33179
@@ -187,6 +196,24 @@
          -> MAKE SHALLOWER :: Loop count = 5 @ (31,17,2); s = 2; l = 2
          -> MAKE SHALLOWER :: Loop count = 5 @ (32,27,2); s = 3; l = 0
        - Topography filtered.
+>  12. USER EDITING OF TOPO ...
+       * Topography alteration procedure :
+         (1) left button to deepen grid cell
+         (2) right button to shallow grid cell
+         (3) middle button, or clickoutside the grid, to finish
+         -> Deepening cell at (8, 5) to k=6
+         -> Deepening cell at (8, 4) to k=6
+         -> Deepening cell at (9, 4) to k=6
+         -> Deepening cell at (8, 4) to k=5
+         -> Deepening cell at (8, 5) to k=5
+         -> Deepening cell at (9, 4) to k=5
+         -> Shallowing cell at (8, 3) to k=5
+         -> Shallowing cell at (9, 4) to k=6
+         -> Deepening cell at (9, 4) to k=5
+         -> Deepening cell at (9, 3) to k=5
+       - Out of grid range
+       * Mask alteration complete
+       - User-editing complete.
 >  13. CALCULATING RUN-OFF AND GENERATE .k1 FILE ...
        - .k1 file saved
 >  14. IDENTIFY ISLANDS ...
@@ -233,8 +260,8 @@
 [Warning: PostScript format 'psc2' will not be supported in a future release.] 
 [> In inputcheck
 In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', '/Applications/MATLAB_R2024a.app/toolbox/matlab/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2024a.app/toolbox/matlab/graphics/printing/print.m',41,0)">line 41</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('plot_2dgridded', '/Users/yingrui/science/muffingen/source/plot_2dgridded.m', 239)" style="font-weight:bold">plot_2dgridded</a> (<a href="matlab: opentoline('/Users/yingrui/science/muffingen/source/plot_2dgridded.m',239,0)">line 239</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('muffingen', '/Users/yingrui/science/muffingen/muffingen.m', 1198)" style="font-weight:bold">muffingen</a> (<a href="matlab: opentoline('/Users/yingrui/science/muffingen/muffingen.m',1198,0)">line 1198</a>)] 
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('plot_2dgridded', '/Users/yingrui/science/cookiegen/source/plot_2dgridded.m', 239)" style="font-weight:bold">plot_2dgridded</a> (<a href="matlab: opentoline('/Users/yingrui/science/cookiegen/source/plot_2dgridded.m',239,0)">line 239</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('muffingen', '/Users/yingrui/science/cookiegen/muffingen.m', 1198)" style="font-weight:bold">muffingen</a> (<a href="matlab: opentoline('/Users/yingrui/science/cookiegen/muffingen.m',1198,0)">line 1198</a>)] 
        - .depth.dat saved
        - template file .sedcoremask.dat saved
        - template file .reefmask.dat saved
