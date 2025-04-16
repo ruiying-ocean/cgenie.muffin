@@ -182,3 +182,5 @@ gm_par_carbchem_Tmax = 45.0
 #
 
 
+eg_ctrl_use_q10 = .true.
+eg_par_ecogem_q10_file='3Diat4ZP_PiEu.q10'

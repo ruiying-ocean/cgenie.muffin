@@ -1,24 +1,19 @@
-
+ 
  01                 02    03
  \/                 \/    \/
 
 -START-OF-DATA-
- Phytoplankton     1.648
- Phytoplankton     1.648  
- Phytoplankton     1.648
- Phytoplankton 	   1.648
- Phytoplankton     1.648
- Phytoplankton     1.648
- Phytoplankton     1.648
- Phytoplankton     1.648
- Zooplankton 	   2.7
- Zooplankton	   2.7
- Zooplankton 	   2.7
- Zooplankton 	   2.7
- Zooplankton 	   2.7
- Zooplankton 	   2.7
- Zooplankton 	   2.7
- Zooplankton 	   2.7
+ Diatom             1.55
+ Diatom             1.55
+ Diatom             1.55
+ Picoplankton       2.13
+ Picoplankton       2.13
+ Eukaryote          1.46
+ Eukaryote          1.46
+ Zooplankton        2.70
+ Zooplankton        2.70
+ Zooplankton        2.70
+ Zooplankton        2.70
 -END-OF-DATA-
 
  /\                 /\    /\
@@ -36,9 +31,11 @@ INFO: TRACER ASSIGNMENT RULES
 Plankton functional type one of: Prochlorococcus
                                  Synechococcus
                                  Picoeukaryote
+		                         Picoplankton
                                  Diatom
                                  Coccolithophore
                                  Diazotroph
+ 			                     Eukaryote
+                                 Phytoplankton
                                  Zooplankton
                                  Mixotroph
-
