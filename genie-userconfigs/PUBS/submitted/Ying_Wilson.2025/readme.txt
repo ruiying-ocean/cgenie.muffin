@@ -27,11 +27,11 @@ EDITING LOG [list of changes made to this file, when, and by who]
 SUMMARY OF EXPERIMENTS [summerize experiments detailed and in which e.g. figures they appear]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-PI_SPIN
-LGM.climate = PI_SPIN + radiative forcing + albedo profile + orbital forcing
-LGM.climate.q10 = LGM.climate + Zooplankton Q10
-LGM.dust = 21 ka dust deposition
-LGM.circ = wind + brine injection
+HOL SPINUP
+
+LGM SPINUP
+LGMa = stratified ocean
+LGMb = well ventilated ocean
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups, main experiments, SI, etc where appropriate]
@@ -39,12 +39,9 @@ RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups,
 
 qsub -j y -o cgenie_log -V -S /bin/bash
 
-./runmuffin.sh muffin.CBE.GIteiiaa.BASESFeTDTL.col012789 PUBS/submitted/Ying_Wilson.2025 HOL.SPIN 10000
-
-./runmuffin.sh muffin.CBE.GIteiiaa.BASESFeTDTL.col012789 PUBS/submitted/Ying_Wilson.2025 XXX 5000 HOL.SPIN
+./runmuffin.sh muffin.CBE.GIteiiaa.BASESFeTDTLSi.col023789 PUBS/submitted/Ying_Wilson.2025 muffin.CBE.GIteiiaa.dat 5000
 
 
-./runmuffin.sh muffin.CB.worjh2.BASESFeTDTL.colr023789 PUBS/submitted/Ying_Wilson.2025 muffin.CB.worjh2.BASESFeTDTL.Albani.SPIN 10000
 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
