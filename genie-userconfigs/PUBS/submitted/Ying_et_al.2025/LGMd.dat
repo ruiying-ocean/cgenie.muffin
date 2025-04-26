@@ -73,7 +73,7 @@ bg_par_d30Si_opal_epsilon=-1.1
 #
 # ecosystem configuration
 # PFTs with diatoms, pico and eukaryotes Fanny - Jun20
-eg_par_ecogem_plankton_file ='nobio.eco'
+eg_par_ecogem_plankton_file ='3Diat4ZP_PiEu.eco'
 
 #################### Nitrogen ############################
 eg_useNO3                   =.false.
@@ -147,11 +147,12 @@ bg_ctrl_bio_remin_redox_save=.true.
 #
 # *** FORCINGS ******************************************************
 #
-bg_par_forcing_name="GIteiiaa.RpCO2_Rp13CO2.Fsal_SUR.Albani.21ka"
+bg_par_forcing_name="RpCO2_Rp13CO2_Rp14CO2.Fsal_SUR.Albani.21ka"
 bg_par_atm_force_scale_val_3=193.0E-06
 bg_par_atm_force_scale_val_4=-6.46
 # 14C production -- mean of 19-23 ka from Hain et al.
 ac_par_atm_F14C = 576.5483771
+
 
 #
 # *** MISC **********************************************************
@@ -184,6 +185,7 @@ gm_par_carbchem_Tmax = 45.0
 # *** END ***********************************************************
 # *******************************************************************
 #
+
 bg_ctrl_force_ocn_age1=.true.
 
 ## wind product
@@ -205,5 +207,11 @@ ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
 
 # circulation
 bg_par_misc_brinerejection_jmax=9
-bg_par_misc_brinerejection_frac=0.5
-bg_par_ocn_force_scale_val_2=0.1
+bg_par_misc_brinerejection_frac=0.1
+bg_par_ocn_force_scale_val_2=0.05
+bg_par_ocn_force_scale_val_49=-0.3
+
+## salinity
+bg_ctrl_ocn_rinit_ALL=.True.
+bg_par_ocn_rinit_ALL=0.03
+go_par_dsc=4850
