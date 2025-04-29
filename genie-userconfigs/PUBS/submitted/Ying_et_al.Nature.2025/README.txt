@@ -14,7 +14,7 @@ for details on model code installation and configuration, locating and visualizi
 PUBLICATION DETAILS [summary of manuscript/publication]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-[PAPER TITLE] Selective extinction in the end-Cretaceous oceans driven by light loss
+[PAPER TITLE] Selective extinction in the end-Cretaceous oceans driven by darkness
 [AUTHOR LIST] Rui Ying, Fanny Monteiro, James Witts, Daniela Schmidt
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -44,13 +44,17 @@ EXP5, forced with pre-impact PAR
 RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups, main experiments, SI, etc where appropriate]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+Step 0: install necessary compiler libraries
+
+     Please go to https://github.com/derpycode/muffindoc for detailed instruction
+
 Step 1: uncomment `call radfor_wrapper` in `genie.F`
 
 Step 2: in cgenie.muffin/genie-main, run:
 
-qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.NG.2024 muffin.u067bc.PO4.8P8Z.SPIN 10000
+qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.Nature.2025 muffin.u067bc.PO4.8P8Z.SPIN 10000
 
-qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.NG.2024 muffin.u067bc.PO4.8P8Z.EXP1.XXXX 200 muffin.u067bc.PO4.8P8Z.SPIN
+qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.Nature.2025 muffin.u067bc.PO4.8P8Z.EXP1.XXXX 200 muffin.u067bc.PO4.8P8Z.SPIN
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
