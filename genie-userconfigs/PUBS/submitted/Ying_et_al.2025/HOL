@@ -147,12 +147,10 @@ bg_ctrl_bio_remin_redox_save=.true.
 #
 # *** FORCINGS ******************************************************
 #
-bg_par_forcing_name="RpCO2_Rp13CO2_Rp14CO2.Fsal_SUR.Albani.21ka"
-bg_par_atm_force_scale_val_3=193.0E-06
-bg_par_atm_force_scale_val_4=-6.46
-# 14C production -- mean of 19-23 ka from Hain et al.
-ac_par_atm_F14C = 576.5483771
-
+bg_par_forcing_name="RpCO2_Rp13CO2_Rp14CO2.Fsal_SUR.Albani.0ka"
+bg_par_atm_force_scale_val_3=275.0E-06
+bg_par_atm_force_scale_val_4=-6.35
+bg_par_atm_force_scale_val_5=38.4
 
 #
 # *** MISC **********************************************************
@@ -170,7 +168,7 @@ go_imld = 1
 # set mixed layer to be only diagnosed (for ECOGEM)
 go_ctrl_diagmld=.true.
 # add seaice attenuation of PAR
-eg_ctrl_PARseaicelimit=.true.
+eg_ctrl_PARseaicelimit=.false.
 # relative partitioning of C into DOM
 #eg_par_beta_POCtoDOC=0.75
 # maximum time-scale to geochemical reaction completion (days)
@@ -186,32 +184,8 @@ gm_par_carbchem_Tmax = 45.0
 # *******************************************************************
 #
 
-bg_ctrl_force_ocn_age1=.true.
-
-## wind product
-ea_taux_u="wortdofy.taux_u.dat"
-ea_tauy_u="wortdofy.tauy_u.dat"
-ea_taux_v="wortdofy.taux_v.dat"
-ea_tauy_v="wortdofy.tauy_v.dat"
-ea_adv_u="wortdofy.wvelx.dat"
-ea_adv_v= "wortdofy.wvely.dat"
-bg_par_windspeed_file="wortdofy.windspeed_uvaa.dat"
-
-# albedo
-ea_par_albedo2d_name=wortdofy.2Dalbd.dat
-
-# Orbital parameters
-ea_par_orbit_osce=0.018994 # eccentricity
-ea_par_orbit_oscsob=0.389911 # sine of obliquity
-ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
-
-# circulation
 bg_par_misc_brinerejection_jmax=9
-bg_par_misc_brinerejection_frac=0.1
-bg_par_ocn_force_scale_val_2=0.05
-bg_par_ocn_force_scale_val_49=0.3
+bg_par_misc_brinerejection_frac=0.0
+bg_par_ocn_force_scale_val_2=0.1
 
-## salinity
-bg_ctrl_ocn_rinit_ALL=.True.
-bg_par_ocn_rinit_ALL=0.03
-go_par_dsc=4850
+bg_ctrl_force_ocn_age1=.true.
