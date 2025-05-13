@@ -29,6 +29,8 @@ SUMMARY OF EXPERIMENTS [summerize experiments detailed and in which e.g. figures
 
 SPINUP, end-Cretaceous spinup from Schmidt et al. (2016) Nature Geoscience
 
+EXP0, As EXP3 main experiment, but no extinction
+
 EXP1, reduced solar radiation
 
 EXP2, abrupt CO2 emission
