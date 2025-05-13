@@ -40,7 +40,31 @@ bg_par_bio_remin_sinkingrate_reaction=125.0
 #
 # *** IRON CYCLING **************************************************
 #
-# [no iron]
+# NOTE: the base-config requires TFe and TL tracers
+bg_opt_geochem_Fe='hybrid'
+# exponent for aeolian Fe solubility [use 1.0 for uniform solubility]
+bg_par_det_Fe_sol_exp=0.500
+# aeolian Fe solubility
+bg_par_det_Fe_sol=0.002441
+# modifier of the scavenging rate of dissolved Fe
+bg_par_scav_Fe_sf_POC=0.225
+# no scavenged regeneration
+bg_par_scav_fremin=0.0
+# return POFe
+bg_ctrl_bio_NO_fsedFe=.false.
+# Variable Fe:C
+bg_ctrl_bio_red_fixedFetoC=.false.
+# adjust pK'(FeL)
+bg_par_K_FeL_pP=11.0
+#(max) C/Fe organic matter ratio
+bg_par_bio_red_POFe_POC=250000.0
+#[FeT] dependent Fe:C ratio [Ridgwell, 2001] -- power
+bg_par_bio_FetoC_pP=-0.4225
+#[FeT] dependent Fe:C ratio [Ridgwell, 2001] -- scaling
+bg_par_bio_FetoC_K=103684.0
+#[FeT] dependent Fe:C ratio [Ridgwell, 2001] -- constant
+bg_par_bio_FetoC_C=0.0
+
 #
 # *** ECOGEM ********************************************************
 #
@@ -77,6 +101,13 @@ eg_qminP_a=0.0027022
 eg_qmaxP_a=0.0216773
 eg_affinPO4_a=0.94403
 eg_affinPO4_b=-0.43718
+eg_qminFe_a=6.8572e-07
+eg_qmaxFe_a=4.09512e-06
+eg_affinFe_a=0.17761
+eg_affinFe_b=-0.2574
+eg_vmaxFe_a=0.00016885
+eg_vmaxFe_b=-0.12635
+
 # ???
 eg_ns=2
 # ???
