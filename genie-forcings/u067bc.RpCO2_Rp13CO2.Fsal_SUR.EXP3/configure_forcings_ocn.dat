@@ -4,6 +4,8 @@
 
 -START-OF-DATA-
   2  f  f  0.1  t  f  -1  01  01  01  '[salinity (PSU)]'
+  8  f  f  0.0  t  t  -1  01  01  01  '[PO4]'
+  90 f  f  0.0  t  f  -1  01  01  01  '[TDFe]'
 -END-OF-DATA-
 
   /\ /\ /\ /\   /\ /\ /\  /\  /\  /\
