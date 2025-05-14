@@ -151,6 +151,7 @@ bg_par_forcing_name="RpCO2_Rp13CO2_Rp14CO2.Fsal_SUR.Albani.0ka"
 bg_par_atm_force_scale_val_3=275.0E-06
 bg_par_atm_force_scale_val_4=-6.35
 bg_par_atm_force_scale_val_5=38.4
+
 #
 # *** MISC **********************************************************
 # --- EcoGENIE1.1 settings ----
@@ -167,7 +168,7 @@ go_imld = 1
 # set mixed layer to be only diagnosed (for ECOGEM)
 go_ctrl_diagmld=.true.
 # add seaice attenuation of PAR
-eg_ctrl_PARseaicelimit=.false.
+eg_ctrl_PARseaicelimit=.true.
 # relative partitioning of C into DOM
 #eg_par_beta_POCtoDOC=0.75
 # maximum time-scale to geochemical reaction completion (days)
@@ -183,11 +184,12 @@ gm_par_carbchem_Tmax = 45.0
 # *******************************************************************
 #
 
-eg_ctrl_use_q10 = .true.
-eg_par_ecogem_q10_file='3Diat4ZP_PiEu.q10'
-
 bg_par_misc_brinerejection_jmax=9
 bg_par_misc_brinerejection_frac=0.0
-bg_par_ocn_force_scale_val_2=0.1
+bg_par_ocn_force_scale_val_2=0.15
+bg_par_ocn_force_scale_val_49=-0.1
 
 bg_ctrl_force_ocn_age1=.true.
+
+eg_ctrl_use_q10 = .true.
+eg_par_ecogem_q10_file='3Diat4ZP_PiEu.q10'
