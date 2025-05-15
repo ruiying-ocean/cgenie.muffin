@@ -82,6 +82,7 @@ eg_foram_symbiont_esd_scale=0.01
 eg_foram_auto_cost=0.04
 eg_foram_hetero_cost=0.35
 eg_foram_spine_scale=3.5
+
 #################### Nitrogen ############################
 eg_useNO3                   =.false.
 eg_nquota                   =.false.
@@ -89,8 +90,8 @@ eg_nquota                   =.false.
 eg_usePO4                   =.true.
 eg_pquota                   =.true.
 ######################## Iron ############################
-eg_useFe                    =.false.
-eg_fquota                   =.false.
+eg_useFe                    =.true.
+eg_fquota                   =.true.
 ################# Chlorophyll ############################
 eg_chlquota                 =.true.
 ################# d13C ###################################
@@ -154,7 +155,7 @@ gs_dosc=.true.
 # force solar constant and CO2 emission
 bg_ctrl_force_GOLDSTEInTS=.false.
 bg_ctrl_force_solconst = .true. # remember to uncomment rador.F
-bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.EXP3"
+bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.main"
 
 # scale
 bg_par_ocn_force_scale_val_2=0.005
@@ -202,7 +203,4 @@ eg_ctrl_limit_neg_biomass=.false.
 
 eg_ctrl_real_extinction=.true.
 
-## eliminate SST impact
-eg_ctrl_force_T=.true.
-eg_par_ecogem_force_T_file="muffin.u067bc.PO4.SST.dat"
 eg_trophic_tradeoff = 0.3

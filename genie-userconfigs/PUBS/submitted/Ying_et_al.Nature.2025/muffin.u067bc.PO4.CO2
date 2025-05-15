@@ -39,7 +39,6 @@ bg_par_bio_remin_sinkingrate_physical=9.9E9
 bg_par_bio_remin_sinkingrate_reaction=125.0
 #
 # *** IRON CYCLING **************************************************
-#
 # NOTE: the base-config requires TFe and TL tracers
 bg_opt_geochem_Fe='hybrid'
 # exponent for aeolian Fe solubility [use 1.0 for uniform solubility]
@@ -65,7 +64,6 @@ bg_par_bio_FetoC_K=103684.0
 #[FeT] dependent Fe:C ratio [Ridgwell, 2001] -- constant
 bg_par_bio_FetoC_C=0.0
 
-#
 # *** ECOGEM ********************************************************
 #
 gm_ctrl_debug_init          =0
@@ -82,7 +80,6 @@ eg_foram_symbiont_esd_scale=0.01
 eg_foram_auto_cost=0.04
 eg_foram_hetero_cost=0.35
 eg_foram_spine_scale=3.5
-
 #################### Nitrogen ############################
 eg_useNO3                   =.false.
 eg_nquota                   =.false.
@@ -107,7 +104,6 @@ eg_affinFe_a=0.17761
 eg_affinFe_b=-0.2574
 eg_vmaxFe_a=0.00016885
 eg_vmaxFe_b=-0.12635
-
 # ???
 eg_ns=2
 # ???
@@ -143,6 +139,7 @@ bg_par_infile_sig_name='save_timeseries_kpg.dat'
 
 # --- FORCINGS -------------------------------------------------
 #
+
 # sine of obliquity, 23.5 degree
 ea_par_orbit_oscsob=0.39874906892
 
@@ -154,15 +151,19 @@ ea_dosc=.true.
 go_dosc=.true.
 gs_dosc=.true.
 
-# force solar constant
+# DO NOT force solar constant
 bg_ctrl_force_GOLDSTEInTS=.false.
-bg_ctrl_force_solconst = .true. # remember to uncomment rador.F
-bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.EXP1"
+bg_ctrl_force_solconst = .false.
+bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.CO2"
 
-## fixed CO2
+# scale
 bg_par_ocn_force_scale_val_2=0.005
-bg_par_atm_force_scale_val_3=834.0E-06
-bg_par_atm_force_scale_val_4=-4.9
+
+# scale CO2 emission
+bg_par_atm_force_scale_val_3=8.3333e+013
+
+# scale d13C of fossil CO2
+bg_par_atm_force_scale_val_4=-27.0
 
 # set alternative wind speed field
 bg_par_windspeed_file="u067b__windspeed.dat"
@@ -172,8 +173,10 @@ bg_par_gastransfer_a=0.4675
 
 # INIT ALK
 bg_ocn_init_12=2.000-03
+
 #
 # *** MISC **********************************************************
+
 # EcoGEnIE 1.1. Parameters
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld = 1
@@ -198,7 +201,7 @@ gm_par_geochem_Tmax  = 45.0
 gm_par_carbchem_Tmin = -2.0
 gm_par_carbchem_Tmax = 45.0
 
-# limit negative biomass (which is default)
+# limit negative biomass
 eg_ctrl_limit_neg_biomass=.false.
 eg_ctrl_real_extinction=.true.
 

@@ -82,7 +82,6 @@ eg_foram_symbiont_esd_scale=0.01
 eg_foram_auto_cost=0.04
 eg_foram_hetero_cost=0.35
 eg_foram_spine_scale=3.5
-
 #################### Nitrogen ############################
 eg_useNO3                   =.false.
 eg_nquota                   =.false.
@@ -90,12 +89,13 @@ eg_nquota                   =.false.
 eg_usePO4                   =.true.
 eg_pquota                   =.true.
 ######################## Iron ############################
-eg_useFe                    =.true.
-eg_fquota                   =.true.
+eg_useFe                    =.false.
+eg_fquota                   =.false.
 ################# Chlorophyll ############################
 eg_chlquota                 =.true.
 ################# d13C ###################################
 eg_useDIC_13C               =.true.
+# Tuned parameters
 # Tuned parameters
 eg_qminP_a=0.0027022
 eg_qmaxP_a=0.0216773
@@ -155,7 +155,7 @@ gs_dosc=.true.
 # force solar constant and CO2 emission
 bg_ctrl_force_GOLDSTEInTS=.false.
 bg_ctrl_force_solconst = .true. # remember to uncomment rador.F
-bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.EXP3"
+bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR.main"
 
 # scale
 bg_par_ocn_force_scale_val_2=0.005
@@ -201,6 +201,8 @@ gm_par_carbchem_Tmax = 45.0
 # limit negative biomass
 eg_ctrl_limit_neg_biomass=.false.
 
-eg_ctrl_real_extinction=.false.
+eg_ctrl_real_extinction=.true.
 
+eg_ctrl_force_PAR=.true.
+eg_par_ecogem_force_PAR_file="muffin.u067bc.PO4.PAR.dat"
 eg_trophic_tradeoff = 0.3
