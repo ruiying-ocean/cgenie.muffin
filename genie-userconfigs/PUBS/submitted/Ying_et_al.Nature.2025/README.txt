@@ -54,9 +54,9 @@ Step 1: uncomment `call radfor_wrapper` in `genie.F`
 
 Step 2: in cgenie.muffin/genie-main, run:
 
-qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.Nature.2025 muffin.u067bc.PO4.8P8Z.SPIN 10000
+qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.Nature.2025 muffin.u067bc.PO4Fe.SPIN 10000
 
-qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.Nature.2025 muffin.u067bc.PO4.8P8Z.EXP1.XXXX 200 muffin.u067bc.PO4.8P8Z.SPIN
+qsub -j y -o cgenie_log -V -S /bin/bash runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.u067bc.BASES PUBS/submitted/Ying_et_al.Nature.2025 muffin.u067bc.PO4Fe.main 200 muffin.u067bc.PO4Fe.SPIN
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
