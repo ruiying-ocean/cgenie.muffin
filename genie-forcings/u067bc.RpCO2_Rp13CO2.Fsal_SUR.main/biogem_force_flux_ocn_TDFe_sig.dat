@@ -9,4 +9,4 @@
 
 # NOTE: total flux in units of mol yr-1
 # can be rescaled in the user-config file by setting the value of parameter:
-# bg_par_atm_force_scale_val_8
+# bg_par_atm_force_scale_val_90
