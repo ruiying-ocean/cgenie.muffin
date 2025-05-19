@@ -189,16 +189,16 @@ gm_par_carbchem_Tmax = 45.0
 bg_ctrl_force_ocn_age1=.true.
 
 ## wind product
-ea_taux_u="wortdofy.taux_u.dat"
-ea_tauy_u="wortdofy.tauy_u.dat"
-ea_taux_v="wortdofy.taux_v.dat"
-ea_tauy_v="wortdofy.tauy_v.dat"
-ea_adv_u="wortdofy.wvelx.dat"
-ea_adv_v= "wortdofy.wvely.dat"
-bg_par_windspeed_file="wortdofy.windspeed_uvaa.dat"
+ea_taux_u="worteiiv.taux_u.dat"
+ea_tauy_u="worteiiv.tauy_u.dat"
+ea_taux_v="worteiiv.taux_v.dat"
+ea_tauy_v="worteiiv.tauy_v.dat"
+ea_adv_u="worteiiv.wvelx.dat"
+ea_adv_v= "worteiiv.wvely.dat"
+bg_par_windspeed_file="worteiiv.windspeed_uvaa.dat"
 
 # albedo
-ea_par_albedo2d_name=wortdofy.2Dalbd.dat
+ea_par_albedo1d_name=worteiiv.albd.dat
 
 # Orbital parameters
 ea_par_orbit_osce=0.018994 # eccentricity
