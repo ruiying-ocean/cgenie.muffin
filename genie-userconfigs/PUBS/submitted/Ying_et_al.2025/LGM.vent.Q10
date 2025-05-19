@@ -211,10 +211,5 @@ bg_par_misc_brinerejection_frac=0.1
 bg_par_ocn_force_scale_val_2=0.08
 bg_par_ocn_force_scale_val_49=0.3
 
-## salinity
-bg_ctrl_ocn_rinit_ALL=.True.
-bg_par_ocn_rinit_ALL=0.03
-go_par_dsc=4850
-
 eg_ctrl_use_q10 = .true.
 eg_par_ecogem_q10_file='3Diat4ZP_PiEu.q10'
