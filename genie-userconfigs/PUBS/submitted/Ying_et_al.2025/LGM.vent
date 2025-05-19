@@ -210,3 +210,9 @@ bg_par_misc_brinerejection_jmax=9
 bg_par_misc_brinerejection_frac=0.1
 bg_par_ocn_force_scale_val_2=0.08
 bg_par_ocn_force_scale_val_49=0.3
+
+## Sea-level change and tracer concentration
+# 5000 - 134 m
+go_par_dsc= 4866
+bg_ctrl_ocn_rinit_ALL=.True.
+bg_par_ocn_rinit_ALL=0.03
