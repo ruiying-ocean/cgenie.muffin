@@ -5,7 +5,7 @@
 # *** CLIMATE *******************************************************
 #
 # set climate feedback (climate responding to changing pCO2)
-ea_36=y
+ea_36=n
 #
 # *** BIOLOGICAL NEW PRODUCTION *************************************
 #
