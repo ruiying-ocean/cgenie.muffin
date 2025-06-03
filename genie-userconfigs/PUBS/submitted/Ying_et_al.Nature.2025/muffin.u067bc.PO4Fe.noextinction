@@ -204,3 +204,18 @@ eg_ctrl_limit_neg_biomass=.false.
 eg_ctrl_real_extinction=.false.
 
 eg_trophic_tradeoff = 0.3
+
+## weathering
+# set a 'CLOSED' system
+bg_ctrl_force_sed_closedsystem=.true.
+# set total weathering rate
+rg_par_weather_CaCO3=10.0E+12
+rg_par_weather_SiO2 =10.0E+12
+
+# sediment water depth grid name
+## verfied p0067x and u067xx are same
+sg_par_sed_topo_D_name='p0067x_topo.72x72x16'
+# reef mask
+sg_par_sed_reef_mask_name='p0067x_reef_mask.72x72x16'
+# sediment core save mask name
+sg_par_sedcore_save_mask_name='p0067x_save_mask.72x72x16'

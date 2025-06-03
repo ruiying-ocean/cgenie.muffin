@@ -206,3 +206,11 @@ eg_ctrl_limit_neg_biomass=.false.
 eg_ctrl_real_extinction=.true.
 
 eg_trophic_tradeoff = 0.3
+
+# sediment water depth grid name
+## verfied p0067x and u067xx are same
+sg_par_sed_topo_D_name='p0067x_topo.72x72x16'
+# reef mask
+sg_par_sed_reef_mask_name='p0067x_reef_mask.72x72x16'
+# sediment core save mask name
+sg_par_sedcore_save_mask_name='p0067x_save_mask.72x72x16'
