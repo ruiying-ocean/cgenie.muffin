@@ -117,7 +117,7 @@ CONTAINS
     if (fquota) limit(iIron,:) = (1.0 - qmin(iIron,:)/quota(iIron,:)) / (1.0 - qmin(iIron,:)/qmax(iIron,:) )
 
     ! if quota is smaller than the qmin, set limit to 0
-    if (ctrl_real_extinction) limit(iPhos,:) = merge(0.0,limit(iPhos,:),quota(iPhos,:).lt.qmin(iPhos,:))
+    !if (ctrl_real_extinction) limit(iPhos,:) = merge(0.0,limit(iPhos,:),quota(iPhos,:).lt.qmin(iPhos,:))
 
     
     ! Set Von Leibig limitation according to most limiting nutrient (excluding iCarb=1)
@@ -136,7 +136,7 @@ CONTAINS
     enddo
 
     ! if quota is smaller than the qmin, set qreg to 0
-    if (ctrl_real_extinction) qreg(io,:) = merge(0.0,qreg(io,:),quota(io,:).lt.qmin(io,:))
+    !if (ctrl_real_extinction) qreg(io,:) = merge(0.0,qreg(io,:),quota(io,:).lt.qmin(io,:))
        
        
 

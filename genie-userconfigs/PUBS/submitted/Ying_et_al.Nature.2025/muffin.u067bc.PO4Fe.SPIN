@@ -134,6 +134,7 @@ bg_par_atm_force_scale_val_3=834.0E-06
 bg_ctrl_force_GOLDSTEInTS=.false.
 bg_par_forcing_name="u067bc.RpCO2_Rp13CO2.Fsal_SUR"
 bg_par_ocn_force_scale_val_2=0.005
+## as per Henehan et al. 2019
 bg_par_atm_force_scale_val_4=-4.5
 
 # set alternative wind speed field
@@ -144,7 +145,22 @@ bg_par_gastransfer_a=0.4675
 
 # INIT ALK
 bg_ocn_init_12=2.000-03
-#
+
+## weathering
+# set a 'CLOSED' system
+bg_ctrl_force_sed_closedsystem=.true.
+# set total weathering rate
+rg_par_weather_CaCO3=10.0E+12
+rg_par_weather_SiO2 =10.0E+12
+
+# sediment water depth grid name
+## verfied p0067x and u067xx are same
+sg_par_sed_topo_D_name='p0067x_topo.72x72x16'
+# reef mask
+sg_par_sed_reef_mask_name='p0067x_reef_mask.72x72x16'
+# sediment core save mask name
+sg_par_sedcore_save_mask_name='p0067x_save_mask.72x72x16'
+
 # *** MISC **********************************************************
 # EcoGEnIE 1.1. Parameters
 # kraus-turner mixed layer scheme on (1) or off (0)
