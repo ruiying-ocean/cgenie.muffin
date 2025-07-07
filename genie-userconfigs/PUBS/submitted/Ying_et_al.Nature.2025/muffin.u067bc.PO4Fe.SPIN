@@ -64,7 +64,6 @@ bg_par_bio_FetoC_pP=-0.4225
 bg_par_bio_FetoC_K=103684.0
 #[FeT] dependent Fe:C ratio [Ridgwell, 2001] -- constant
 bg_par_bio_FetoC_C=0.0
-
 #
 # *** ECOGEM ********************************************************
 #
@@ -100,11 +99,11 @@ eg_ns=2
 # ???
 eg_respir_a=0
 # DOM parameters
-eg_beta_mort_a =   0.66 # Maximum fraction to DOM as ESD --> zero
-eg_beta_mort_b =   0.66 # Minimum fraction to DOM as ESD --> infinity
+eg_beta_mort_a =   0.8 # Maximum fraction to DOM as ESD --> zero
+eg_beta_mort_b =   0.4 # Minimum fraction to DOM as ESD --> infinity
 eg_beta_mort_c = 100.0 # Size at 50:50 partition (default = 100 �m^3)
-eg_beta_graz_a =   0.66 # Maximum fraction to DOM as ESD --> zero
-eg_beta_graz_b =   0.66 # Minimum fraction to DOM as ESD --> infinity
+eg_beta_graz_a =   0.8 # Maximum fraction to DOM as ESD --> zero
+eg_beta_graz_b =   0.4 # Minimum fraction to DOM as ESD --> infinity
 eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 �m^3)
 # ???
 eg_nsubtime=25
@@ -112,7 +111,7 @@ eg_n_keco=1
 # exponent for modifier of CaCO3:POC export ratio
 eg_par_bio_red_POC_CaCO3_pP  = 0.0 # exponent for modifier of CaCO3:POC export ratio
 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-eg_par_bio_red_POC_CaCO3     = 0.200 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+eg_par_bio_red_POC_CaCO3     = 0.020 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
 #
 # --- DATA SAVING ----------------------------------------------
 #
