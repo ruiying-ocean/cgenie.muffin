@@ -111,7 +111,8 @@ eg_n_keco=1
 # exponent for modifier of CaCO3:POC export ratio
 eg_par_bio_red_POC_CaCO3_pP  = 0.0 # exponent for modifier of CaCO3:POC export ratio
 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-eg_par_bio_red_POC_CaCO3     = 0.020 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+# Modern global average of POC:CaCO3 is around 0.1-0.14
+eg_par_bio_red_POC_CaCO3     = 0.20 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
 #
 # --- DATA SAVING ----------------------------------------------
 #
@@ -171,7 +172,7 @@ go_ctrl_diagmld=.true.
 # add seaice attenuation of PAR
 eg_ctrl_PARseaicelimit=.true.
 # relative partitioning of C into DOM
-eg_par_beta_POCtoDOC=0.75
+#eg_par_beta_POCtoDOC=0.75
 # maximum time-scale to geochemical reaction completion (days)
 bg_par_bio_geochem_tau=90.0
 # extend solubility and geochem constant T range (leave S range as default)
