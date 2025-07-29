@@ -82,7 +82,7 @@ eg_foram_symbiont_esd_scale=0.01
 eg_foram_auto_cost=0.04
 eg_foram_hetero_cost=0.35
 eg_foram_spine_scale=3.5
-
+eg_vmaxDIC_a_pft_eukaryote = 2.2000
 #################### Nitrogen ############################
 eg_useNO3                   =.false.
 eg_nquota                   =.false.
@@ -112,11 +112,11 @@ eg_ns=2
 # ???
 eg_respir_a=0
 # DOM parameters
-eg_beta_mort_a =   0.8 # Maximum fraction to DOM as ESD --> zero
-eg_beta_mort_b =   0.4 # Minimum fraction to DOM as ESD --> infinity
+eg_beta_mort_a =   0.66 # Maximum fraction to DOM as ESD --> zero
+eg_beta_mort_b =   0.66 # Minimum fraction to DOM as ESD --> infinity
 eg_beta_mort_c = 100.0 # Size at 50:50 partition (default = 100 �m^3)
-eg_beta_graz_a =   0.8 # Maximum fraction to DOM as ESD --> zero
-eg_beta_graz_b =   0.4 # Minimum fraction to DOM as ESD --> infinity
+eg_beta_graz_a =   0.66 # Maximum fraction to DOM as ESD --> zero
+eg_beta_graz_b =   0.66 # Minimum fraction to DOM as ESD --> infinity
 eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 �m^3)
 # ???
 eg_nsubtime=25
@@ -124,7 +124,7 @@ eg_n_keco=1
 # exponent for modifier of CaCO3:POC export ratio
 eg_par_bio_red_POC_CaCO3_pP  = 0.0 # exponent for modifier of CaCO3:POC export ratio
 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-eg_par_bio_red_POC_CaCO3     = 0.20 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+eg_par_bio_red_POC_CaCO3     = 0.200 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
 #
 # disable ECOGEM restarts (as not currently coded up / used)
 eg_ctrl_ncrst               =.false.
@@ -187,7 +187,7 @@ go_ctrl_diagmld=.true.
 eg_ctrl_PARseaicelimit=.true.
 
 # relative partitioning of C into DOM
-#eg_par_beta_POCtoDOC=0.75
+eg_par_beta_POCtoDOC=0.75
 
 # maximum time-scale to geochemical reaction completion (days)
 bg_par_bio_geochem_tau=90.0
@@ -219,10 +219,3 @@ sg_par_sed_topo_D_name='p0067x_topo.72x72x16'
 sg_par_sed_reef_mask_name='p0067x_reef_mask.72x72x16'
 # sediment core save mask name
 sg_par_sedcore_save_mask_name='p0067x_save_mask.72x72x16'
-
-# default 1.45e-11
-# x0.1 1.45e-12
-# x2   2.9e-11
-# x5   7.25e-11
-# x10  1.45e-11
-eg_qcarbon_a=1.45e-11
