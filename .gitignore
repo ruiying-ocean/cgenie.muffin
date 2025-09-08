@@ -1,0 +1,7 @@
+*.dep
+*.o
+*.mod
+*.a
+*.exe
+current_config.dat
+*.out
