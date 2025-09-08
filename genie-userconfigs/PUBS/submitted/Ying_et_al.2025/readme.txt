@@ -27,11 +27,6 @@ EDITING LOG [list of changes made to this file, when, and by who]
 SUMMARY OF EXPERIMENTS [summerize experiments detailed and in which e.g. figures they appear]
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-HOL SPINUP
-
-LGM SPINUP
-LGMa = stratified ocean
-LGMb = well ventilated ocean
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups, main experiments, SI, etc where appropriate]
@@ -39,11 +34,9 @@ RUNNING THE EXPERIMENTS [command lines, broken down in sub-sections for spinups,
 
 qsub -j y -o cgenie_log -V -S /bin/bash
 
-./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi.Albani.colr023789 PUBS/submitted/Ying_et_al.2025 PI.ctrl 10000
+./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi.Albani.colr023789 PUBS/submitted/Ying_et_al.2025 muffin.CBE.worjh2.PO4FeSi.ctrl 10000
 
-./runmuffin.sh muffin.CBE.GIteiiaa.BASESFeTDTLSi.col023789 PUBS/submitted/Ying_et_al.2025 LGM.vent 10000 HOL
-./runmuffin.sh muffin.CBE.GIteiiaa.BASESFeTDTLSi.col023789 PUBS/submitted/Ying_et_al.2025 LGM.strat 10000 HOL
-
+./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi.Albani.colr023789 PUBS/submitted/Ying_et_al.2025 muffin.CBE.worjh2.PO4FeSi.Q10.Tdep 10000
 
 
 
