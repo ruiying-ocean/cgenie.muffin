@@ -205,9 +205,9 @@ eg_par_ecogem_q10_file='3Diat4ZP_PiEu.q10'
 bg_ctrl_bio_remin_POC_ballast=.true
 
 ## CaOC3 carrying capacity (mol/mol)
-par_bio_remin_ballast_kc=0.13
+bg_par_bio_remin_ballast_kc=0.13
 
 ## opal carrying capacity (mol/mol)
 ## opal is less denser than CaCO3, so, should be smaller?
 ## can also test 0.05
-par_bio_remin_ballast_ko=0.10
+bg_par_bio_remin_ballast_ko=0.10
