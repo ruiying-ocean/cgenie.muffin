@@ -46,6 +46,11 @@ bg_par_bio_remin_POC_K2=1.0E14
 bg_par_bio_remin_POC_Ea2=80000.0
 bg_par_bio_remin_POC_frac2=0.008
 
+# T-dep DOM remin
+bg_ctrl_bio_remin_DOM_Tdep=.true.
+# scale par_bio_remin_DOC_K1 (default: 1.0E12) to a 0.5 year lifetime
+bg_par_bio_remin_DOC_K1 = 1.16e+10
+
 # *** IRON **********************************************
 # NOTE: the base-config requires TFe and TL tracers
 bg_opt_geochem_Fe='hybrid'
@@ -195,10 +200,6 @@ bg_ctrl_force_ocn_age1=.true.
 eg_ctrl_use_q10 = .true.
 eg_par_ecogem_q10_file='3Diat4ZP_PiEu.q10'
 
-# T-dep DOM remin
-bg_ctrl_bio_remin_DOM_Tdep=.true.
-# scale par_bio_remin_DOC_K1 (default: 1.0E12) to a 0.5 year lifetime
-bg_par_bio_remin_DOC_K1 = 1.16e+10
 
 ## ballast (for POC type#2)
 bg_ctrl_bio_remin_POC_ballast=.true
