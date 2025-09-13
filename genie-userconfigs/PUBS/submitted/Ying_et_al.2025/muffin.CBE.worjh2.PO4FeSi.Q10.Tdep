@@ -37,7 +37,7 @@ bg_par_bio_remin_CaCO3_frac2=0.45
 bg_par_bio_remin_CaCO3_eL1=1.8905e+003
 # remineralization length #2 for CaCO3
 bg_par_bio_remin_CaCO3_eL2=1000000.0
-# T-dep remin
+
 bg_ctrl_bio_remin_POC_fixed=.false.
 bg_par_bio_remin_sinkingrate=125.0
 bg_par_bio_remin_POC_K1=9.0E11
@@ -50,6 +50,7 @@ bg_par_bio_remin_POC_frac2=0.008
 bg_ctrl_bio_remin_DOM_Tdep=.true.
 # scale par_bio_remin_DOC_K1 (default: 1.0E12) to a 0.5 year lifetime
 bg_par_bio_remin_DOC_K1 = 1.16e+10
+
 
 # *** IRON **********************************************
 # NOTE: the base-config requires TFe and TL tracers
@@ -133,19 +134,21 @@ eg_ns=2
 # ???
 eg_respir_a=0
 # DOM parameters
-eg_beta_mort_a =   0.8 # Maximum fraction to DOM as ESD --> zero
-eg_beta_mort_b =   0.4 # Minimum fraction to DOM as ESD --> infinity 
+eg_beta_mort_a =   1.0 # Maximum fraction to DOM as ESD --> zero
+eg_beta_mort_b =   0.5 # Minimum fraction to DOM as ESD --> infinity 
 eg_beta_mort_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
-eg_beta_graz_a =   0.8 # Maximum fraction to DOM as ESD --> zero
-eg_beta_graz_b =   0.4 # Minimum fraction to DOM as ESD --> infinity
+eg_beta_graz_a =   1.0 # Maximum fraction to DOM as ESD --> zero
+eg_beta_graz_b =   0.5 # Minimum fraction to DOM as ESD --> infinity
 eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
 # ???
 eg_nsubtime=25
 eg_n_keco=1
+
 # exponent for modifier of CaCO3:POC export ratio
 eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
+
 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-eg_par_bio_red_POC_CaCO3     = 0.0285 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+eg_par_bio_red_POC_CaCO3     = 0.025
 
 # disable ECOGEM restarts (as not currently coded up / used)
 eg_ctrl_ncrst      = .false.
@@ -193,9 +196,6 @@ gm_par_carbchem_Tmax = 45.0
 # *******************************************************************
 # *** END ***********************************************************
 # *******************************************************************
-#
-
-bg_ctrl_force_ocn_age1=.true.
 
 eg_ctrl_use_q10 = .true.
 eg_par_ecogem_q10_file='3Diat4ZP_PiEu.q10'

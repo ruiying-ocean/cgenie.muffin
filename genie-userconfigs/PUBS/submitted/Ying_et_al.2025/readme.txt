@@ -38,7 +38,7 @@ qsub -j y -o cgenie_log -V -S /bin/bash
 
 ./runmuffin.sh muffin.CBE.worjh2.BASESFeTDTLSi.Albani.colr023789 PUBS/submitted/Ying_et_al.2025 muffin.CBE.worjh2.PO4FeSi.Q10.Tdep 10000
 
-
+./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTLSi.col023789 PUBS/submitted/Ying_et_al.2025 muffin.CBE.GIteiiva.PO4FeSi.ctrl 10000
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
