@@ -193,6 +193,7 @@ ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
 
 # circulation
 bg_par_misc_brinerejection_frac=0.2
+bg_par_misc_brinerejection_jmax=19
 bg_par_ocn_force_scale_val_2=0.05
 
 # wind-stress
