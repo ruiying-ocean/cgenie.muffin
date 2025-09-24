@@ -1,25 +1,31 @@
-# *******************************************************************
-# *** Like muffin.CBE.worjh2.BASESFeTDTL.Albani with Si cycle on **********************
-# *******************************************************************
 #
-# *** CLIMATE *******************************************************
 #
-# set climate feedback (climate responding to changing pCO2)
+# --- CLIMATE -------------------------------------------------------
+#
+# set climate feedback
 ea_36=y
 #
-# *** BIOLOGICAL NEW PRODUCTION *************************************
+# --- BIOLOGICAL NEW PRODUCTION -------------------------------------
 #
 # biological scheme ID string
-# NOTE: with ECOGEM, no BIOGEM biological scheme must be selected
-bg_par_bio_prodopt="NONE"
+bg_par_bio_prodopt="bio_PFeSi"
+# biological uptake time-scales
+bg_par_bio_tau_sp=60.0
+bg_par_bio_tau_nsp=120.0
+# spsilon 30Si associated with opal formation [DEFAULT: -1.1]
+bg_par_d30Si_opal_epsilon=0.0
 #
-# *** ORGANIC MATTER EXPORT RATIOS **********************************
+# --- ORGANIC MATTER EXPORT RATIOS ----------------------------------
 #
-# [dealt with by ECOGEM]
+# production fraction of dissolved organic matter
+bg_par_bio_red_DOMfrac=0.66
 #
-# *** INORGANIC MATTER EXPORT RATIOS ********************************
+# --- INORGANIC MATTER EXPORT RATIOS --------------------------------
 #
-# [dealt with by ECOGEM]
+# underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+bg_par_bio_red_POC_CaCO3=0.10
+# exponent for modifier of CaCO3:POC export ratio
+bg_par_bio_red_POC_CaCO3_pP=0.7440
 #
 # *** REMINERALIZATION **********************************************
 #
@@ -68,75 +74,6 @@ bg_par_bio_FetoC_C=0.0
 bg_ctrl_bio_remin_opal_fixed=.false.
 bg_par_bio_red_POC_opal=0.17185
 bg_par_d30Si_opal_epsilon=-1.1
-
-# *** ECOGEM ********************************************************
-#
-# ecosystem configuration
-# PFTs with diatoms, pico and eukaryotes Fanny - Jun20
-eg_par_ecogem_plankton_file ='3Diat4ZP_PiEu.eco'
-
-#################### Nitrogen ############################
-eg_useNO3                   =.false.
-eg_nquota                   =.false.
-################## Phosphorus ############################
-eg_usePO4                   =.true.
-eg_pquota                   =.true.
-######################## Iron ############################
-eg_useFe                    =.true.
-eg_fquota                   =.true.
-################# Chlorophyll ############################
-eg_chlquota                 =.true.
-################# d13C ###################################
-eg_useDIC_13C               =.true.
-#################### Silicate ############################
-eg_useSiO2                  =.true.
-eg_squota                   =.true.
-
-# Tuned - Naidoo-Bagwell et al. (2023)
-eg_qminP_a=0.0027022
-eg_qmaxP_a=0.0216773
-eg_qminFe_a=6.8572e-07
-eg_qmaxFe_a=4.09512e-06
-eg_qminSi_a=0.043259
-eg_qmaxSi_a=0.407638
-eg_affinSiO2_a=4.7769
-eg_affinSiO2_b=-0.40131
-eg_affinPO4_a=0.94403
-eg_affinPO4_b=-0.43718
-eg_affinFe_a=0.17761
-eg_affinFe_b=-0.2574
-eg_vmaxFe_a=0.00016885
-eg_vmaxFe_b=-0.12635
-eg_vmaxSiO2_a=0.068039
-eg_vmaxSiO2_b=0.031868
-
-eg_par_diatom_palatability_mod=0.92802
-
-# eukaryote photosynthetic rate - Fanny Jun20 (equivalent to 0.56 times diatoms Pmax)
-eg_vmaxDIC_a_pft_eukaryote = 2.2000
-
-# ???
-eg_ns=2
-# ???
-eg_respir_a=0
-# DOM parameters
-eg_beta_mort_a =   1.0 # Maximum fraction to DOM as ESD --> zero
-eg_beta_mort_b =   0.5 # Minimum fraction to DOM as ESD --> infinity 
-eg_beta_mort_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
-eg_beta_graz_a =   1.0 # Maximum fraction to DOM as ESD --> zero
-eg_beta_graz_b =   0.5 # Minimum fraction to DOM as ESD --> infinity
-eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
-# ???
-eg_nsubtime=25
-eg_n_keco=1
-# exponent for modifier of CaCO3:POC export ratio
-eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
-# underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-eg_par_bio_red_POC_CaCO3     = 0.0285
-
-# disable ECOGEM restarts (as not currently coded up / used)
-eg_ctrl_ncrst      = .false.
-eg_ctrl_continuing = .false.
 
 # *** DATA SAVING ***************************************************
 #
