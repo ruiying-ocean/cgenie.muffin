@@ -11,7 +11,7 @@ ea_36=y
 bg_par_bio_prodopt="bio_PFeSi"
 # biological uptake time-scales
 bg_par_bio_tau_sp=60.0
-bg_par_bio_tau_nsp=120.0
+bg_par_bio_tau_nsp=180.0
 # spsilon 30Si associated with opal formation [DEFAULT: -1.1]
 bg_par_d30Si_opal_epsilon=0.0
 #
