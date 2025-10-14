@@ -202,7 +202,7 @@ ea_11=1.3
 
 ## Sea-level change and tracer concentration
 ## 134 m only causes same LGM ocean volume as PI, so we need more.
-go_par_dsc= 4650
+go_par_dsc= 4550
 bg_ctrl_ocn_rinit_ALL=.True.
-# not 3%, but actual change (3.24%)
-bg_par_ocn_rinit_ALL=0.0324
+# not 3%, but actual change (3.33%)
+bg_par_ocn_rinit_ALL=0.0333
