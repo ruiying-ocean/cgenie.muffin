@@ -197,6 +197,10 @@ MODULE ecogem_lib
   ! ------------------- EXPORT PROPERTIES ---------------------------------------------------------------------------------------- !
   LOGICAL::ctrl_eco_remin_POC_ballast                         ! ballasting parameterization?
   NAMELIST /ini_ecogem_nml/ctrl_eco_remin_POC_ballast
+  REAL::par_eco_remin_ballast_kc                              ! organic matter carrying capacity of CaCO3
+  REAL::par_eco_remin_ballast_ko                              ! organic matter carrying capacity of opal
+  REAL::par_eco_remin_ballast_kl                              ! organic matter carrying capacity of lithogenics
+  NAMELIST /ini_ecogem_nml/par_eco_remin_ballast_kc,par_eco_remin_ballast_ko,par_eco_remin_ballast_kl
   !REAL,DIMENSION(n_i,n_j)::par_bio_remin_kc                      !
   !REAL,DIMENSION(n_i,n_j)::par_bio_remin_ko                      !
   !REAL,DIMENSION(n_i,n_j)::par_bio_remin_kl

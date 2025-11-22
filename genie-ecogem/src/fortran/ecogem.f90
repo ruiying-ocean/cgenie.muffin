@@ -810,19 +810,13 @@ subroutine ecogem(          &
 
   ! set initial values for protected fraction of POM and CaCO3 Aaron Diatom 23
   ! Added ballast parameterisation - Fanny, Aug20
-  ! NEED TO MAKE CARRYING COEF EXPLICIT (HARD CODING HERE BECAUSE WANT TO FIND A WAY TO DEFINE THEM ONLY ONE) - Fanny Aug20
+  ! Ballast carrying coefficients now configurable via par_eco_remin_ballast_kc/ko/kl parameters
   ! Changed frac2 modification to be for imld:n_k rather than n_k
-  if (ctrl_eco_remin_POC_ballast) then 
-     !dum_egbg_sfcpart(is_POC_frac2,:,:,imld:n_k) = MERGE(                           &
-     !          &  ( par_bio_remin_kc(:,:)*dum_egbg_sfcpart(is_CaCO3,:,:,imld:n_k) + &
-     !          &    par_bio_remin_ko(:,:)*dum_egbg_sfcpart(is_opal,:,:,imld:n_k)  + &
-     !          &    par_bio_remin_kl(:,:)*dum_egbg_sfcpart(is_det,:,:,imld:n_k) )   &
-     !          &  /dum_egbg_sfcpart(is_POC,:,:,imld:n_k) ,                          &
-     !          &  0.0, dum_egbg_sfcpart(is_POC,:,:,imld:n_k) > const_real_nullsmall)
+  if (ctrl_eco_remin_POC_ballast) then
      dum_egbg_sfcpart(is_POC_frac2,:,:,imld:n_k) = MERGE(                           &
-               &  ( 0.085*dum_egbg_sfcpart(is_CaCO3,:,:,imld:n_k) + &
-               &    0.025*dum_egbg_sfcpart(is_opal,:,:,imld:n_k)  + &
-               &    0.0*dum_egbg_sfcpart(is_det,:,:,imld:n_k) )   &
+               &  ( par_eco_remin_ballast_kc*dum_egbg_sfcpart(is_CaCO3,:,:,imld:n_k) + &
+               &    par_eco_remin_ballast_ko*dum_egbg_sfcpart(is_opal,:,:,imld:n_k)  + &
+               &    par_eco_remin_ballast_kl*dum_egbg_sfcpart(is_det,:,:,imld:n_k) )   &
                &  /dum_egbg_sfcpart(is_POC,:,:,imld:n_k) ,                          &
                &  0.0, dum_egbg_sfcpart(is_POC,:,:,imld:n_k) > const_real_nullsmall)
      dum_egbg_sfcpart(is_POC_frac2,:,:,imld:n_k) = MERGE(                           &

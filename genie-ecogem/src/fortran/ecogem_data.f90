@@ -158,6 +158,9 @@ CONTAINS
        print*,'fractionation for intercellular C fixation          : ',par_d13C_DIC_Corg_ef
        ! ------------------- BALLAST PROPERTIES ------------------------------------------------------------------------------ !
        print*,'ballasting parameterization?                        : ',ctrl_eco_remin_POC_ballast ! Aaron Diatom 23
+       print*,'organic matter carrying capacity of CaCO3           : ',par_eco_remin_ballast_kc
+       print*,'organic matter carrying capacity of opal            : ',par_eco_remin_ballast_ko
+       print*,'organic matter carrying capacity of lithogenics     : ',par_eco_remin_ballast_kl
        ! --- RUN CONTROL --------------------------------------------------------------------------------------------------------- !
        print*,'--- RUN CONTROL ------------------------------------'
        print*,'Continuing run?                                     : ',ctrl_continuing
