@@ -812,7 +812,7 @@ subroutine ecogem(          &
   ! Added ballast parameterisation - Fanny, Aug20
   ! NEED TO MAKE CARRYING COEF EXPLICIT (HARD CODING HERE BECAUSE WANT TO FIND A WAY TO DEFINE THEM ONLY ONE) - Fanny Aug20
   ! Changed frac2 modification to be for imld:n_k rather than n_k
-  if (ctrl_bio_remin_POC_ballast_eco) then 
+  if (ctrl_eco_remin_POC_ballast) then 
      !dum_egbg_sfcpart(is_POC_frac2,:,:,imld:n_k) = MERGE(                           &
      !          &  ( par_bio_remin_kc(:,:)*dum_egbg_sfcpart(is_CaCO3,:,:,imld:n_k) + &
      !          &    par_bio_remin_ko(:,:)*dum_egbg_sfcpart(is_opal,:,:,imld:n_k)  + &

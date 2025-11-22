@@ -157,7 +157,7 @@ CONTAINS
        print*,'b value for Popp et al. fractionation               : ',par_d13C_DIC_Corg_b
        print*,'fractionation for intercellular C fixation          : ',par_d13C_DIC_Corg_ef
        ! ------------------- BALLAST PROPERTIES ------------------------------------------------------------------------------ !
-       print*,'ballasting parameterization?                        : ',ctrl_bio_remin_POC_ballast_eco ! Aaron Diatom 23
+       print*,'ballasting parameterization?                        : ',ctrl_eco_remin_POC_ballast ! Aaron Diatom 23
        ! --- RUN CONTROL --------------------------------------------------------------------------------------------------------- !
        print*,'--- RUN CONTROL ------------------------------------'
        print*,'Continuing run?                                     : ',ctrl_continuing
