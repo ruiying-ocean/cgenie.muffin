@@ -1857,7 +1857,7 @@ CONTAINS
     ! set partitioning between differently remineralized particulate fluxes
     ! NOTE: this code should ideally be replaced by a generic algorithm
     ! +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    if (ctrl_bio_remin_POC_ballast) then
+    if (ctrl_bio_remin_POC_ballast .AND. (.NOT. flag_ecogem)) then
        DO k=n_k,loc_k_mld,-1
           if (bio_part(is_POC,dum_i,dum_j,k) > const_real_nullsmall) then
              bio_part(is_POC_frac2,dum_i,dum_j,k) =                                    &
@@ -3504,7 +3504,11 @@ CONTAINS
                       if (ctrl_bio_remin_POC_ballast) then
                          ! NOTE: check that there is a non-zero mineral particule load
                          ! NOTE: previously, it was checked that both the POC flux and frac are non zero
-                         if (loc_part_tot_mineral > const_real_nullsmall) then
+                         ! NOTE: also check that the weighted ballast denominator is non-zero to prevent divide-by-zero
+                         if ((loc_part_tot_mineral > const_real_nullsmall) .AND. &
+                              & ((par_bio_remin_kc(dum_i,dum_j)*loc_bio_part_TMP(is_CaCO3,kk+1) + &
+                              &   par_bio_remin_ko(dum_i,dum_j)*loc_bio_part_TMP(is_opal,kk+1) +   &
+                              &   par_bio_remin_kl(dum_i,dum_j)*loc_bio_part_TMP(is_det,kk+1)) > const_real_nullsmall)) then
                             loc_bio_remin_POC_frac2 = 1.0 -                                                                   &
                                  & (                                                                                          &
                                  &   loc_bio_part_CaCO3_ratio*par_bio_remin_kc(dum_i,dum_j)*loc_bio_part_TMP(is_CaCO3,kk+1) + &
