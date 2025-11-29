@@ -63,6 +63,7 @@ subroutine ecogem(          &
   REAL                                     ::totPP
   REAL                                     ::mld,totchl,k_tot
   INTEGER                                  ::imld
+  INTEGER,DIMENSION(n_i,n_j)               ::imld_ij      ! mixed-layer index per column
 !BAW: zoolimit should be optional  REAL,DIMENSION(npmax)                    ::Totzoolimit
 !BAW: zoolimit should be optional  REAL,DIMENSION(npmax,npmax)                    ::zoolimit
 
@@ -196,6 +197,7 @@ subroutine ecogem(          &
   ELSE
      loc_yr = par_misc_t_end - loc_t
   END IF
+  imld_ij(:,:) = n_k
   ! ---------------------------------------------------------- !
   ! UPDATE CARBONATE CHEMSITRY
   ! ---------------------------------------------------------- !
@@ -695,10 +697,11 @@ subroutine ecogem(          &
                  !Isotopes for CaCO3
                  loc_delta_CaCO3 = 15.10 - 4232.0/loc_ocn(io_T,i,j,k)
                  loc_alpha = 1.0 + loc_delta_CaCO3/1000.0
-                 loc_R = eco_carbisor(ici_HCO3_r13C,i,j,k)/(1.0 - eco_carbisor(ici_HCO3_r13C,i,j,k))
-                 CaCO3_Rfrac(i,j,k) = loc_alpha*loc_R/(1.0 + loc_alpha*loc_R)
+                  loc_R = eco_carbisor(ici_HCO3_r13C,i,j,k)/(1.0 - eco_carbisor(ici_HCO3_r13C,i,j,k))
+                  CaCO3_Rfrac(i,j,k) = loc_alpha*loc_R/(1.0 + loc_alpha*loc_R)
 
               enddo ! end k
+              imld_ij(i,j) = imld
               !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
               !! homogenise plankton across ML
               !          ! (let BOIOGEM deal with motions of nutrients and organic matter)
@@ -812,20 +815,25 @@ subroutine ecogem(          &
   ! Added ballast parameterisation - Fanny, Aug20
   ! Ballast carrying coefficients now configurable via par_eco_remin_ballast_kc/ko/kl parameters
   ! Changed frac2 modification to be for imld:n_k rather than n_k
-  if (ctrl_eco_remin_POC_ballast) then
-     dum_egbg_sfcpart(is_POC_frac2,:,:,imld:n_k) = MERGE(                           &
-               &  ( par_eco_remin_ballast_kc*dum_egbg_sfcpart(is_CaCO3,:,:,imld:n_k) + &
-               &    par_eco_remin_ballast_ko*dum_egbg_sfcpart(is_opal,:,:,imld:n_k)  + &
-               &    par_eco_remin_ballast_kl*dum_egbg_sfcpart(is_det,:,:,imld:n_k) )   &
-               &  /dum_egbg_sfcpart(is_POC,:,:,imld:n_k) ,                          &
-               &  0.0, dum_egbg_sfcpart(is_POC,:,:,imld:n_k) > const_real_nullsmall)
-     dum_egbg_sfcpart(is_POC_frac2,:,:,imld:n_k) = MERGE(                           &
-              &  1.0,dum_egbg_sfcpart(is_POC_frac2,:,:,imld:n_k), dum_egbg_sfcpart(is_POC_frac2,:,:,imld:n_k) > 1.0)
-  else
-     dum_egbg_sfcpart(is_POC_frac2,:,:,imld:n_k) = par_bio_remin_POC_frac2
-  endif
-
-  dum_egbg_sfcpart(is_CaCO3_frac2,:,:,imld:n_k) = par_bio_remin_CaCO3_frac2
+  do i=1,n_i
+     do j=1,n_j
+        if (isocean(i,j).eq.1) then
+           if (ctrl_eco_remin_POC_ballast) then
+              dum_egbg_sfcpart(is_POC_frac2,i,j,imld_ij(i,j):n_k) = MERGE( &
+                   & ( par_eco_remin_ballast_kc*dum_egbg_sfcpart(is_CaCO3,i,j,imld_ij(i,j):n_k) + &
+                   &   par_eco_remin_ballast_ko*dum_egbg_sfcpart(is_opal ,i,j,imld_ij(i,j):n_k)  + &
+                   &   par_eco_remin_ballast_kl*dum_egbg_sfcpart(is_det  ,i,j,imld_ij(i,j):n_k) ) &
+                   & /dum_egbg_sfcpart(is_POC,i,j,imld_ij(i,j):n_k) , &
+                   & 0.0, dum_egbg_sfcpart(is_POC,i,j,imld_ij(i,j):n_k) > const_real_nullsmall)
+              dum_egbg_sfcpart(is_POC_frac2,i,j,imld_ij(i,j):n_k) = MERGE( &
+                   & 1.0,dum_egbg_sfcpart(is_POC_frac2,i,j,imld_ij(i,j):n_k), dum_egbg_sfcpart(is_POC_frac2,i,j,imld_ij(i,j):n_k) > 1.0)
+           else
+              dum_egbg_sfcpart(is_POC_frac2,i,j,imld_ij(i,j):n_k) = par_bio_remin_POC_frac2
+           endif
+           dum_egbg_sfcpart(is_CaCO3_frac2,i,j,imld_ij(i,j):n_k) = par_bio_remin_CaCO3_frac2
+        endif
+     enddo
+  enddo
   ! ---------------------------------------------------------- !
   ! END
   ! ---------------------------------------------------------- !
@@ -1007,4 +1015,3 @@ SUBROUTINE ecogem_save_rst(dum_genie_clock)
 END SUBROUTINE ecogem_save_rst
 
 ! ******************************************************************************************************************************** !
-
