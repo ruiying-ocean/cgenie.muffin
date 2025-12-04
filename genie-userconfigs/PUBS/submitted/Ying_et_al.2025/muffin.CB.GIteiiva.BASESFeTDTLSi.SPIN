@@ -33,7 +33,9 @@ bg_par_bio_remin_DOMlifetime=0.5
 # initial fractional abundance of POC component #2
 bg_par_bio_remin_POC_frac2=0.0557
 # depth of remineralization or particulate organic matter
-bg_par_bio_remin_POC_eL1=589.9451
+# NOTE: scaled from 589.9451 m (for 5000 m ocean) to maintain identical POC profile
+# with 4550 m ocean depth: 589.9451 × (4550/5000) = 536.850041
+bg_par_bio_remin_POC_eL1=536.850041
 # remineralization length #2 for POC
 bg_par_bio_remin_POC_eL2=1000000.0
 # initial fractional abundance of CaCO3 component #2
@@ -89,6 +91,10 @@ bg_par_infile_slice_name='save_timeslice_NONE.dat'
 bg_par_forcing_name="GIteiiva.RpCO2_Rp13CO2.Fsal_SUR.Albani.21ka"
 bg_par_atm_force_scale_val_3=193.0E-06
 bg_par_atm_force_scale_val_4=-6.46
+# 14C production -- mean of 19-23 ka from Hain et al.
+ac_par_atm_F14C = 576.5483771
+
+#
 # Orbital parameters
 ea_par_orbit_osce=0.018994 # eccentricity
 ea_par_orbit_oscsob=0.389911 # sine of obliquity
@@ -120,15 +126,14 @@ go_saln0=35.23
 # add brine rejection SH limit
 bg_par_misc_brinerejection_jmax=19
 # wind-stress
-go_13=0.8
-ea_11=0.8
+go_13=1.3
+ea_11=1.3
 #
 # --- EcoGENIE1.1 settings ----
 
 # set 'instantaneous' water column remineralziation
 bg_par_bio_remin_sinkingrate_physical=9.9E9
-bg_par_bio_remin_sinkingrate_reaction=49.689
-bg_par_bio_remin_sinkingrate=83.146
+bg_par_bio_remin_sinkingrate_reaction=100.0
 
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld = 1
@@ -147,3 +152,17 @@ gm_par_geochem_Tmin  = -2.0
 gm_par_geochem_Tmax  = 45.0
 gm_par_carbchem_Tmin = -2.0
 gm_par_carbchem_Tmax = 45.0
+
+# *******************************************************************
+# *** END ***********************************************************
+# *******************************************************************
+#
+
+bg_ctrl_force_ocn_age1=.true.
+
+## Sea-level change and tracer concentration
+## 134 m only causes same LGM ocean volume as PI, so we need more.
+go_par_dsc= 4550
+bg_ctrl_ocn_rinit_ALL=.True.
+# not 3%, but actual change (3.33%)
+bg_par_ocn_rinit_ALL=0.0333
