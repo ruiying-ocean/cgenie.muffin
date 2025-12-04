@@ -28,20 +28,16 @@ bg_par_bio_remin_DOMlifetime=0.5
 # initial fractional abundance of POC component #2
 bg_par_bio_remin_POC_frac2=0.0557
 # depth of remineralization or particulate organic matter
-# NOTE: scaled from 589.9451 m (for 5000 m ocean) to maintain identical POC profile
-# with 4550 m ocean depth: 589.9451 × (4550/5000) = 536.850041
-bg_par_bio_remin_POC_eL1=536.850041
+bg_par_bio_remin_POC_eL1=589.9451
 # remineralization length #2 for POC
 bg_par_bio_remin_POC_eL2=1000000.0
-# size-dependent remineralization scheme
-bg_par_bio_remin_fun="KriestOschlies2008"
 # initial fractional abundance of CaCO3 component #2
 bg_par_bio_remin_CaCO3_frac2=0.45
 # depth of remineralization or CaCO3
 bg_par_bio_remin_CaCO3_eL1=1.8905e+003
 # remineralization length #2 for CaCO3
 bg_par_bio_remin_CaCO3_eL2=1000000.0
-#
+
 # *** IRON **********************************************
 # NOTE: the base-config requires TFe and TL tracers
 bg_opt_geochem_Fe='hybrid'
@@ -133,32 +129,16 @@ eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
 # ???
 eg_nsubtime=25
 eg_n_keco=1
+
 # exponent for modifier of CaCO3:POC export ratio
 eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
+
 # underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
 eg_par_bio_red_POC_CaCO3     = 0.0285
 
 # disable ECOGEM restarts (as not currently coded up / used)
 eg_ctrl_ncrst      = .false.
 eg_ctrl_continuing = .false.
-
-# *** Ballast parameterization ***
-# EcoGEM ballast (surface)
-eg_ctrl_eco_remin_POC_ballast=.TRUE.
-eg_par_eco_remin_ballast_kc=0.085
-eg_par_eco_remin_ballast_ko=0.025
-eg_par_eco_remin_ballast_kl=0.0
-# BioGEM ballast (water column)
-bg_ctrl_bio_remin_POC_ballast=.TRUE.
-bg_par_bio_remin_ballast_kc=0.085
-bg_par_bio_remin_ballast_ko=0.025
-bg_par_bio_remin_ballast_kl=0.0
-# export mean size tracer for Kriest/Oschlies
-gm_sed_select_87=.true.
-
-# *** Q10 temperature dependence for plankton physiology ***
-eg_ctrl_use_q10 = .true.
-eg_par_ecogem_q10_file='3Diat4ZP_PiEu.q10'
 
 # *** DATA SAVING ***************************************************
 #
@@ -167,14 +147,12 @@ bg_par_data_save_level=10
 bg_ctrl_bio_preformed=.true.
 bg_ctrl_bio_remin_redox_save=.true.
 #
+
 # *** FORCINGS ******************************************************
 #
-bg_par_forcing_name="GIteiiva.RpCO2_Rp13CO2.Fsal_SUR.Albani.21ka"
-bg_par_atm_force_scale_val_3=193.0E-06
-bg_par_atm_force_scale_val_4=-6.46
-# 14C production -- mean of 19-23 ka from Hain et al.
-ac_par_atm_F14C = 576.5483771
-
+bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Albani.0ka"
+bg_par_atm_force_scale_val_3=278.0E-06
+bg_par_atm_force_scale_val_4=-6.5
 #
 # *** MISC **********************************************************
 # --- EcoGENIE1.1 settings ----
@@ -204,27 +182,12 @@ gm_par_carbchem_Tmax = 45.0
 # *******************************************************************
 # *** END ***********************************************************
 # *******************************************************************
-#
 
-bg_ctrl_force_ocn_age1=.true.
-
-# Orbital parameters
-ea_par_orbit_osce=0.018994 # eccentricity
-ea_par_orbit_oscsob=0.389911 # sine of obliquity
-ea_par_orbit_oscgam=114.42 # longitude of perihelion (degrees)
-
-# circulation
-bg_par_misc_brinerejection_frac=0.2
-bg_par_misc_brinerejection_jmax=19
-bg_par_ocn_force_scale_val_2=0.05
-
-# wind-stress
-go_13=1.3
-ea_11=1.3
-
-## Sea-level change and tracer concentration
-## 134 m only causes same LGM ocean volume as PI, so we need more.
-go_par_dsc= 4550
-bg_ctrl_ocn_rinit_ALL=.True.
-# not 3%, but actual change (3.33%)
-bg_par_ocn_rinit_ALL=0.0333
+# Temperature dependence
+bg_ctrl_bio_remin_POC_fixed=.false.
+bg_par_bio_remin_sinkingrate=125.0
+bg_par_bio_remin_POC_K1=9.0E11
+bg_par_bio_remin_POC_Ea1=54000.0
+bg_par_bio_remin_POC_K2=1.0E14
+bg_par_bio_remin_POC_Ea2=80000.0
+bg_par_bio_remin_POC_frac2=0.008

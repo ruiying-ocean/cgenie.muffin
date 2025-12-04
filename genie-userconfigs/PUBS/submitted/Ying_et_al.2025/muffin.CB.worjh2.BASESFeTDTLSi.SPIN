@@ -8,18 +8,24 @@
 ea_36=y
 #
 # *** BIOLOGICAL NEW PRODUCTION *************************************
-#
 # biological scheme ID string
-# NOTE: with ECOGEM, no BIOGEM biological scheme must be selected
-bg_par_bio_prodopt="NONE"
+bg_par_bio_prodopt="bio_PFeSi"
+# biological uptake time-scales
+bg_par_bio_tau_sp=60.0
+bg_par_bio_tau_nsp=120.0
+# spsilon 30Si associated with opal formation [DEFAULT: -1.1]
+bg_par_d30Si_opal_epsilon=0.0
 #
 # *** ORGANIC MATTER EXPORT RATIOS **********************************
 #
-# [dealt with by ECOGEM]
+bg_par_bio_red_DOMfrac=0.66
 #
 # *** INORGANIC MATTER EXPORT RATIOS ********************************
 #
-# [dealt with by ECOGEM]
+# underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
+bg_par_bio_red_POC_CaCO3=0.0485
+# exponent for modifier of CaCO3:POC export ratio
+bg_par_bio_red_POC_CaCO3_pP=0.7440
 #
 # *** REMINERALIZATION **********************************************
 #
@@ -31,15 +37,13 @@ bg_par_bio_remin_POC_frac2=0.0557
 bg_par_bio_remin_POC_eL1=589.9451
 # remineralization length #2 for POC
 bg_par_bio_remin_POC_eL2=1000000.0
-# size-dependent sinking/remin scheme (explicit)
-bg_par_bio_remin_fun="KriestOschlies2008_explicit"
 # initial fractional abundance of CaCO3 component #2
 bg_par_bio_remin_CaCO3_frac2=0.45
 # depth of remineralization or CaCO3
 bg_par_bio_remin_CaCO3_eL1=1.8905e+003
 # remineralization length #2 for CaCO3
 bg_par_bio_remin_CaCO3_eL2=1000000.0
-
+#
 # *** IRON **********************************************
 # NOTE: the base-config requires TFe and TL tracers
 bg_opt_geochem_Fe='hybrid'
@@ -71,103 +75,14 @@ bg_ctrl_bio_remin_opal_fixed=.false.
 bg_par_bio_red_POC_opal=0.17185
 bg_par_d30Si_opal_epsilon=-1.1
 
-# *** ECOGEM ********************************************************
-#
-# ecosystem configuration
-# PFTs with diatoms, pico and eukaryotes Fanny - Jun20
-eg_par_ecogem_plankton_file ='3Diat4ZP_PiEu.eco'
-
-#################### Nitrogen ############################
-eg_useNO3                   =.false.
-eg_nquota                   =.false.
-################## Phosphorus ############################
-eg_usePO4                   =.true.
-eg_pquota                   =.true.
-######################## Iron ############################
-eg_useFe                    =.true.
-eg_fquota                   =.true.
-################# Chlorophyll ############################
-eg_chlquota                 =.true.
-################# d13C ###################################
-eg_useDIC_13C               =.true.
-#################### Silicate ############################
-eg_useSiO2                  =.true.
-eg_squota                   =.true.
-
-# Tuned - Naidoo-Bagwell et al. (2023)
-eg_qminP_a=0.0027022
-eg_qmaxP_a=0.0216773
-eg_qminFe_a=6.8572e-07
-eg_qmaxFe_a=4.09512e-06
-eg_qminSi_a=0.043259
-eg_qmaxSi_a=0.407638
-eg_affinSiO2_a=4.7769
-eg_affinSiO2_b=-0.40131
-eg_affinPO4_a=0.94403
-eg_affinPO4_b=-0.43718
-eg_affinFe_a=0.17761
-eg_affinFe_b=-0.2574
-eg_vmaxFe_a=0.00016885
-eg_vmaxFe_b=-0.12635
-eg_vmaxSiO2_a=0.068039
-eg_vmaxSiO2_b=0.031868
-
-eg_par_diatom_palatability_mod=0.92802
-
-# eukaryote photosynthetic rate - Fanny Jun20 (equivalent to 0.56 times diatoms Pmax)
-eg_vmaxDIC_a_pft_eukaryote = 2.2000
-
-# ???
-eg_ns=2
-# ???
-eg_respir_a=0
-# DOM parameters
-eg_beta_mort_a =   1.0 # Maximum fraction to DOM as ESD --> zero
-eg_beta_mort_b =   0.5 # Minimum fraction to DOM as ESD --> infinity 
-eg_beta_mort_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
-eg_beta_graz_a =   1.0 # Maximum fraction to DOM as ESD --> zero
-eg_beta_graz_b =   0.5 # Minimum fraction to DOM as ESD --> infinity
-eg_beta_graz_c = 100.0 # Size at 50:50 partition (default = 100 µm^3)
-# ???
-eg_nsubtime=25
-eg_n_keco=1
-
-# exponent for modifier of CaCO3:POC export ratio
-eg_par_bio_red_POC_CaCO3_pP  = 0.7440 # exponent for modifier of CaCO3:POC export ratio
-
-# underlying export CaCO3 as a proportion of particulate organic matter (i.e., CaCO3/POC)
-eg_par_bio_red_POC_CaCO3     = 0.0285
-
-# disable ECOGEM restarts (as not currently coded up / used)
-eg_ctrl_ncrst      = .false.
-eg_ctrl_continuing = .false.
-
-# *** Ballast parameterization ***
-# EcoGEM ballast (surface)
-eg_ctrl_eco_remin_POC_ballast=.TRUE.
-eg_par_eco_remin_ballast_kc=0.085
-eg_par_eco_remin_ballast_ko=0.025
-eg_par_eco_remin_ballast_kl=0.0
-# BioGEM ballast (water column)
-bg_ctrl_bio_remin_POC_ballast=.TRUE.
-bg_par_bio_remin_ballast_kc=0.085
-bg_par_bio_remin_ballast_ko=0.025
-bg_par_bio_remin_ballast_kl=0.0
-# export mean size tracer for Kriest/Oschlies
-gm_sed_select_87=.true.
-
-# *** Q10 temperature dependence for plankton physiology ***
-eg_ctrl_use_q10 = .true.
-eg_par_ecogem_q10_file='3Diat4ZP_PiEu.q10'
-
 # *** DATA SAVING ***************************************************
 #
 # BASIC + biology + tracer + proxy diagnostics
 bg_par_data_save_level=10
 bg_ctrl_bio_preformed=.true.
 bg_ctrl_bio_remin_redox_save=.true.
+bg_par_infile_slice_name='save_timeslice_NONE.dat'
 #
-
 # *** FORCINGS ******************************************************
 #
 bg_par_forcing_name="worjh2.RpCO2_Rp13CO2.Albani.0ka"
@@ -179,7 +94,8 @@ bg_par_atm_force_scale_val_4=-6.5
 
 # set 'instantaneous' water column remineralziation
 bg_par_bio_remin_sinkingrate_physical=9.9E9
-bg_par_bio_remin_sinkingrate_reaction=100.0
+bg_par_bio_remin_sinkingrate_reaction=49.689
+bg_par_bio_remin_sinkingrate=83.146
 
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld = 1
@@ -202,3 +118,15 @@ gm_par_carbchem_Tmax = 45.0
 # *******************************************************************
 # *** END ***********************************************************
 # *******************************************************************
+#
+
+
+
+
+
+
+
+
+
+
+
