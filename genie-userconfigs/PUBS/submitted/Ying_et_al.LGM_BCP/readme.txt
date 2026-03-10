@@ -34,6 +34,13 @@ All experiments are run from: $HOME/cgenie.muffin/genie-main
 # (D) LGM with ECOGEM (GIteiiva glacial geography)
 ./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL_rbcolx PUBS/submitted/Ying_et_al.LGM_BCP USERCONFIG.LGM_ECOGEM.SPIN 10000
 
+# =========== LGM + Modern SST Experiments =========== #
+
+# (E) LGM with ECOGEM + modern (PI) SST prescribed (GIteiiva glacial geography)
+#     Modern SST from muffin.CBE.worjh2.PO4FeSi.ctrl (year ~10000), stored in:
+#     genie-ecogem/data/input/Ying_et_al.worjh2.PI_SST.dat
+./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL_rbcolx PUBS/submitted/Ying_et_al.LGM_BCP USERCONFIG.LGM_ECOGEM_modSST.SPIN 10000
+
 ################################################################
 ################################################################
 ################################################################
