@@ -37,9 +37,13 @@ All experiments are run from: $HOME/cgenie.muffin/genie-main
 # =========== LGM + Modern SST Experiments =========== #
 
 # (E) LGM with ECOGEM + modern (PI) SST prescribed (GIteiiva glacial geography)
-#     Modern SST from muffin.CBE.worjh2.PO4FeSi.ctrl (year ~10000), stored in:
-#     genie-ecogem/data/input/Ying_et_al.worjh2.PI_SST.dat
+#     Modern SST from muffin.CBE.worjh2.PO4FeSi.ctrl, remapped to GIteiiva mask
 ./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL_rbcolx PUBS/submitted/Ying_et_al.LGM_BCP USERCONFIG.LGM_ECOGEM_modSST.SPIN 10000
+
+# (F) LGM with ECOGEM + modern dust field (Mahowald 2006, GIteiiva geography)
+#     Iron parameters identical to LGM; only aeolian dust flux replaced
+#     Forcing dir: genie-forcings/GIteiiva.RpCO2_Rp13CO2.Fsal_SUR.Mahowald2006
+./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL_rbcolx PUBS/submitted/Ying_et_al.LGM_BCP USERCONFIG.LGM_ECOGEM_modDust.SPIN 10000
 
 ################################################################
 ################################################################
