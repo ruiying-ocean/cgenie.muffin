@@ -45,6 +45,12 @@ All experiments are run from: $HOME/cgenie.muffin/genie-main
 #     Forcing dir: genie-forcings/GIteiiva.RpCO2_Rp13CO2.Fsal_SUR.Mahowald2006
 ./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL_rbcolx PUBS/submitted/Ying_et_al.LGM_BCP USERCONFIG.LGM_ECOGEM_modDust.SPIN 10000
 
+# =========== LGM + Modern SST + Modern Fe Experiments =========== #
+
+# (G) LGM with ECOGEM + modern (PI) SST prescribed + modern dust/Fe (Mahowald 2006)
+#     Combines modSST (eg_ctrl_force_T) and modDust (Mahowald2006 forcing)
+./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL_rbcolx PUBS/submitted/Ying_et_al.LGM_BCP USERCONFIG.LGM_ECOGEM_modSST_modFe.SPIN 10000
+
 ################################################################
 ################################################################
 ################################################################
