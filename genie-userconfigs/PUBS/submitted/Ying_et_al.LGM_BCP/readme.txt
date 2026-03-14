@@ -51,6 +51,15 @@ All experiments are run from: $HOME/cgenie.muffin/genie-main
 #     Combines modSST (eg_ctrl_force_T) and modDust (Mahowald2006 forcing)
 ./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL_rbcolx PUBS/submitted/Ying_et_al.LGM_BCP USERCONFIG.LGM_ECOGEM_modSST_modFe.SPIN 10000
 
+# =========== Sensitivity: Higher Fe Quota =========== #
+# eg_qminFe_a = 2.00e-6 (default 1.00e-6), eg_qmaxFe_a = 5.00e-5 (default 4.00e-6)
+
+# (H) PI with ECOGEM + higher Fe quota (worlg4 modern geography)
+./runmuffin.sh cgenie.eb_go_gs_ac_bg_eg.worlg4.BASESFeTDTLcolx PUBS/submitted/Ying_et_al.LGM_BCP USERCONFIG.PI_ECOGEM_hiFe.SPIN 10000
+
+# (I) LGM with ECOGEM + higher Fe quota (GIteiiva glacial geography)
+./runmuffin.sh muffin.CBE.GIteiiva.BASESFeTDTL_rbcolx PUBS/submitted/Ying_et_al.LGM_BCP USERCONFIG.LGM_ECOGEM_hiFe.SPIN 10000
+
 ################################################################
 ################################################################
 ################################################################
