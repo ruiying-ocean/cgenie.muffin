@@ -54,7 +54,7 @@ bg_par_bio_remin_CaCO3_eL2=1000000.0
 bg_ctrl_bio_remin_POC_fixed=.false.
 # Arrhenius parameters for labile fraction
 bg_par_bio_remin_POC_K1=9.0E11
-bg_par_bio_remin_POC_Ea1=55000.0
+bg_par_bio_remin_POC_Ea1=54000.0
 # Arrhenius parameters for refractory fraction
 bg_par_bio_remin_POC_K2=1.0E14
 bg_par_bio_remin_POC_Ea2=80000.0
