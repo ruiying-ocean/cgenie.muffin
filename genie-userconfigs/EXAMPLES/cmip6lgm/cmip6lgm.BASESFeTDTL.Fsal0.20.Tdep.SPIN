@@ -1,6 +1,6 @@
 #
 # *******************************************************************
-# *** USERCONFIG.cmip6lgm.BASESFeTDTL.Albani.Fsal.SPIN **************
+# *** USERCONFIG.cmip6lgm.BASESFeTDTL.Albani.SPIN *******************
 # *******************************************************************
 #
 # *** CLIMATE *******************************************************
@@ -48,7 +48,7 @@ bg_par_bio_remin_CaCO3_eL1=1.8905e+003
 # remineralization length #2 for CaCO3
 bg_par_bio_remin_CaCO3_eL2=1000000.0
 #
-# *** T-DEPENDENT REMINERALIZATION (John et al. 2014) *****************
+# *** T-DEPENDENT REMINERALIZATION (Crichton et al. 2020, GMD) ********
 #
 # enable T-dependent POC remineralization
 bg_ctrl_bio_remin_POC_fixed=.false.
@@ -122,10 +122,10 @@ gm_par_carbchem_Tmax = 45.0
 #
 # *** TUNING ********************************************************
 #
-# parameter: bg_par_misc_brinerejection_frac -- default value (1) modified by factor: 0.2
-bg_par_misc_brinerejection_frac=0.2
-# parameter: bg_par_ocn_force_scale_val_2 -- negative to salinify Atlantic and strengthen AMOC
-bg_par_ocn_force_scale_val_2=-0.10
+# parameter: bg_par_misc_brinerejection_frac -- Fsal scale (Sv) to tune AMOC
+bg_par_misc_brinerejection_frac=0.0
+# parameter: bg_par_ocn_force_scale_val_2 -- Fsal scale (Sv) to tune AMOC
+bg_par_ocn_force_scale_val_2=0.20
 #
 # *** INITIAL CONDITIONS ********************************************
 #

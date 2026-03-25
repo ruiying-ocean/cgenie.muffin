@@ -1,6 +1,6 @@
 #
 # *******************************************************************
-# *** USERCONFIG.cmip6lgm.BASESFeTDTL.Albani.Fsal.SPIN **************
+# *** USERCONFIG.cmip6lgm.BASESFeTDTL.Albani.SPIN *******************
 # *******************************************************************
 #
 # *** CLIMATE *******************************************************
@@ -36,7 +36,7 @@ bg_par_bio_red_POC_CaCO3_pP=0.7440
 # DOC lifetime (yrs)
 bg_par_bio_remin_DOMlifetime=1.0
 # initial fractional abundance of POC component #2
-bg_par_bio_remin_POC_frac2=0.008
+bg_par_bio_remin_POC_frac2=0.055
 # depth of remineralization or particulate organic matter
 bg_par_bio_remin_POC_eL1=589.9451
 # remineralization length #2 for POC
@@ -47,17 +47,6 @@ bg_par_bio_remin_CaCO3_frac2=0.45
 bg_par_bio_remin_CaCO3_eL1=1.8905e+003
 # remineralization length #2 for CaCO3
 bg_par_bio_remin_CaCO3_eL2=1000000.0
-#
-# *** T-DEPENDENT REMINERALIZATION (John et al. 2014) *****************
-#
-# enable T-dependent POC remineralization
-bg_ctrl_bio_remin_POC_fixed=.false.
-# Arrhenius parameters for labile fraction
-bg_par_bio_remin_POC_K1=9.0E11
-bg_par_bio_remin_POC_Ea1=54000.0
-# Arrhenius parameters for refractory fraction
-bg_par_bio_remin_POC_K2=1.0E14
-bg_par_bio_remin_POC_Ea2=80000.0
 #
 # *** IRON CYCLING **************************************************
 #
@@ -122,10 +111,10 @@ gm_par_carbchem_Tmax = 45.0
 #
 # *** TUNING ********************************************************
 #
-# parameter: bg_par_misc_brinerejection_frac -- default value (1) modified by factor: 0.2
-bg_par_misc_brinerejection_frac=0.2
-# parameter: bg_par_ocn_force_scale_val_2 -- negative to salinify Atlantic and strengthen AMOC
-bg_par_ocn_force_scale_val_2=-0.20
+# parameter: bg_par_misc_brinerejection_frac -- Fsal scale (Sv) to tune AMOC
+bg_par_misc_brinerejection_frac=0.0
+# parameter: bg_par_ocn_force_scale_val_2 -- Fsal scale (Sv) to tune AMOC
+bg_par_ocn_force_scale_val_2=0.02
 #
 # *** INITIAL CONDITIONS ********************************************
 #

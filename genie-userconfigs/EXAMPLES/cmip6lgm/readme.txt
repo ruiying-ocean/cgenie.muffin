@@ -26,25 +26,25 @@ cgenie.eb_go_gs_ac_bg.cmip6lgm.BASESFeTDTL.Albani.brine{0.0,0.2,0.4,0.6,0.8}.SPI
 ----------------------------------------------------------------
 3. Fsal surface salinity forcing — AMOC sensitivity
 ----------------------------------------------------------------
-cgenie.eb_go_gs_ac_bg.cmip6lgm.BASESFeTDTL.Albani.Fsal{X}.brine0.2.SPIN
+cmip6lgm.BASESFeTDTL.Fsal{X}.SPIN
 
   GIteiiva-style surface salinity flux forcing adapted to cmip6lgm
-  grid. Pattern freshens Atlantic, salinifies Pacific. Negative
-  bg_par_ocn_force_scale_val_2 reverses the sign to strengthen AMOC.
+  grid. Pattern freshens Atlantic, salinifies Pacific (positive
+  bg_par_ocn_force_scale_val_2). No brine rejection.
 
   Forcing: cmip6lgm.RpCO2_Rp13CO2.Fsal_SUR.Albani.21ka
 
-  Sensitivity experiments (all with brine0.2):
-    Fsal       = -0.05 Sv (base, same as Odalen et al. CP 2022)
-    Fsal0.01   = -0.01 Sv
-    Fsal0.02   = -0.02 Sv
-    Fsal0.10   = -0.10 Sv
-    Fsal0.20   = -0.20 Sv
+  Sensitivity experiments:
+    Fsal0.01   = 0.01 Sv
+    Fsal0.02   = 0.02 Sv
+    Fsal0.05   = 0.05 Sv (same as Odalen et al. CP 2022)
+    Fsal0.10   = 0.10 Sv
+    Fsal0.20   = 0.20 Sv
 
 ----------------------------------------------------------------
 4. Fsal + T-dependent remineralization
 ----------------------------------------------------------------
-cgenie.eb_go_gs_ac_bg.cmip6lgm.BASESFeTDTL.Albani.Fsal{X}.Tdep.brine0.2.SPIN
+cmip6lgm.BASESFeTDTL.Fsal{X}.Tdep.SPIN
 
   As above but with T-dependent POC remineralization following
   Crichton et al. (2020, GMD). Key parameters:
@@ -56,13 +56,13 @@ cgenie.eb_go_gs_ac_bg.cmip6lgm.BASESFeTDTL.Albani.Fsal{X}.Tdep.brine0.2.SPIN
     bg_par_bio_remin_POC_frac2 = 0.008
 
   Experiments:
-    Fsal.Tdep      = -0.05 Sv
-    Fsal0.10.Tdep  = -0.10 Sv
-    Fsal0.20.Tdep  = -0.20 Sv
+    Fsal0.05.Tdep  = 0.05 Sv
+    Fsal0.10.Tdep  = 0.10 Sv
+    Fsal0.20.Tdep  = 0.20 Sv
 
 ================================================================
 How to run (example, 10 kyr spinup):
 
-./runmuffin.sh cgenie.eb_go_gs_ac_bg.cmip6lgm.BASESFeTDTL EXAMPLES/cmip6lgm cgenie.eb_go_gs_ac_bg.cmip6lgm.BASESFeTDTL.Albani.Fsal.brine0.2.SPIN 10000
+./runmuffin.sh cgenie.eb_go_gs_ac_bg.cmip6lgm.BASESFeTDTL EXAMPLES/cmip6lgm cmip6lgm.BASESFeTDTL.Fsal0.05.SPIN 10000
 
 ================================================================
