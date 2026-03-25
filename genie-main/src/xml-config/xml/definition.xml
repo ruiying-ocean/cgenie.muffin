@@ -2150,6 +2150,18 @@
 			<value datatype="boolean">.false.</value>
                         <description>allow CH4 concentration to be substituted into the CO2 radiative forcing calculation</description>
                     </param>
+                    <param name="sat_restore">
+			<value datatype="boolean">.false.</value>
+                        <description>enable SAT restoring</description>
+                    </param>
+                    <param name="sat_tau">
+			<value datatype="real">1.0</value>
+                        <description>SAT restoring timescale (yr)</description>
+                    </param>
+                    <param name="sat_restore_file">
+			<value datatype="string">sat_target.dat</value>
+                        <description>filename for SAT restoring target field</description>
+                    </param>
                 </namelist>
             </file>
         </model>

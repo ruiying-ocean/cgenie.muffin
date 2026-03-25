@@ -162,6 +162,14 @@ c non-dimensionalize surface fluxes for use in tstepa:
 
             tqa(1,i,j) = (fx0neta * rfluxsca)
             tqa(2,i,j) = (fwfxneta * rpmesca)
+
+c SAT restoring: add relaxation flux toward target SAT
+            if (sat_restore) then
+               tqa(1,i,j) = tqa(1,i,j)
+     &          + (sat_target(i,j) - tq1(1,i,j))
+     &          / (sat_tau * yearlen * sodaylen / tsc)
+            endif
+
          enddo
       enddo
 

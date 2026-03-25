@@ -410,3 +410,10 @@ c                 max sea-ice thickness (m)
       common /embm_sicconsts/par_albsic_min,par_albsic_max
       logical opt_freeze
       common /embm_sicconsts/opt_freeze
+
+c SAT restoring
+      logical sat_restore
+      real sat_tau, sat_target(maxi,maxj)
+      character(len=200) sat_restore_file
+      common /embm_satrestore/sat_restore,sat_tau,sat_target,
+     : sat_restore_file

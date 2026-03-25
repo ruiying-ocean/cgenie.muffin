@@ -281,10 +281,14 @@ c declare a namelist to store EMBM's initialisation vars
       NAMELIST /ini_embm_nml/par_orbit_oscgam,par_orbit_osctau0
       NAMELIST /ini_embm_nml/par_orbit_oscobl,par_orbit_osclonperi
       NAMELIST /ini_embm_nml/opt_delf2x_cesm,opt_co2ch4radfor
+      NAMELIST /ini_embm_nml/sat_restore,sat_tau,sat_restore_file
 
 c ------------------------------------------------------------ c
 c INITIALIZE VARIABLES
 c ------------------------------------------------------------ c
+      sat_restore = .false.
+      sat_tau = 1.0
+      sat_restore_file = ''
       area_atl1a = 0.0
       area_atl1b = 0.0
       area_atl1c = 0.0
@@ -2419,6 +2423,33 @@ cghc scheme to allocate land runoff: 0 - bucket overflow (default); 1 - Leaky bu
      1                  (par_runoff_tau*syr/12.0))
       if (debug_init) print*,'runoff factor 1 = ',runoff_factor_1
       if (debug_init) print*,'runoff factor 2 = ',runoff_factor_2
+
+c SAT restoring: read target SAT field
+      do i=1,imax
+         do j=1,jmax
+            sat_target(i,j) = 0.
+         enddo
+      enddo
+      if (sat_restore) then
+         print*,'SAT restoring enabled'
+         print*,'  restoring timescale (yr) =',sat_tau
+         print*,'  target SAT file = ',trim(sat_restore_file)
+         call check_unit(13,__LINE__,__FILE__)
+         open(13,file=indir_name(1:lenin)//sat_restore_file,
+     &        status='old',iostat=ios)
+         call check_iostat(ios,__LINE__,__FILE__)
+         do j=1,jmax
+            do i=1,imax
+               read(13,*,iostat=ios) sat_target(i,j)
+               call check_iostat(ios,__LINE__,__FILE__)
+            enddo
+         enddo
+         close(13,iostat=ios)
+         call check_iostat(ios,__LINE__,__FILE__)
+         print*,'SAT target field read successfully'
+      else
+         if (debug_init) print*,'SAT restoring disabled'
+      endif
 
       print*,' <<< Initialisation complete'
       print*,'======================================================='
