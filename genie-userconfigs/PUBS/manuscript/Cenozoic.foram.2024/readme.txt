@@ -25,6 +25,7 @@ BASECONFIG.16lvl.ECOGEM.config: template merged from muffingen (BASECONFIG.16lvl
 USERCONFIG.PALEO.BIOGEM.PO4.SPIN: template directly from muffingen (used to test circulation)
 USERCONFIG.PALEO.ECOGEM.PO4.SPIN: template directly from muffingen (might delete later)
 USERCONFIG.PALEO.ECOGEM.PO4.SiO4.SPIN: template modified from muffingen (USERCONFIG.PALEO.ECOGEM.PO4.SPIN + Foram and Diatom setting)
+published/: Crichton et al. (2021) physical configurations combined with this project's ECOGEM setup; see published/readme.txt
 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
