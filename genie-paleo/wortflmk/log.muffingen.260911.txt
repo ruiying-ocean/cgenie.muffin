@@ -1,0 +1,41 @@
+ 
+------------------------------------------------------------
+   Hello! Welcome to muffingen v0.9.27
+   We are going to make a GREAT model configuration!
+------------------------------------------------------------
+ 
+>   1. CHECKING PRIMARY OPTIONS ...
+       * GCM == hadcm3l (OK)
+>   2. CREATING GENIE GRID ...
+       - GENIE grid generated.
+>   3. READING AXES INFORMATION ...
+       - Axis info read.
+>   4. READING MASK & TOPO GRIDS ...
+       - Mask & topo info read.
+>   5. RE-GRIDING MASK ...
+       - Mask re-gridded.
+       * Original land area fraction    = 0.27428
+       * Re-gridded land area fraction  = 0.26312
+>   6. FILTERING MASK ...
+       - Single cell embayments filtered out.
+       - Polar connections cleaned up.
+       * found 1 water masses
+       * found 2 water masses
+       * found 3 water masses
+       - Small water bodies cleaned up.
+       * Revised land area fraction = 0.26929
+>   7. USER EDITING OF MASK ...
+       * Mask alteration procedure :
+         (1) left button to turn grid cell to ocean
+         (2) right button to turn grid cell to land
+         (3) middle button, or clickoutside the grid, to finish
+{Error using ginput (line 84)
+Interrupted by figure deletion
+
+Error in fun_grid_edit_mask (line 39)
+    [x,y,button] = ginput(1);
+                   ^^^^^^^^^
+Error in muffingen (line 839)
+    [go_mask]  = fun_grid_edit_mask(go_mask,go_fmask);
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
