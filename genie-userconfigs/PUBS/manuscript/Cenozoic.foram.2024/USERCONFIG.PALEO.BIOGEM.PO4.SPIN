@@ -86,6 +86,11 @@ bg_par_atm_force_scale_val_4=-6.5
 #
 # *** MISC **********************************************************
 #
+# add preformed tracers
+bg_ctrl_bio_preformed=.true.
+# add ventillation tracers
+bg_ctrl_force_ocn_age1=.true.
+#
 # *** recommended ***************************************************
 # maximum time-scale to geochemical reaction completion (days)
 bg_par_bio_geochem_tau=45.0

@@ -164,6 +164,11 @@ bg_par_atm_force_scale_val_4=-6.5
 #
 # *** MISC **********************************************************
 #
+# add preformed tracers
+bg_ctrl_bio_preformed=.true.
+# add ventillation tracers
+bg_ctrl_force_ocn_age1=.true.
+#
 # kraus-turner mixed layer scheme on (1) or off (0)
 go_imld = 1
 # *** recommended for paleo ***************************************************
