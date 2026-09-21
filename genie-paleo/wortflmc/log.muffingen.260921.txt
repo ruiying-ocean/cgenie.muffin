@@ -31,15 +31,21 @@
          (1) left button to turn grid cell to ocean
          (2) right button to turn grid cell to land
          (3) middle button, or clickoutside the grid, to finish
-         -> Cell at (20, 4) now ocean
+         -> Cell at (8, 7) now ocean
          -> Cell at (8, 7) now land
+         -> Cell at (20, 4) now ocean
+         -> Cell at (15, 1) now land
+         -> Cell at (19, 1) now land
+         -> Cell at (14, 1) now land
+         -> Cell at (15, 1) now ocean
+         -> Cell at (15, 1) now land
        - Out of grid range
        * Mask alteration complete
-       * Revised land area fraction = 0.32099
+       * Revised land area fraction = 0.3233
        - User-editing complete.
 >   8. CREATE FINAL MASK ...
        - .mask_out.FINAL.dat saved
-       * Final land area fraction   = 0.32099
+       * Final land area fraction   = 0.3233
 >   9. RE-GRIDING TOPOGRAPHY ...
        - Topography re-gridded.
 >   10. RE-GRIDING OCEAN BATHYMETRY ...
@@ -85,6 +91,7 @@
          -> MAKE SHALLOWER :: Loop count = 1 @ (12,35,2); s = 3; l = 0
          -> MAKE DEEPER :: Loop count = 1 @ (13,3,5); d = 2; l = 2
          -> MAKE SHALLOWER :: Loop count = 1 @ (13,35,2); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (13,36,5); d = 2; l = 2
          -> MAKE SHALLOWER :: Loop count = 1 @ (14,9,1); s = 3; l = 0
          -> MAKE SHALLOWER :: Loop count = 1 @ (14,24,2); s = 3; l = 0
          -> MAKE DEEPER :: Loop count = 1 @ (17,12,7); d = 3; l = 1
@@ -93,9 +100,9 @@
          -> MAKE DEEPER :: Loop count = 1 @ (17,19,4); d = 4; l = 0
          -> MAKE DEEPER :: Loop count = 1 @ (18,10,7); d = 2; l = 2
          -> MAKE SHALLOWER :: Loop count = 1 @ (18,21,2); s = 2; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (18,36,11); d = 2; l = 2
          -> MAKE SHALLOWER :: Loop count = 1 @ (19,14,4); s = 2; l = 1
          -> MAKE DEEPER :: Loop count = 1 @ (19,23,3); d = 2; l = 2
-         -> MAKE DEEPER :: Loop count = 1 @ (19,36,12); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 1 @ (20,6,10); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 1 @ (20,33,9); d = 3; l = 1
          -> MAKE SHALLOWER :: Loop count = 1 @ (20,34,3); s = 3; l = 0
@@ -240,10 +247,11 @@
          (1) left button to deepen grid cell
          (2) right button to shallow grid cell
          (3) middle button, or clickoutside the grid, to finish
-         -> Deepening cell at (8, 4) to k=7
+         -> Deepening cell at (8, 6) to k=6
          -> Deepening cell at (8, 5) to k=7
-         -> Deepening cell at (8, 4) to k=6
+         -> Deepening cell at (8, 4) to k=7
          -> Deepening cell at (8, 5) to k=6
+         -> Deepening cell at (8, 4) to k=6
        - Out of grid range
        * Mask alteration complete
        - User-editing complete.
@@ -261,6 +269,7 @@
        * found 9 land masses
        * found 10 land masses
        * found 11 land masses
+       * found 12 land masses
 >  15. UPDATING ISLANDS & PATHS ...
        * updated find: 1 islands
        * updated find: 2 islands
@@ -291,6 +300,8 @@
          -> SE corner :: Add additional path entry @ (1,2)
          -> NE corner :: Skip path entry @ (7,2)
          -> SE corner :: Add additional path entry @ (7,1)
+         -> NE corner :: Skip path entry @ (16,2)
+         -> SE corner :: Add additional path entry @ (16,1)
          -> NE corner :: Skip path entry @ (21,2)
          -> SE corner :: Add additional path entry @ (21,1)
          -> NE corner :: Skip path entry @ (33,3)
