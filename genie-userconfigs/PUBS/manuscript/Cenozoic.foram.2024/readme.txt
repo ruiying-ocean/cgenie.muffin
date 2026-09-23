@@ -25,6 +25,7 @@ BASECONFIG.16lvl.ECOGEM.config: template merged from muffingen (BASECONFIG.16lvl
 USERCONFIG.PALEO.BIOGEM.PO4.SPIN: template directly from muffingen (used to test circulation)
 USERCONFIG.PALEO.ECOGEM.PO4.SPIN: template directly from muffingen (might delete later)
 USERCONFIG.PALEO.ECOGEM.PO4.SiO4.SPIN: template modified from muffingen (USERCONFIG.PALEO.ECOGEM.PO4.SPIN + Foram and Diatom setting)
+TDEP-EXPs/: as the muffin.CBE.*Ma.PO4.SiO4.SPIN series, but with Crichton et al. [2021] temperature-dependent POC and DOM remineralization (*.TDEP.TDOM.SPIN)
 published/: Crichton et al. (2021) physical configurations combined with this project's ECOGEM setup; see published/readme.txt
 
 
@@ -59,6 +60,22 @@ qsub -j y -o cgenie_output -V -S /bin/bash
 ./runmuffin.sh muffin.CBE.wortflml.p0056c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.56Ma.PO4.SiO4.SPIN 10000
 ./runmuffin.sh muffin.CBE.wortflmm.p0061c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.61Ma.PO4.SiO4.SPIN 10000
 ./runmuffin.sh muffin.CBE.wortflmn.p0066c.BASES PUBS/manuscript/Cenozoic.foram.2024 muffin.CBE.66Ma.PO4.SiO4.SPIN 10000
+
+# temperature-dependent remineralization (POC + DOM)
+./runmuffin.sh muffin.CBE.wortflma.p0000c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.00Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmb.p0003c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.03Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmc.p0011c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.11Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmd.p0015c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.15Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflme.p0020c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.20Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmf.p0026c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.26Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmg.p0031c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.31Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmh.p0036c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.36Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmi.p0040c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.40Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmj.p0045c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.45Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmk.p0052c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.52Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflml.p0056c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.56Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmm.p0061c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.61Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
+./runmuffin.sh muffin.CBE.wortflmn.p0066c.BASES PUBS/manuscript/Cenozoic.foram.2024/TDEP-EXPs muffin.CBE.66Ma.PO4.SiO4.TDEP.TDOM.SPIN 10000
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
